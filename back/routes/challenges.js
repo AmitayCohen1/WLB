@@ -69,7 +69,7 @@ router.get('/', async (req, res) => {
 //         challenge.fileURL = url;   
 //     }
 //    res.status(200).json(challenges);
-res.status(200).json({"Hello": "World."})
+res.status(200).json({"Hello": "World. Github to AWS CD is working!"})
 });
 
 
