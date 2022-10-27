@@ -1,0 +1,39 @@
+
+
+
+
+@tailwind base;
+@layer base {
+  img {
+    @apply inline-block;
+  }
+}
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+@import url('https://fonts.googleapis.com/css2?family=Jockey+One&display=swap');
+
+@font-face {
+  font-family: 'porter_sans_blockblock';
+    src: url('../src/assets/fonts/porter-sans-inline-block-webfont.ttf');
+}
+
+@font-face {
+  font-family: 'IowanOldSt';
+    src: url('../src/assets/fonts/iowan-old-style-black-bt.ttf');
+}
+
+@font-face {
+  font-family: 'Roman';
+    src: url('../src/assets/fonts/bitstream_iowan_old_style_bt.ttf');
+}
+
+
+
