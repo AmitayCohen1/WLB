@@ -22,6 +22,3 @@ jobs:
                 working-directory: ${{ secrets.AWS_WORK_DIR }}
                 command: /bin/sh ./deploy.sh
                 comment: Deploying!
-            
-            - name: Output
-              run: echo "Done"
