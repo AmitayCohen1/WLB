@@ -20,5 +20,5 @@ jobs:
                 instance-ids: ${{ secrets.AWS_INSTANCE_ID }}
 
                 working-directory: ${{ secrets.AWS_WORK_DIR }}
-                command: /bin/sh ./deploy.sh
+                command: /bin/sh sudo -u ubuntu ./deploy.sh
                 comment: Deploying!
