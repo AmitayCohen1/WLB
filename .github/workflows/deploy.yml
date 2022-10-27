@@ -10,14 +10,18 @@ jobs:
 
         steps:
             - uses: actions/checkout@v2
+            - name: AWS SSM Send Command
+                uses: peterkimzz/aws-ssm-send-command@1.1.1
+                id: ssm
+                with:
+                    aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+                    aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+                    aws-region: ${{ secrets.AWS_REGION }}
+                    instance-ids: ${{ secrets.AWS_INSTANCE_ID }}
 
-        - name: AWS SSM Send Command
-            - uses: peterkimzz/aws-ssm-send-command@1.1.1
-          with:
-            aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-            aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-            aws-region: ${{ secrets.AWS_REGION }}
-            instance-ids: ${{ secrets.AWS_INSTANCE_ID }}
-            comment: Deploy
-            working-directory: ${{ secrets.AWS_WORK_DIR }}
-            command: /bin/sh ./deploy.sh
+                    working-directory: ${{ secrets.AWS_WORK_DIR }}
+                    command: /bin/sh ./deploy.sh
+                    comment: Deploying!
+            
+            - name: Output
+                run: echo "Done"
