@@ -1,37 +1,32 @@
 import { useState } from 'react'
 import { useAuthContext } from './useAuthContext'
 
+import axios from "../config/axios";
+
 export const useSignup = () => {
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(null)
   const { userDispatch } = useAuthContext()
 
   const signup = async (userName, email, password) => {
-    setIsLoading(true)
-    setError(null)
+    setIsLoading(true);
+    setError(null);
 
-    const response = await fetch('/api/user/signup', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({ userName, email, password })
-    })
-    const json = await response.json() 
+    try {
+      const response = await axios.post("/api/user/signup", JSON.stringify({ userName, email, password }), {
+        headers: {"Content-Type": "application/json"},
+      });
 
-
-    if (!response.ok) { 
-      setIsLoading(false)
-      setError(json.err)
-    }
-    if (response.ok) {
       // save the user to local storage
-      localStorage.setItem('user', JSON.stringify(json))
+      localStorage.setItem("user", JSON.stringify(response.data));
 
       // update the auth context
-      userDispatch({type: 'LOGIN', payload: json})
-
-      // update loading state
-      setIsLoading(false)
+      userDispatch({type: "LOGIN", payload: response.data});
+    } catch (err) {
+      setError(err);
+    } finally {
+      setIsLoading(false);
     }
-  }
-  return { signup, isLoading, error }
-}
+  };
+  return { signup, isLoading, error };
+};

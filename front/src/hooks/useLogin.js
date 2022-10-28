@@ -1,38 +1,33 @@
 import { useState } from 'react'
 import { useAuthContext } from './useAuthContext'
 
+import axios from "../config/axios";
+
 export const useLogin = () => {
-  const [error, setError] = useState(null)
-  const [isLoading, setIsLoading] = useState(null)
-  const { userDispatch } = useAuthContext()
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(null);
+  const { userDispatch } = useAuthContext();
 
   const login = async (email, password) => {
-    setIsLoading(true)
-    setError(null)
+    setIsLoading(true);
+    setError(null);
 
-    const response = await fetch('/api/user/login', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({ email, password })
-    })
-    const json = await response.json()
-    console.log('so this is it?', json)
+    try {
+      const response = await axios.post("/api/user/login", JSON.stringify({ email, password }), {
+        headers: {"Content-Type": "application/json"},
+      });
 
+      console.log("so this is it?", response.data);
 
-    if (!response.ok) { 
-      setIsLoading(false)
-      setError(json.err)
-    }
-    if (response.ok) {
-      // save the user to local storage
-      localStorage.setItem('user', JSON.stringify(json))
+      localStorage.setItem("user", JSON.stringify(response.data))
 
       // update the auth context
-      userDispatch({type: 'LOGIN', payload: json})
-
-      // update loading state
-      setIsLoading(false)
+      userDispatch({type: "LOGIN", payload: response.data})
+    } catch (err) {
+      setError(err);
+    } finally {
+      setIsLoading(false);
     }
-  }
-  return { login, isLoading, error }
-}
+  };
+  return { login, isLoading, error };
+};
