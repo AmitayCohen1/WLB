@@ -55,21 +55,20 @@ const upload = multer({storage: storage })
 
 // GET all parents (Home)
 router.get('/', async (req, res) => { 
-//     const challenges = await Challenge.find({}).sort({createdAt: -1})
+    const challenges = await Challenge.find({}).sort({createdAt: -1})
 
-//     for (const challenge of challenges) { 
-//         const getObjectParams = { 
-//             Bucket: bucketName,
-//             Key: challenge.fileName
-//         }
-//         console.log(challenge)
+    for (const challenge of challenges) { 
+        const getObjectParams = { 
+            Bucket: bucketName,
+            Key: challenge.fileName
+        }
+        console.log(challenge)
 
-//         const command = new GetObjectCommand(getObjectParams);
-//         const url =  await getSignedUrl(s3, command, { expiresIn: 3600 * 5 });
-//         challenge.fileURL = url;   
-//     }
-//    res.status(200).json(challenges);
-res.status(200).json({"Hello": "World"})
+        const command = new GetObjectCommand(getObjectParams);
+        const url =  await getSignedUrl(s3, command, { expiresIn: 3600 * 5 });
+        challenge.fileURL = url;   
+    }
+   res.status(200).json(challenges);
 });
 
 
