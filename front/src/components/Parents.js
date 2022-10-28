@@ -48,20 +48,20 @@ const Parents = ({ challenge }) => {
                     onMouseEnter={(e) => {
                         setHover(true)
                         e.target.play()
-                    }}
-                    onMouseLeave={(e) => {
-                        setHover(false)
-                        e.target.pause()
-                    }}
-                    className='bg-green-900 object-cover rounded-xl aspect-video  h-full w-full '>
-                    <source src={challenge.fileURL} type='video/mp4' />
+                       }}
+                        onMouseLeave={(e) => {
+                            setHover(false)
+                            e.target.pause()
+                        }}
+                        className='bg-green-900 object-cover rounded-xl aspect-video  h-full w-full '>
+                        <source src={challenge.fileURL} type='video/mp4'/>
                 </video>
-            </div>
-            <span onClick={handleDelete} className="material-symbols-outlined">delete</span>
-
-        </div>
+             </div>
+             {/* <span onClick={handleDelete} className="material-symbols-outlined">delete</span> */}
     )
 }
+
+
 
 export default Parents;
 
