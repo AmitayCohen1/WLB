@@ -25,7 +25,7 @@ const Child = ({ challenge }) => {
                 console.log("Challenge was Deleted:", response.data);
                 await challengeDispatch({ type: "DELETE_CHALLENGE", payload: response.data });
             } catch (err) {
-                console.log("Challenge was NOT deleted:", err);
+                console.log("Challenge was NOT deleted:", err.message);
             }
         }
     };

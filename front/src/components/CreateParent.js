@@ -35,32 +35,29 @@ const CreateParent = () => {
     form.append("file", file);
     setIsLoading(true);
 
+    try {
+      const response = await axios.post("/api/challenges", form, {
+        headers: {
+          "Autharization": `Bearer ${user.token}`, // TODO: "Authorization"
+          "Content-Type": "multipart/form-data",
+        },
+        onUploadProgress: (progressEvent) => {
+          let { loaded, total } = progressEvent;
+          console.log((loaded / total) * 100);
+        },
+      });
+      const json = response.data;
 
+      challengeDispatch({ type: "CREATE_CHALLENGE", payload: json });
 
-
-    const response = await axios.post("/api/challenges", form, {
-      headers: {
-        "Autharization": `Bearer ${user.token}`, // TODO: "Authorization"
-        "Content-Type": "multipart/form-data",
-      },
-      onUploadProgress: (progressEvent) => {
-        let { loaded, total } = progressEvent;
-        console.log((loaded / total) * 100);
-      },
-    });
-
-    const json = response.data;
-
-    challengeDispatch({ type: "CREATE_CHALLENGE", payload: json });
-    if (response.statusText === "OK") {
       console.log("Seems good:", response.statusText);
       setTitle("");
       setDescription("");
       setReps("");
       setFile();
       navigate("/");
-    } else {
-      console.log("Seems bad:", response.statusText);
+    } catch (err) {
+      console.log("Seems bad:", err.message);
     }
   }
 
