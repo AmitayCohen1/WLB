@@ -8,7 +8,7 @@ import { VscCopy, VscCheck } from "react-icons/vsc";
 const Canvas = ({challenge}) => {
     const [image, setImage] = useState()
     const [isCopy, setIsCopy] = useState(false)
-    const [globalratio, setGlobalRatio] = useState(false)
+    const [globalratio, setGlobalRatio] = useState (false)
     const canvas = useRef(null)
 
 
