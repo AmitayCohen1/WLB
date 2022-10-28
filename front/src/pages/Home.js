@@ -3,6 +3,8 @@ import { Link} from "react-router-dom"
 import { useEffect } from 'react';
 import Parents from '../components/Parents';
 
+import axios from "../config/axios";
+
 const Home = () => {
   const {challenges, challengeDispatch} = useChallengesContext();
 
@@ -11,19 +13,19 @@ const Home = () => {
 
   useEffect(() => { 
     const fetchingData = async () => {
-      const response = await fetch(`/api/challenges`);
-      const json = await response.json()
-      if (response.ok) {
-        challengeDispatch({type: 'SET_CHALLENGES', payload: json})
+      const response = await axios.get("/api/challenges");
+
+      if (response.statusText === "OK") {
+        challengeDispatch({type: "SET_CHALLENGES", payload: response.data});
       } else { 
-        console.log('response is NOT OK :( This is what we got bac:', json)
+        console.log("response is NOT OK :( This is what we got bac:", response);
       }
     }
-    if(!challenges) { 
-      console.log('fetchingData')
-      fetchingData()
+    if (!challenges) { 
+      console.log("fetchingData");
+      fetchingData();
     }
-  },[challengeDispatch, challenges])
+  }, [challengeDispatch, challenges]);
 
   const copy = `Post a personal record or break someone else's.
   Earn a badge. Show up your friends.`
