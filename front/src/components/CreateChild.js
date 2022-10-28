@@ -28,19 +28,23 @@ const CreateChild = () => {
         form.append("file", file);
         setIsLoading(true);
 
-        const response = await axios.post(`/api/challenges/reply/${id}`, form, {
-            headers: {
-                "Autharization": `Bearer ${user.token}` // TODO: "Authorization"
-            },
-        });
-        const json = response.data;
-        setIsLoading(false);
-        challengeDispatch({ type: "REPLY", payload: json });
+        try {
+            const response = await axios.post(`/api/challenges/reply/${id}`, form, {
+                headers: {
+                    "Autharization": `Bearer ${user.token}` // TODO: "Authorization"
+                },
+            });
+            const json = response.data;
 
-        if (response.statusText === "OK") {
+            challengeDispatch({ type: "REPLY", payload: json });
+
             setReps('');
             setFile();
             navigate('/');
+        } catch (err) {
+            console.log("[ERROR][handleSubmit]: " + err.message);
+        } finally {
+            setIsLoading(false);
         }
     };
 

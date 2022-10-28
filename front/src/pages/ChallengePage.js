@@ -26,20 +26,22 @@ const ChallengePage = () => {
   useEffect(() => {
     const userMissData = async () => {
       if (!challenges) {
-        const response = await axios.get("/api/challenges");
+        try {
+          const response = await axios.get("/api/challenges");
 
-        if (response.statusText === "OK") {
           challengeDispatch({ type: "SET_CHALLENGES", payload: response.data });
+        } catch (err) {
+          console.log("[ERROR][userMissData]: " + err.message);
         }
       } else {
-        const responseS3 = await axios.get(`/api/challenges/${challengeParamsId}`);
+        try {
+          const responseS3 = await axios.get(`/api/challenges/${challengeParamsId}`);
 
-        if (responseS3.statusText === "OK") {
           challengeDispatch({ type: "REPLY", payload: responseS3.data });
-        } else {
+          setParent(responseS3.data);
+        } catch (err) {
           navigate("/");
         }
-        setParent(responseS3.data);
       }
     };
     userMissData();

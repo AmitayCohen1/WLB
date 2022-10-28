@@ -25,7 +25,7 @@ const Parents = ({ challenge }) => {
                 });
                 const deleteFile = await challengeDispatch({ type: "DELETE_CHALLENGE", payload: response.data });
             } catch (err) {
-                console.log("Challenge was NOT deleted:", err);
+                console.log("Challenge was NOT deleted:", err.message);
             }
         }
     };
@@ -48,19 +48,20 @@ const Parents = ({ challenge }) => {
                     onMouseEnter={(e) => {
                         setHover(true)
                         e.target.play()
-                       }}
-                        onMouseLeave={(e) => {
-                            setHover(false)
-                            e.target.pause()
-                        }}
-                        className='bg-green-900 object-cover rounded-xl aspect-video  h-full w-full '>
-                        <source src={challenge.fileURL} type='video/mp4'/>
+                    }}
+                    onMouseLeave={(e) => {
+                        setHover(false)
+                        e.target.pause()
+                    }}
+                    className='bg-green-900 object-cover rounded-xl aspect-video  h-full w-full '>
+                    <source src={challenge.fileURL} type='video/mp4' />
                 </video>
-             </div>
-             {/* <span onClick={handleDelete} className="material-symbols-outlined">delete</span> */}
+            </div>
+            {/* <span onClick={handleDelete} className="material-symbols-outlined">delete</span> */}
+
+        </div>
     )
 }
-
 
 
 export default Parents;

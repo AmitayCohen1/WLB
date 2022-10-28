@@ -10,15 +10,13 @@ const Home = () => {
 
 
   //Check Challenges
-
   useEffect(() => { 
     const fetchingData = async () => {
-      const response = await axios.get("/api/challenges");
-
-      if (response.statusText === "OK") {
+      try {
+        const response = await axios.get("/api/challenges");
         challengeDispatch({type: "SET_CHALLENGES", payload: response.data});
-      } else { 
-        console.log("response is NOT OK :( This is what we got bac:", response);
+      } catch (err) {
+        console.log("response is NOT OK :( This is what we got bac:", err.message);
       }
     }
     if (!challenges) { 
