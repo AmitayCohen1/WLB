@@ -59,7 +59,7 @@ const Badge = () => {
           const blob = await data.blob();
           await navigator.clipboard.write([
             new window.ClipboardItem({
-                [blob.type]: blob
+              [blob.type]: blob
             })
           ]);
           console.log('Fetched image copied.');
