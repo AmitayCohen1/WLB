@@ -12,7 +12,7 @@ const Child = ({challenge}) => {
     const handleDelete = async (e) => { 
         e.preventDefault()
         if(user) { 
-            const response = await fetch(`http://localhost:4000/api/challenges/${challenge._id}`,  { 
+            const response = await fetch(`api/challenges/${challenge._id}`,  { 
                 method: 'DELETE',
                 headers : { 
                     'Autharization': `Bearer ${user.token}`

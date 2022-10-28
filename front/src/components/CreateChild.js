@@ -28,16 +28,7 @@ const CreateChild = () => {
         form.append('file', file);
         setIsLoading(true);
 
-    // const response = await fetch(`http://localhost:4000/api/challenges/reply/${id}`, { 
-    //     method: 'POST',
-    //     headers : { 
-    //         'Autharization': `Bearer ${user.token}`
-    //       },
-    //     body: form
-    // })
-    // const json = await res.json();
-
-        const response = await axios.post(`http://localhost:4000/api/challenges/reply/${id}`, form, { 
+        const response = await axios.post(`/api/challenges/reply/${id}`, form, { 
             headers: { 
             'Autharization': `Bearer ${user.token}`
             }, 

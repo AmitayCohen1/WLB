@@ -40,31 +40,6 @@ const Row = ({challenge,index, parent}) => {
 
 
 
-
-    // const handleDelete = async (e) => { 
-    //     e.preventDefault()
-    //     if(user) { 
-    //         console.log('123')
-    //         console.log(challenge._id)
-    //         const response = await fetch(`http://localhost:4000/api/challenges/child/${challenge._id}`, { 
-    //             method: 'DELETE',
-    //             headers : { 
-    //                 'Autharization': `Bearer ${user.token}`
-    //               },
-    //         })
-    //         const json = await response.json();
-    //         if(!response.ok) { 
-    //             console.log('Challenge was NOT deleted:', json)
-    //         } 
-    //         if(response.ok) { 
-    //             console.log('Challenge was Deleted:', json)
-    //             await challengeDispatch({type: 'DELETE_CHALLENGE', payload: json})
-    //         }
-    //     }
-    // }
-
-
-
   return (
     <div className=' 
         grid grid-cols-12
