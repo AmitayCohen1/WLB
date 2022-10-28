@@ -37,7 +37,7 @@ const handleSubmit = async (e) => {
 
 
 
-  const response = await axios.post('http://localhost:4000/api/challenges', form, { 
+  const response = await axios.post('/api/challenges', form, { 
     headers: { 
       'Autharization': `Bearer ${user.token}`,
       'Content-Type': 'multipart/form-data',
@@ -47,19 +47,6 @@ const handleSubmit = async (e) => {
       console.log((loaded / total) * 100)
     }
   })
-  
-  console.log('this is the result:', response)
-  console.log('this is the result as JSON:', response.data)
-
-  // const response = await fetch('http://localhost:4000/api/challenges', { 
-  // method: 'POST',
-  // headers : { 
-  //   'Autharization': `Bearer ${user.token}`
-  // },
-  // body: form
-  // })
-  // console.log('this is the fetch response,', response)
-  // const json = await response.json();
 
   const json = response.data
 

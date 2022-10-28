@@ -11,7 +11,7 @@ const Home = () => {
 
   useEffect(() => { 
     const fetchingData = async () => {
-      const response = await fetch(`http://localhost:4000/api/challenges`);
+      const response = await fetch(`/api/challenges`);
       const json = await response.json()
       if (response.ok) {
         challengeDispatch({type: 'SET_CHALLENGES', payload: json})

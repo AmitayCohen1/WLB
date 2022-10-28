@@ -24,13 +24,13 @@ if(ending) {
 useEffect(() =>  {
   const userMissData = async() => {
     if(!challenges) { 
-      const response = await fetch(`http://localhost:4000/api/challenges`);
+      const response = await fetch(`/api/challenges`);
       const json = await response.json()
       if (response.ok) {
         challengeDispatch({type: 'SET_CHALLENGES', payload: json})
       }
     } else { 
-      const responseS3 = await fetch(`http://localhost:4000/api/challenges/${challengeParamsId}`);
+      const responseS3 = await fetch(`/api/challenges/${challengeParamsId}`);
       const jsonS3 = await responseS3.json()
       if (responseS3.ok) {
       challengeDispatch({type: 'REPLY', payload: jsonS3})
@@ -83,34 +83,6 @@ const repsEnding = async (index) => {
     return
   }
 }
-
-
-
-  //   DELETE
-// const handleDelete = async (e) => { 
-//     e.preventDefault()
-//     if(user) { 
-
-//         const response = await fetch(`http://localhost:4000/api/challenges/${parent._id}`,  { 
-//             method: 'DELETE',
-//             headers : { 
-//                 'Autharization': `Bearer ${user.token}`
-//               },
-//         })
-//         const json = await response.json();
-//         if(!response.ok) { 
-
-//             console.log('Challenge was NOT deleted:', json)
-//         } 
-//         if(response.ok) { 
-//             console.log('Challenge was Deleted:', json)
-//             await challengeDispatch({type: 'DELETE_CHALLENGE', payload: json})
-//         }
-//     } else { 
-//         console.log('something went weong(?)')
-//     }
-// }
-
 
 
 if(parent) { 
