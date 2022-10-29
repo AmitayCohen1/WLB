@@ -1,5 +1,4 @@
 import { useChallengesContext } from '../hooks/useChallengeContext'
-import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 import vector from '../assets/vector.png'
 import { useAuthContext } from '../hooks/useAuthContext';
 

@@ -39,7 +39,6 @@ const Row = ({challenge,index, parent}) => {
 }
 
 
-
   return (
     <div className=' 
         grid grid-cols-12
@@ -70,7 +69,7 @@ const Row = ({challenge,index, parent}) => {
         md:text-base
         lg:text-lg
         break-after-auto
-        xl:text-xl'>{challenge.userName} Cohen
+        xl:text-xl'>{challenge.userName}
         </div>
 
         {/* Rank */}
@@ -91,7 +90,7 @@ const Row = ({challenge,index, parent}) => {
         md:text-base
         lg:text-lg
         xl:text-xl
-        '>{challenge.reps}</div>
+        '>{index}</div>
 
 
 
