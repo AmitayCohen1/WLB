@@ -90,7 +90,7 @@ const Row = ({challenge,index, parent}) => {
         md:text-base
         lg:text-lg
         xl:text-xl
-        '>{index}</div>
+        '>{challenge.reps}</div>
 
 
 
@@ -105,7 +105,7 @@ const Row = ({challenge,index, parent}) => {
             <div className='text-yellow text-[5px] text-center float-left font-Roman absolute right-[6px] pb-4'>{parent.createdAt.split('-')[0] + ' '}</div>
             <div className='text-yellow text-[5px] text-center float-right font-Roman font-thin absolute left-[6px] pb-4 '>
               {parent.createdAt.split('-')[1] + '.' + parent.createdAt.split('T' && ':')[1]}</div>
-              <div className='text-[40px] text-red font-RedBadge'>{challenge.reps}<span className='text-[4px] font-serif absolute top-8 align-middle right-5 sm:top-5'>nd</span></div>
+              <div className='text-[40px] text-red font-RedBadge'>{index + 1}<span className='text-[4px] font-serif absolute top-8 align-middle right-5 sm:top-5'>nd</span></div>
               <div className='text-white text-[7px] font-Badge text-center absolute leading-tight px-2 pt-2'>{challenge.userName}</div>  
               <div className='text-yellow text-[7px] text-center px-2 font-Roman capitalize absolute bottom-4 sm:bottom-3'>{parent.title}</div>
             </div>
