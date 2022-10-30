@@ -3,6 +3,7 @@ import Row from '../components/Row'
 import { Link, useNavigate, useParams } from "react-router-dom"
 import { useChallengesContext } from '../hooks/useChallengeContext'
 import { AiOutlineArrowLeft } from "react-icons/ai"
+import ReactPlayer from 'react-player'
 
 import axios from "../config/axios";
 
@@ -114,8 +115,30 @@ const ChallengePage = () => {
         lg:mx-28
         xl:mx-64'>
 
-          <video controls={hover ? true : false}
-        type="video/mp4"
+          <ReactPlayer 
+          
+          url={parent.fileURL} 
+          controls={hover ? true : false}
+          onMouseEnter={(e) => {
+              setHover(true)
+              e.target.play()
+            }}
+            onMouseLeave={(e) => {
+              setHover(false)
+              e.target.pause()
+            }}
+            className='
+        h-[400px] w-full aspect-square bg-black bg-opacity-0 rounded-xl shadow-indigo-500/40 object-cover 
+        col-span-5
+        md:col-span-3
+        xl:col-span-2
+        xl:h-[500px]
+        '
+          
+          />
+          {/* <video 
+          controls={hover ? true : false}
+            type="video/mp4"
             onMouseEnter={(e) => {
               setHover(true)
               e.target.play()
@@ -132,7 +155,7 @@ const ChallengePage = () => {
         xl:h-[500px]
         '>
             <source src={parent.fileURL} type='video/mp4' />
-          </video>
+          </video> */}
 
           <div className=' text-white
           md:col-span-2
