@@ -49,7 +49,7 @@ const Parents = ({challenge}) => {
                     </div>
                     <div className='aspect-square grayscale w-full h-full pt-2'>
                     <video controls={hover ? true : false }
-                        type="video/mp4"
+                    type="video/mp4"
                        onMouseEnter={(e) => 
                         {setHover(true)
                         e.target.play()
