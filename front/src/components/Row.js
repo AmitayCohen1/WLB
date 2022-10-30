@@ -4,6 +4,7 @@ import html2canvas from 'html2canvas';
 import Title from '../assets/Title.svg'
 import { IoCopyOutline } from "react-icons/io5";
 import { HiOutlineCheck } from "react-icons/hi";
+import ReactPlayer from 'react-player';
 
 
 
@@ -51,7 +52,31 @@ const Row = ({challenge,index, parent}) => {
         xl:mx-64'>
 
         {/* Record */}
-        <video controls={hover ? true : false }
+        <div             
+          className=' 
+            h-[400px] w-full aspect-square bg-black bg-opacity-0 rounded-xl shadow-indigo-500/40 object-cover 
+            col-span-5
+            md:col-span-3
+            xl:col-span-2
+            xl:h-[500px]
+            '>
+          <ReactPlayer 
+          width='100%'
+          height='100%'
+          url={parent.fileURL} 
+          controls={hover ? true : false}
+          onMouseEnter={(e) => {
+              setHover(true)
+              e.target.play()
+            }}
+            onMouseLeave={(e) => {
+              setHover(false)
+              e.target.pause()
+            }}
+          />
+          </div>
+
+        {/* <video controls={hover ? true : false }
         type="video/mp4"
         onMouseEnter={(e) => 
         {setHover(true)
@@ -63,7 +88,7 @@ const Row = ({challenge,index, parent}) => {
         }}
         className='col-span-3 spect-square w-28 md:w-36 object-cover rounded-l-lg h-36 grayscale'>
           <source src={challenge.fileURL} type='video/mp4'/>
-        </video>
+        </video> */}
 
         <div className='col-span-2 xl:col-span-2 px-2 self-center
         sm:text-base
