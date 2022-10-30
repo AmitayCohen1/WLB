@@ -115,6 +115,7 @@ const ChallengePage = () => {
         xl:mx-64'>
 
           <video controls={hover ? true : false}
+        type="video/mp4"
             onMouseEnter={(e) => {
               setHover(true)
               e.target.play()

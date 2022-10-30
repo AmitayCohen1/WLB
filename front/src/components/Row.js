@@ -52,6 +52,7 @@ const Row = ({challenge,index, parent}) => {
 
         {/* Record */}
         <video controls={hover ? true : false }
+        type="video/mp4"
         onMouseEnter={(e) => 
         {setHover(true)
         e.target.play()

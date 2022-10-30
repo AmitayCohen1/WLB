@@ -31,22 +31,22 @@ const Parents = ({ challenge }) => {
     };
 
     console.log('Parent rendered again')
-    return (
-        <div className="flex-col hover:opacity-80">
-            <div className='flex place-content-between place-items-end '>
-                <div className=''>
-                    <h1 className='font-bold text-2xl text-red font-JockeyOne'>{challenge.title}</h1>
-                    <h1 className='font-Inter text-sm text-createdByColor'>Created by <span className='font-bold'>{challenge.userName}</span></h1>
-                </div>
-                <div className='flex place-items-center'>
-                    {/* {<h1 className='text-yellow hover:bg-yellow hover:text-black px-3 rounded-full bg-opacity-20 text-sm'>Leaderboard</h1>}       */}
-                    {/* <span className='px-2 text-yellow font-semibold text-xs'><MdLeaderboard size={16}/></span> */}
-                </div>
-            </div>
-            <div className=' aspect-square grayscale w-full h-full pt-2'>
-                <video controls={hover ? true : false}
-                    onMouseEnter={(e) => {
-                        setHover(true)
+        return ( 
+                <div className="flex-col hover:opacity-80">
+                    <div className='flex place-content-between place-items-end '>
+                        <div className=''>
+                            <h1 className='font-bold text-2xl text-red font-JockeyOne'>{challenge.title}</h1>
+                            <h1 className='font-Inter text-sm text-createdByColor'>Created by <span className='font-bold'>{challenge.userName}</span></h1>
+                        </div>
+                        <div className='flex place-items-center'>
+                        {/* {<h1 className='text-yellow hover:bg-yellow hover:text-black px-3 rounded-full bg-opacity-20 text-sm'>Leaderboard</h1>}       */}
+                        {/* <span className='px-2 text-yellow font-semibold text-xs'><MdLeaderboard size={16}/></span> */}
+                        </div>
+                    </div>
+                    <div className=' aspect-square grayscale w-full h-full pt-2'>
+                    <video controls={hover ? true : false }
+                       onMouseEnter={(e) => 
+                        {setHover(true)
                         e.target.play()
                     }}
                     onMouseLeave={(e) => {
