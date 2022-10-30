@@ -18,7 +18,6 @@ app.use((req, res, next) => {
   next()
 })
 
-
 // routes
 app.use('/api/challenges', challengeRoutes)
 app.use('/api/user', userRoutes)
