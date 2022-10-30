@@ -47,7 +47,7 @@ const Parents = ({challenge}) => {
                         {/* <span className='px-2 text-yellow font-semibold text-xs'><MdLeaderboard size={16}/></span> */}
                         </div>
                     </div>
-                    <div className=' aspect-square grayscale w-full h-full pt-2'>
+                    <div className='aspect-square grayscale w-full h-full pt-2'>
                     <video controls={hover ? true : false }
                         type="video/mp4"
                        onMouseEnter={(e) => 
