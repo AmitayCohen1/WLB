@@ -4,7 +4,6 @@ import html2canvas from 'html2canvas';
 import Title from '../assets/Title.svg'
 import { IoCopyOutline } from "react-icons/io5";
 import { HiOutlineCheck } from "react-icons/hi";
-import ReactPlayer from 'react-player';
 
 
 
@@ -40,6 +39,7 @@ const Row = ({challenge,index, parent}) => {
 }
 
 
+
   return (
     <div className=' 
         grid grid-cols-12
@@ -52,32 +52,7 @@ const Row = ({challenge,index, parent}) => {
         xl:mx-64'>
 
         {/* Record */}
-        <div             
-          className=' 
-            h-[400px] w-full aspect-square bg-black bg-opacity-0 rounded-xl shadow-indigo-500/40 object-cover 
-            col-span-5
-            md:col-span-3
-            xl:col-span-2
-            xl:h-[500px]
-            '>
-          <ReactPlayer 
-          width='100%'
-          height='100%'
-          url={parent.fileURL} 
-          controls={hover ? true : false}
-          onMouseEnter={(e) => {
-              setHover(true)
-              e.target.play()
-            }}
-            onMouseLeave={(e) => {
-              setHover(false)
-              e.target.pause()
-            }}
-          />
-          </div>
-
-        {/* <video controls={hover ? true : false }
-        type="video/mp4"
+        <video controls={hover ? true : false }
         onMouseEnter={(e) => 
         {setHover(true)
         e.target.play()
@@ -88,14 +63,14 @@ const Row = ({challenge,index, parent}) => {
         }}
         className='col-span-3 spect-square w-28 md:w-36 object-cover rounded-l-lg h-36 grayscale'>
           <source src={challenge.fileURL} type='video/mp4'/>
-        </video> */}
+        </video>
 
         <div className='col-span-2 xl:col-span-2 px-2 self-center
         sm:text-base
         md:text-base
         lg:text-lg
         break-after-auto
-        xl:text-xl'>{challenge.userName}
+        xl:text-xl'>{challenge.userName} Cohen
         </div>
 
         {/* Rank */}
@@ -131,7 +106,7 @@ const Row = ({challenge,index, parent}) => {
             <div className='text-yellow text-[5px] text-center float-left font-Roman absolute right-[6px] pb-4'>{parent.createdAt.split('-')[0] + ' '}</div>
             <div className='text-yellow text-[5px] text-center float-right font-Roman font-thin absolute left-[6px] pb-4 '>
               {parent.createdAt.split('-')[1] + '.' + parent.createdAt.split('T' && ':')[1]}</div>
-              <div className='text-[40px] text-red font-RedBadge'>{index + 1}<span className='text-[4px] font-serif absolute top-8 align-middle right-5 sm:top-5'>nd</span></div>
+              <div className='text-[40px] text-red font-RedBadge'>{challenge.reps}<span className='text-[4px] font-serif absolute top-8 align-middle right-5 sm:top-5'>nd</span></div>
               <div className='text-white text-[7px] font-Badge text-center absolute leading-tight px-2 pt-2'>{challenge.userName}</div>  
               <div className='text-yellow text-[7px] text-center px-2 font-Roman capitalize absolute bottom-4 sm:bottom-3'>{parent.title}</div>
             </div>

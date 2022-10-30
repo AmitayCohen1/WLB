@@ -46,29 +46,22 @@ const Parents = ({ challenge }) => {
                     </div>
                     <div className=' aspect-square grayscale w-full h-full pt-2'>
                     <div             
-          className=' 
-            h-[400px] w-full aspect-square bg-black bg-opacity-0 rounded-xl shadow-indigo-500/40 object-cover 
-            col-span-5
-            md:col-span-3
-            xl:col-span-2
-            xl:h-[500px]
-            '>
-          <ReactPlayer 
-          width='100%'
-          height='100%'
-          url={challenge.fileURL} 
-          controls={hover ? true : false}
-          onMouseEnter={(e) => {
-              setHover(true)
-              e.target.play()
-            }}
-            onMouseLeave={(e) => {
-              setHover(false)
-              e.target.pause()
-            }}
-          />
+>
+        {/* <ReactPlayer      
+         url={challenge.fileURL} 
+         controls={hover ? true : false}
+         onMouseEnter={(e) => {
+             setHover(true)
+             e.target.play()
+           }}
+           onMouseLeave={(e) => {
+             setHover(false)
+             e.target.pause()
+           }}
+
+         /> */}
           </div>
-                    {/* <video controls={hover ? true : false }
+                <video controls={hover ? true : false }
                        onMouseEnter={(e) => 
                         {setHover(true)
                         e.target.play()
@@ -79,7 +72,7 @@ const Parents = ({ challenge }) => {
                     }}
                     className='bg-green-900 object-cover rounded-xl aspect-video  h-full w-full '>
                     <source src={challenge.fileURL} type='video/mp4' />
-                </video> */}
+                </video>
             </div>
             {/* <span onClick={handleDelete} className="material-symbols-outlined">delete</span> */}
 
