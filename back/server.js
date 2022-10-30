@@ -18,9 +18,7 @@ app.use((req, res, next) => {
   next()
 })
 
-app.get('/', (req, res) => { 
-  res.status(200).json({"tyrrrrr": "holaaaa!!!!!!"})
-})
+
 // routes
 app.use('/api/challenges', challengeRoutes)
 app.use('/api/user', userRoutes)
