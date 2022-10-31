@@ -34,7 +34,7 @@ const Parents = ({ challenge }) => {
                 <div className="flex-col hover:opacity-80">
                     <div className='flex place-content-between place-items-end '>
                         <div className=''>
-                            <h1 className='font-bold text-2xl text-red font-JockeyOne'>{challenge.title}</h1>
+                            <h1 className='font-bold text-xl text-red font-JockeyOne'>{challenge.title}</h1>
                             <h1 className='font-Inter text-sm text-createdByColor'>Created by <span className='font-bold'>{challenge.userName}</span></h1>
                         </div>
                         <div className='flex place-items-center'>
