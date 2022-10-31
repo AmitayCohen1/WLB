@@ -5,14 +5,12 @@ import { FaMedal } from 'react-icons/fa';
 import { MdLeaderboard } from 'react-icons/md';
 
 import axios from "../config/axios";
-import ReactPlayer from 'react-player';
-
+import ReactPlayer from 'react-player'
 
 const Parents = ({ challenge }) => {
     const { challengeDispatch } = useChallengesContext();
     const { user } = useAuthContext();
     const [hover, setHover] = useState();
-
     const handleDelete = async (e) => {
         console.log("deleting");
         e.preventDefault();
@@ -46,26 +44,22 @@ const Parents = ({ challenge }) => {
                     </div>
                     <div className=' aspect-square grayscale w-full h-full pt-2'>
                     <div             
->
-        <ReactPlayer      
-        width='100%'
-        height='100%'
-        className='react-player'
-
-        // url={challenge.fileURL} 
-        url='https://www.youtube.com/watch?v=efRQh2vspVc&ab_channel=RickBeato'
-
-        //  controls={hover ? true : false}
-        //  onMouseEnter={(e) => {
-        //      setHover(true)
-        //      e.target.play()
-        //    }}
-        //    onMouseLeave={(e) => {
-        //      setHover(false)
-        //      e.target.pause()
-        //    }}
-
-         />
+                    >
+                   
+                    
+        <ReactPlayer 
+        url={challenge.fileURL}/>
+        
+{/* url='https://www.youtube.com/watch?v=efRQh2vspVc&ab_channel=RickBeato'
+ controls={hover ? true : false}
+onMouseEnter={(e) => {
+     setHover(true)
+      e.target.play()
+    }}
+   onMouseLeave={(e) => {
+    setHover(false)
+   e.target.pause()
+  }} */}
           </div>
                 {/* <video controls={hover ? true : false }
                        onMouseEnter={(e) => 
