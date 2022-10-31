@@ -45,30 +45,17 @@ const Parents = ({ challenge }) => {
                     </div>
                     <div className=' aspect-square 
                     w-full h-full pt-2'>
-                    <div             
-                    >
-                           
-{/* url='https://www.youtube.com/watch?v=efRQh2vspVc&ab_channel=RickBeato'
- controls={hover ? true : false}
-onMouseEnter={(e) => {
-     setHover(true)
-      e.target.play()
-    }}
-   onMouseLeave={(e) => {
-    setHover(false)
-   e.target.pause()
-  }} */}
-
-<div className='bg-white h-full w-full rounded-xl'>
-    <ReactPlayer 
-     className="react-player"
-        width='100%'
-        height='100%'
-        url={challenge.fileURL}
-        // url='https://www.youtube.com/watch?v=kCnNWyl9qSE&t=284s&ab_channel=KlasKarlsson'
-        // url='https://wlb-production.s3.us-west-1.amazonaws.com/92994ccce65c225c6afae4bab5c11f79084251c710158c0d40908b793d4a8ea6?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAZX7BNS2XERDXY276%2F20221031%2Fus-west-1%2Fs3%2Faws4_request&X-Amz-Date=20221031T143202Z&X-Amz-Expires=18000&X-Amz-Signature=2a759e512a64af67455cb3706c320e3b7658b9334b9c0b26eb15acaa47f2a039&X-Amz-SignedHeaders=host&x-id=GetObject'
-    />
-</div>
+                    <div>                           
+                <div className='bg-white h-50 w-40 rounded-xl'>
+                    <ReactPlayer 
+                    className="react-player"
+                        width='100%'
+                        height='100%'
+                        url={challenge.fileURL}
+                        // url='https://www.youtube.com/watch?v=kCnNWyl9qSE&t=284s&ab_channel=KlasKarlsson'
+                        // url='https://wlb-production.s3.us-west-1.amazonaws.com/92994ccce65c225c6afae4bab5c11f79084251c710158c0d40908b793d4a8ea6?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAZX7BNS2XERDXY276%2F20221031%2Fus-west-1%2Fs3%2Faws4_request&X-Amz-Date=20221031T143202Z&X-Amz-Expires=18000&X-Amz-Signature=2a759e512a64af67455cb3706c320e3b7658b9334b9c0b26eb15acaa47f2a039&X-Amz-SignedHeaders=host&x-id=GetObject'
+                    />
+                </div>
           </div>        
                 {/* <video 
                     controls={hover ? true : false }
