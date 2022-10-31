@@ -232,7 +232,7 @@ router.post('/reply/:id', upload.single('file'), async (req, res) => {
     }
     const command = new GetObjectCommand(getObjectParams);
     const url =  await getSignedUrl(s3, command, { expiresIn: 3600 });
-    SavedChallengeee.fileURL = url 
+    SavedChallengeee.fileURL = url
 
 
     await challenge.replies.push(SavedChallengeee);

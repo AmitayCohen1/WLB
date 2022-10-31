@@ -50,7 +50,8 @@ const Row = ({challenge,index, parent}) => {
         sm:mx-10
         md:mx-12
         lg:mx-28
-        xl:mx-64'>
+        xl:mx-64
+        '>
 
         {/* Record */}
         <video 

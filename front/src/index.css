@@ -13,6 +13,11 @@
     -webkit-appearance: none;
     margin: 0;
   }
+  .react-player {
+    background-color: aqua;
+    object-fit: cover;
+
+  }
 }
 @import url('https://fonts.googleapis.com/css2?family=Jockey+One&display=swap');
 

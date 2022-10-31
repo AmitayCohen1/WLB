@@ -10,6 +10,7 @@ import ReactPlayer from 'react-player'
 const Parents = ({ challenge }) => {
     const { challengeDispatch } = useChallengesContext();
     const { user } = useAuthContext();
+    console.log(challenge)
     const [hover, setHover] = useState();
     const handleDelete = async (e) => {
         console.log("deleting");
@@ -42,25 +43,11 @@ const Parents = ({ challenge }) => {
                         {/* <span className='px-2 text-yellow font-semibold text-xs'><MdLeaderboard size={16}/></span> */}
                         </div>
                     </div>
-                    <div className=' aspect-square grayscale w-full h-full pt-2'>
+                    <div className=' aspect-square 
+                    w-full h-full pt-2'>
                     <div             
                     >
-                   
-        {/* <div className='bg-green-200 rounded-xl'>
-            <ReactPlayer 
-            className='bg-green-200'
-            width='100%'
-            height='250px'
-            style={{
-
-              
-                }}
-            url={challenge.fileURL}
-            // url='https://www.youtube.com/watch?v=efRQh2vspVc&ab_channel=RickBeato'
-            />
-          
-        </div> */}
-        
+                           
 {/* url='https://www.youtube.com/watch?v=efRQh2vspVc&ab_channel=RickBeato'
  controls={hover ? true : false}
 onMouseEnter={(e) => {
@@ -71,20 +58,30 @@ onMouseEnter={(e) => {
     setHover(false)
    e.target.pause()
   }} */}
-          </div>
-                <video 
-                    // controls={hover ? true : false }
-                    // onMouseEnter={(e) => 
-                    //     {setHover(true)
-                    //     e.target.play()
-                    // }}
-                    // onMouseLeave={(e) => {
-                    //     setHover(false)
-                    //     e.target.pause()
-                    // }}
+
+<div className='bg-white h-52 w-52 rounded-xl'>
+    <ReactPlayer 
+     className="react-player"
+        width='100%'
+        height='100%'
+        url='https://www.youtube.com/watch?v=kCnNWyl9qSE&t=284s&ab_channel=KlasKarlsson'
+        // url='https://wlb-production.s3.us-west-1.amazonaws.com/92994ccce65c225c6afae4bab5c11f79084251c710158c0d40908b793d4a8ea6?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAZX7BNS2XERDXY276%2F20221031%2Fus-west-1%2Fs3%2Faws4_request&X-Amz-Date=20221031T143202Z&X-Amz-Expires=18000&X-Amz-Signature=2a759e512a64af67455cb3706c320e3b7658b9334b9c0b26eb15acaa47f2a039&X-Amz-SignedHeaders=host&x-id=GetObject'
+    />
+</div>
+          </div>        
+                {/* <video 
+                    controls={hover ? true : false }
+                    onMouseEnter={(e) => 
+                        {setHover(true)
+                        e.target.play()
+                    }}
+                    onMouseLeave={(e) => {
+                        setHover(false)
+                        e.target.pause()
+                    }}
                     className='bg-green-900 object-cover rounded-xl aspect-video  h-full w-full '>
-                    <source src={challenge.fileURL}/>
-                </video>
+                    <source src={`${challenge.fileURL}`}/>
+                </video> */}
             </div>
             {/* <span onClick={handleDelete} className="material-symbols-outlined">delete</span> */}
 
