@@ -62,7 +62,10 @@ const Row = ({challenge,index, parent}) => {
         e.target.pause()
         }}
         className='col-span-3 spect-square w-28 md:w-36 object-cover rounded-l-lg h-36 grayscale'>
-          <source src={challenge.fileURL} type='video/mp4'/>
+          <source 
+          // src={challenge.fileURL} 
+          src='https://www.youtube.com/watch?v=efRQh2vspVc&ab_channel=RickBeato'
+          type='video/mp4'/>
         </video>
 
         <div className='col-span-2 xl:col-span-2 px-2 self-center
