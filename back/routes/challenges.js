@@ -145,7 +145,7 @@ router.post('/', upload.single('file'), async(req, res) => {
         Bucket: bucketName, 
         Key: fileName,
         Body: req.file.buffer,
-        ContentType: req.file.mimetype
+        ContentType: req.file.mimetype,
     }
     const Putcommand = new PutObjectCommand(params);
     await s3.send(Putcommand);
@@ -228,11 +228,11 @@ router.post('/reply/:id', upload.single('file'), async (req, res) => {
     //Setting S3 URL
     getObjectParams = { 
         Bucket: bucketName,
-        Key: SavedChallengeee.fileName
+        Key: SavedChallengeee.fileName 
     }
     const command = new GetObjectCommand(getObjectParams);
     const url =  await getSignedUrl(s3, command, { expiresIn: 3600 });
-    SavedChallengeee.fileURL = url
+    SavedChallengeee.fileURL = url 
 
 
     await challenge.replies.push(SavedChallengeee);

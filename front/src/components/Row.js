@@ -8,6 +8,7 @@ import { HiOutlineCheck } from "react-icons/hi";
 
 
 
+
 const Row = ({challenge,index, parent}) => {
     const badgeRef = useRef()
     const [isCopy, setIsCopy] = useState(null)
@@ -53,20 +54,24 @@ const Row = ({challenge,index, parent}) => {
 
         {/* Record */}
         <video 
-        // controls={hover ? true : false }
-        // onMouseEnter={(e) => 
-        // {setHover(true)
-        // e.target.play()
-        // }}
-        // onMouseLeave={(e) => {
-        // setHover(false)
-        // e.target.pause()
-        // }}
+        controls={hover ? true : false }
+        onMouseEnter={(e) => 
+        {setHover(true)
+        e.target.play()
+        }}
+        onMouseLeave={(e) => {
+        setHover(false)
+        e.target.pause()
+        }}
         className='col-span-3 spect-square w-28 md:w-36 object-cover rounded-l-lg h-36 grayscale'>
           <source 
           src={challenge.fileURL} 
-          type="video/mp4"/>
+          type="video/mp4"
+          />
         </video>
+
+
+        
 
         <div className='col-span-2 xl:col-span-2 px-2 self-center
         sm:text-base
