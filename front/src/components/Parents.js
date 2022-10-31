@@ -58,15 +58,15 @@ const Parents = ({ challenge }) => {
                 {/* </div> */}
           </div>        
                 <video 
-                    controls={hover ? true : false }
-                    onMouseEnter={(e) => 
-                        {setHover(true)
-                        e.target.play()
-                    }}
-                    onMouseLeave={(e) => {
-                        setHover(false)
-                        e.target.pause()
-                    }}
+                    // controls={hover ? true : false }
+                    // onMouseEnter={(e) => 
+                    //     {setHover(true)
+                    //     e.target.play()
+                    // }}
+                    // onMouseLeave={(e) => {
+                    //     setHover(false)
+                    //     e.target.pause()
+                    // }}
                     className='bg-green-900 object-cover rounded-xl aspect-video  h-full w-full '>
                     <source src={`${challenge.fileURL}`}/>
                 </video>
