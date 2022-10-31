@@ -59,7 +59,7 @@ onMouseEnter={(e) => {
    e.target.pause()
   }} */}
 
-<div className='bg-white h-52 w-52 rounded-xl'>
+<div className='bg-white h-full w-full rounded-xl'>
     <ReactPlayer 
      className="react-player"
         width='100%'
