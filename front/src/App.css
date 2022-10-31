@@ -1,0 +1,5 @@
+.react-player {
+    object-fit: cover;
+    height: max-content;
+    width: max-content;
+  }

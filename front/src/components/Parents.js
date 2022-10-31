@@ -46,7 +46,7 @@ const Parents = ({ challenge }) => {
                     <div             
                     >
                    
-        <div  className='bg-green-900 object-cover rounded-xl aspect-video  h-full w-full'>
+        <div  className='bg-green-200 object-cover rounded-xl aspect-video h-full w-full'>
             <ReactPlayer 
             width='100%'
             height='100%'
