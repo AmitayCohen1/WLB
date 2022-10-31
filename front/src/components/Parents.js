@@ -46,9 +46,14 @@ const Parents = ({ challenge }) => {
                     <div             
                     >
                    
-                    
-        <ReactPlayer 
-        url={challenge.fileURL}/>
+        <div  
+        className='bg-indigo-300'>
+            <ReactPlayer 
+            width='80%'
+            height='100%'
+            url={challenge.fileURL}
+            />
+        </div>
         
 {/* url='https://www.youtube.com/watch?v=efRQh2vspVc&ab_channel=RickBeato'
  controls={hover ? true : false}
