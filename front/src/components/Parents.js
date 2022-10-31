@@ -46,10 +46,9 @@ const Parents = ({ challenge }) => {
                     <div             
                     >
                    
-        <div  
-        className='bg-indigo-300'>
+        <div  className='bg-green-900 object-cover rounded-xl aspect-video  h-full w-full'>
             <ReactPlayer 
-            width='80%'
+            width='100%'
             height='100%'
             url={challenge.fileURL}
             />
