@@ -46,14 +46,20 @@ const Parents = ({ challenge }) => {
                     <div             
                     >
                    
-        <div  className='bg-green-200 object-cover rounded-xl aspect-video h-full w-full'>
+        {/* <div className='bg-green-200 rounded-xl'>
             <ReactPlayer 
-            className='react-player'
+            className='bg-green-200'
             width='100%'
-            height='100%'
+            height='250px'
+            style={{
+
+              
+                }}
             url={challenge.fileURL}
+            // url='https://www.youtube.com/watch?v=efRQh2vspVc&ab_channel=RickBeato'
             />
-        </div>
+          
+        </div> */}
         
 {/* url='https://www.youtube.com/watch?v=efRQh2vspVc&ab_channel=RickBeato'
  controls={hover ? true : false}
@@ -66,8 +72,10 @@ onMouseEnter={(e) => {
    e.target.pause()
   }} */}
           </div>
-                {/* <video controls={hover ? true : false }
-                       onMouseEnter={(e) => 
+                <video 
+                type='video/mp4'
+                    controls={hover ? true : false }
+                    onMouseEnter={(e) => 
                         {setHover(true)
                         e.target.play()
                     }}
@@ -77,7 +85,7 @@ onMouseEnter={(e) => {
                     }}
                     className='bg-green-900 object-cover rounded-xl aspect-video  h-full w-full '>
                     <source src={challenge.fileURL} type='video/mp4' />
-                </video> */}
+                </video>
             </div>
             {/* <span onClick={handleDelete} className="material-symbols-outlined">delete</span> */}
 
