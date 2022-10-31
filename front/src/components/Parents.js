@@ -47,21 +47,27 @@ const Parents = ({ challenge }) => {
                     <div className=' aspect-square grayscale w-full h-full pt-2'>
                     <div             
 >
-        {/* <ReactPlayer      
-         url={challenge.fileURL} 
-         controls={hover ? true : false}
-         onMouseEnter={(e) => {
-             setHover(true)
-             e.target.play()
-           }}
-           onMouseLeave={(e) => {
-             setHover(false)
-             e.target.pause()
-           }}
+        <ReactPlayer      
+        width='100%'
+        height='100%'
+        className='react-player'
 
-         /> */}
+        // url={challenge.fileURL} 
+        url='https://www.youtube.com/watch?v=efRQh2vspVc&ab_channel=RickBeato'
+
+        //  controls={hover ? true : false}
+        //  onMouseEnter={(e) => {
+        //      setHover(true)
+        //      e.target.play()
+        //    }}
+        //    onMouseLeave={(e) => {
+        //      setHover(false)
+        //      e.target.pause()
+        //    }}
+
+         />
           </div>
-                <video controls={hover ? true : false }
+                {/* <video controls={hover ? true : false }
                        onMouseEnter={(e) => 
                         {setHover(true)
                         e.target.play()
@@ -72,7 +78,7 @@ const Parents = ({ challenge }) => {
                     }}
                     className='bg-green-900 object-cover rounded-xl aspect-video  h-full w-full '>
                     <source src={challenge.fileURL} type='video/mp4' />
-                </video>
+                </video> */}
             </div>
             {/* <span onClick={handleDelete} className="material-symbols-outlined">delete</span> */}
 

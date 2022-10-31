@@ -128,7 +128,6 @@ router.use(requireAuth)
 //POST Parent (Create Parent)
 router.post('/', upload.single('file'), async(req, res) => { 
     console.log('----req.body----', req.body)
-    console.log('1')
     
     //Getting all the params and body  
     const title = req.body.title
@@ -137,13 +136,9 @@ router.post('/', upload.single('file'), async(req, res) => {
     const reps = req.body.reps
     const time = req.body.time 
     const userName = req.body.userName
-    console.log('2')
 
     // const buffer = await sharp(req.file.buffer).resize({height: 550, width: 600, fit: "cover"}).toBuffer()
     const fileName = randomFileName()
-    console.log('3')
-
-
 
     // Saving file to S3 
     const params = {  
@@ -152,13 +147,8 @@ router.post('/', upload.single('file'), async(req, res) => {
         Body: req.file.buffer,
         ContentType: req.file.mimetype
     }
-    console.log('4')
     const Putcommand = new PutObjectCommand(params);
-    console.log('4.5')
     await s3.send(Putcommand);
-    console.log('5')
-
-
 
     // //Saving to mongoDB
     const SavedChallenge = await new Challenge({
@@ -171,7 +161,6 @@ router.post('/', upload.single('file'), async(req, res) => {
         fileName: fileName,
         fileURL: ''
     })
-    console.log('6')
 
     // //Setting S3 URL
     if(SavedChallenge) { 
@@ -184,18 +173,16 @@ router.post('/', upload.single('file'), async(req, res) => {
             const url =  await getSignedUrl(s3, command, { expiresIn: 3600 })
             SavedChallenge.fileURL = url
         }       
-        console.log('7')
+
         await createURL()
-        console.log('8')
+
     } else { 
         console.log('no ChallengeName')
     }
     // //Saving the in MongoDB
     SavedChallenge.save((error, SavedChallenge) => {
-        console.log('9')
         if(error) throw error
         res.status(200).json(SavedChallenge)
-        console.log('10')
     }) 
 
 })
