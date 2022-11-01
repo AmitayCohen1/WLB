@@ -38,7 +38,7 @@ const Parents = ({ challenge }) => {
                             <h1 className='font-bold text-lg text-red font-JockeyOne'>{challenge.title}</h1>
                             <h1 className='font-Inter text-sm text-createdByColor'>Created by <span className='font-bold'>{challenge.userName}</span></h1>
                         </div>
-                        <div className='flex place-items-center'>
+                        <div className='flex grayscale place-items-center'>
                         {/* {<h1 className='text-yellow hover:bg-yellow hover:text-black px-3 rounded-full bg-opacity-20 text-sm'>Leaderboard</h1>}       */}
                         {/* <span className='px-2 text-yellow font-semibold text-xs'><MdLeaderboard size={16}/></span> */}
                         </div>
@@ -46,7 +46,7 @@ const Parents = ({ challenge }) => {
                     <div className=' aspect-square 
                     w-full h-full pt-2'>
                     <div>                           
-                <div className='bg-white h-40 w-40 rounded-xl'>
+                <div className='h-40 w-40 rounded-xl'>
                     <ReactPlayer 
                     className="react-player"
                         width='100%'
