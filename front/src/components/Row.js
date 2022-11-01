@@ -133,7 +133,7 @@ const Row = ({challenge,index, parent}) => {
                 <div className='text-yellow text-[7px] text-center px-2 font-Roman capitalize absolute bottom-4 sm:bottom-3'>{parent.title}</div>
               </div>
                 <div className='relative bg-green-900 '>
-                    <div className={isCopy? 'bg-yellow bg-opacity-10 stroke-black p-2 rounded-full text-yellow absolute' : ' absolute bg-red bg-opacity-10 stroke-black p-2 rounded-full text-red cursor-pointer hover:text-yellow hover:bg-yellow hover:bg-opacity-10 '}>
+                    <div className={isCopy? 'bg-yellow bg-opacity-10  stroke-black p-2 rounded-full text-yellow absolute' : ' absolute bg-red bg-opacity-10 stroke-black p-2 rounded-full text-red cursor-pointer hover:text-yellow hover:bg-yellow hover:bg-opacity-10 '}>
                         <div className={isCopy ? '' : ' '} onClick={() => captureElement(badgeRef.current)}>{isCopy ? <HiOutlineCheck /> : <IoCopyOutline />}</div>
                     </div>
                   </div>
