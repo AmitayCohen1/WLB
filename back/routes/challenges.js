@@ -56,10 +56,7 @@ const cloudfront = new CloudFrontClient({
     }
   });
   
-
-
-
-
+  
 //--Routers--
 
 
@@ -117,7 +114,7 @@ router.get('/:challengeParamsId', async (req, res) => {
             const command = new GetObjectCommand(getObjectParams);
             const url =  await getSignedUrl(s3, command, { expiresIn: 3600 * 5 });
             // const url = 'https://ddi556n39z2z8.cloudfront.net/' + challenge.fileName
-            challenge.fileURL = url;   
+            // challenge.fileURL = url;   
 
         challenge.save((error, challenge) => {
             if(error) throw error
@@ -143,7 +140,6 @@ router.use(requireAuth)
 router.post('/', upload.single('file'), async(req, res) => { 
     console.log('----req.body----', req.body)
     
-    //Getting all the params and body  
     const title = req.body.title
     const userEmail  = req.body.userEmail
     const description = req.body.description
@@ -151,10 +147,8 @@ router.post('/', upload.single('file'), async(req, res) => {
     const time = req.body.time 
     const userName = req.body.userName
 
-    // const buffer = await sharp(req.file.buffer).resize({height: 550, width: 600, fit: "cover"}).toBuffer()
     const fileName = randomFileName()
 
-    // Saving file to S3 
     const params = {  
         Bucket: bucketName, 
         Key: fileName,
