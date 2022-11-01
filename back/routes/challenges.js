@@ -56,7 +56,6 @@ const upload = multer({storage: storage })
 // GET all parents (Home)
 router.get('/', async (req, res) => { 
     const challenges = await Challenge.find({}).sort({createdAt: -1})
-
     for (const challenge of challenges) { 
         // const getObjectParams = { 
         //     Bucket: bucketName,
@@ -67,8 +66,9 @@ router.get('/', async (req, res) => {
         // const command = new GetObjectCommand(getObjectParams);
         // const url =  await getSignedUrl(s3, command, { expiresIn: 3600 * 5 });
         const url = 'https://ddi556n39z2z8.cloudfront.net/' + challenge.fileName
-        challenge.fileURL = url;   
+        challenge.fileURL = url;  
     }
+    res.setHeader("content-type", "video/mp4"); 
    res.status(200).json(challenges);
 });
 
