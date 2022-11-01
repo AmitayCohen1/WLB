@@ -30,7 +30,7 @@ bucketName = process.env.BUCKET_NAME
 bucketRegion = process.env.BUCKET_REGION
 accessKey = process.env.ACCESS_KEY
 secretAccessKey = process.env.SECRET_ACCESS_KEY
-CloudFrontDistId =  process.env.CLOUDFRONT_DIST_ID
+const cloudfrontDistributionId = process.env.CLOUDFRONT_DISTRIBUTION_ID
 
 //S3
 const s3 = new S3Client({
@@ -49,13 +49,13 @@ const storage = multer.memoryStorage()
 const upload = multer({storage: storage })
 
 
-const cloudFront =  new CloudFrontClient({
+const cloudfront = new CloudFrontClient({
     credentials: {
-        accessKeyId: accessKey,
-        secretAccessKey: secretAccessKey
+      accessKeyId: accessKey,
+      secretAccessKey: secretAccessKey,
     }
-})
-
+  });
+  
 
 
 
@@ -269,23 +269,22 @@ router.delete('/:id', async (req, res) =>  {
                 }
                     const command = new DeleteObjectCommand(Params);
                     await s3.send(command)
-                }
 
-                const invalidationParams =  { 
-                    DistributionId: CloudFrontDistId,
-                    InvalidationBatch:  { 
-                        CallerReference: children.fileName,
-                        Paths: { 
-                            Quantity: 1, 
-                            Items: [ 
-                                '/' + children.fileName
+                    const cfCommand = new CreateInvalidationCommand({
+                        DistributionId: cloudfrontDistributionId,
+                        InvalidationBatch: {
+                          CallerReference: children.fileName,
+                          Paths: {
+                            Quantity: 1,
+                            Items: [
+                              "/" + children.fileName
                             ]
+                          }
                         }
-                    }
+                      })
+                      
+                      const response = await cloudfront.send(cfCommand)
                 }
-                const invalidationCommand = new CreateInvalidationCommand(invalidationParams);
-                await cloudFront.send(invalidationCommand)
-
 
                 const Params = { 
                     Bucket: bucketName,
@@ -293,10 +292,23 @@ router.delete('/:id', async (req, res) =>  {
                 }
                 const command = new DeleteObjectCommand(Params);
                 await s3.send(command)
+
+                const cfCommand = new CreateInvalidationCommand({
+                    DistributionId: cloudfrontDistributionId,
+                    InvalidationBatch: {
+                      CallerReference: challenge.fileName,
+                      Paths: {
+                        Quantity: 1,
+                        Items: [
+                          "/" + challenge.fileName
+                        ]
+                      }
+                    }
+                  })
+                  const response = await cloudfront.send(cfCommand)
                 
                 const deletedChallenge = await Challenge.findByIdAndDelete({_id: id});
                 res.status(200).json(deletedChallenge)
-
             } catch (err) { 
                 res.status(400).json('No such challenge', err.message) 
             }
@@ -310,7 +322,6 @@ router.delete('/:id', async (req, res) =>  {
 router.delete('/child/:childId', async (req, res) =>  {
     const { childId } = req.params;
 
-
         // Deleteing from S3 
         const Params = { 
                 Bucket: bucketName,
@@ -318,6 +329,22 @@ router.delete('/child/:childId', async (req, res) =>  {
              }
             const command = new DeleteObjectCommand(Params);
             await s3.send(command)
+
+            const cfCommand = new CreateInvalidationCommand({
+                DistributionId: cloudfrontDistributionId,
+                InvalidationBatch: {
+                  CallerReference: childFileName,
+                  Paths: {
+                    Quantity: 1,
+                    Items: [
+                      "/" + childFileName
+                    ]
+                  }
+                }
+              })
+              
+              const response = await cloudfront.send(cfCommand)
+
                 
             //Deleting from MongoDB
             const parent = await Challenge.findById(parentID)
