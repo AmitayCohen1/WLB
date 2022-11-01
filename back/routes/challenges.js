@@ -68,7 +68,6 @@ router.get('/', async (req, res) => {
         const url = 'https://ddi556n39z2z8.cloudfront.net/' + challenge.fileName
         challenge.fileURL = url;  
     }
-    res.setHeader("content-type", "video/mp4"); 
    res.status(200).json(challenges);
 });
 
@@ -85,26 +84,30 @@ router.get('/:challengeParamsId', async (req, res) => {
     try { 
     const challenge = await Challenge.findById(challengeParamsId)
 
-        console.log('challenge') 
-        for (const child of challenge.replies) { 
-            const getObjectParams = { 
-                Bucket: bucketName,
-                Key: child.fileName
-            }
+    for (const child of challenge.replies) { 
 
-            const command = new GetObjectCommand(getObjectParams);
-            const url =  await getSignedUrl(s3, command, { expiresIn: 3600 * 5 });
-            child.fileURL = url;   
+            // const getObjectParams = { 
+            //     Bucket: bucketName,
+            //     Key: child.fileName
+            // }
+
+            // const command = new GetObjectCommand(getObjectParams);
+            // const url =  await getSignedUrl(s3, command, { expiresIn: 3600 * 5 });
+
+            const url = 'https://ddi556n39z2z8.cloudfront.net/' + challenge.fileName
+            child.fileURL = url;  
+ 
+
         }
 
-            const getObjectParams = { 
-                Bucket: bucketName,
-                Key: challenge.fileName
-            }
-            const command = new GetObjectCommand(getObjectParams);
-            const url =  await getSignedUrl(s3, command, { expiresIn: 3600 * 5 });
+            // const getObjectParams = { 
+            //     Bucket: bucketName,
+            //     Key: challenge.fileName
+            // }
+            // const command = new GetObjectCommand(getObjectParams);
+            // const url =  await getSignedUrl(s3, command, { expiresIn: 3600 * 5 });
+            const url = 'https://ddi556n39z2z8.cloudfront.net/' + challenge.fileName
             challenge.fileURL = url;   
-
 
         challenge.save((error, challenge) => {
             if(error) throw error
