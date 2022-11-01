@@ -143,8 +143,7 @@ const ChallengePage = () => {
         xl:h-[500px]
         '>
         <ReactPlayer 
-        controls
-          playing
+          controls
            className='object-cover'
             width='100%'
             height='100%' 

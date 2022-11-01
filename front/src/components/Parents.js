@@ -58,7 +58,6 @@ const Parents = ({ challenge }) => {
                 rounded-xl 
                 overflow-hidden'>
                     <ReactPlayer 
-                     playing
                      controls
                     className='object-cover'
                         width='100%'
