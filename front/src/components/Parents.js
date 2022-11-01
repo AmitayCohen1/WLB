@@ -48,7 +48,7 @@ const Parents = ({ challenge }) => {
                     <div>                           
                 <div className=' bg-white 
                 h-40 
-                w-48 
+                w-40 
                 lg:h-56
                 lg:w-56
                 xl:h-60
@@ -58,8 +58,8 @@ const Parents = ({ challenge }) => {
                 rounded-xl 
                 overflow-hidden'>
                     <ReactPlayer 
-                     controls
-                    className='object-cover'
+                    controls
+                    className='react-player'
                         width='100%'
                         height='100%'
                         url={challenge.fileURL}
