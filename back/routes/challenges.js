@@ -67,16 +67,16 @@ const cloudfront = new CloudFrontClient({
 router.get('/', async (req, res) => { 
     const challenges = await Challenge.find({}).sort({createdAt: -1})
     for (const challenge of challenges) { 
-        // const getObjectParams = { 
-        //     Bucket: bucketName,
-        //     Key: challenge.fileName
-        // }
-        // console.log(challenge)
+        const getObjectParams = { 
+            Bucket: bucketName,
+            Key: challenge.fileName
+        }
+        console.log(challenge)
 
-        // const command = new GetObjectCommand(getObjectParams);
-        // const url =  await getSignedUrl(s3, command, { expiresIn: 3600 * 5 });
-        const url = 'https://ddi556n39z2z8.cloudfront.net/' + challenge.fileName
-        challenge.fileURL = url;  
+        const command = new GetObjectCommand(getObjectParams);
+        const url =  await getSignedUrl(s3, command, { expiresIn: 3600 * 5 });
+        // const url = 'https://ddi556n39z2z8.cloudfront.net/' + challenge.fileName
+        // challenge.fileURL = url;  
     }
    res.status(200).json(challenges);
 });
@@ -96,27 +96,27 @@ router.get('/:challengeParamsId', async (req, res) => {
 
     for (const child of challenge.replies) { 
 
-            // const getObjectParams = { 
-            //     Bucket: bucketName,
-            //     Key: child.fileName
-            // }
+            const getObjectParams = { 
+                Bucket: bucketName,
+                Key: child.fileName
+            }
 
-            // const command = new GetObjectCommand(getObjectParams);
-            // const url =  await getSignedUrl(s3, command, { expiresIn: 3600 * 5 });
+            const command = new GetObjectCommand(getObjectParams);
+            const url =  await getSignedUrl(s3, command, { expiresIn: 3600 * 5 });
 
-            const url = 'https://ddi556n39z2z8.cloudfront.net/' + challenge.fileName
-            child.fileURL = url;  
+            // const url = 'https://ddi556n39z2z8.cloudfront.net/' + challenge.fileName
+            // child.fileURL = url;  
  
 
         }
 
-            // const getObjectParams = { 
-            //     Bucket: bucketName,
-            //     Key: challenge.fileName
-            // }
-            // const command = new GetObjectCommand(getObjectParams);
-            // const url =  await getSignedUrl(s3, command, { expiresIn: 3600 * 5 });
-            const url = 'https://ddi556n39z2z8.cloudfront.net/' + challenge.fileName
+            const getObjectParams = { 
+                Bucket: bucketName,
+                Key: challenge.fileName
+            }
+            const command = new GetObjectCommand(getObjectParams);
+            const url =  await getSignedUrl(s3, command, { expiresIn: 3600 * 5 });
+            // const url = 'https://ddi556n39z2z8.cloudfront.net/' + challenge.fileName
             challenge.fileURL = url;   
 
         challenge.save((error, challenge) => {
@@ -267,20 +267,20 @@ router.delete('/:id', async (req, res) =>  {
                     const command = new DeleteObjectCommand(Params);
                     await s3.send(command)
 
-                    const cfCommand = new CreateInvalidationCommand({
-                        DistributionId: cloudfrontDistributionId,
-                        InvalidationBatch: {
-                          CallerReference: children.fileName,
-                          Paths: {
-                            Quantity: 1,
-                            Items: [
-                              "/" + children.fileName
-                            ]
-                          }
-                        }
-                      })
+                    // const cfCommand = new CreateInvalidationCommand({
+                    //     DistributionId: cloudfrontDistributionId,
+                    //     InvalidationBatch: {
+                    //       CallerReference: children.fileName,
+                    //       Paths: {
+                    //         Quantity: 1,
+                    //         Items: [
+                    //           "/" + children.fileName
+                    //         ]
+                    //       }
+                    //     }
+                    //   })
                       
-                      const response = await cloudfront.send(cfCommand)
+                    //   const response = await cloudfront.send(cfCommand)
                 }
 
                 const Params = { 
@@ -290,19 +290,19 @@ router.delete('/:id', async (req, res) =>  {
                 const command = new DeleteObjectCommand(Params);
                 await s3.send(command)
 
-                const cfCommand = new CreateInvalidationCommand({
-                    DistributionId: cloudfrontDistributionId,
-                    InvalidationBatch: {
-                      CallerReference: challenge.fileName,
-                      Paths: {
-                        Quantity: 1,
-                        Items: [
-                          "/" + challenge.fileName
-                        ]
-                      }
-                    }
-                  })
-                  const response = await cloudfront.send(cfCommand)
+                // const cfCommand = new CreateInvalidationCommand({
+                //     DistributionId: cloudfrontDistributionId,
+                //     InvalidationBatch: {
+                //       CallerReference: challenge.fileName,
+                //       Paths: {
+                //         Quantity: 1,
+                //         Items: [
+                //           "/" + challenge.fileName
+                //         ]
+                //       }
+                //     }
+                //   })
+                //   const response = await cloudfront.send(cfCommand)
                 
                 const deletedChallenge = await Challenge.findByIdAndDelete({_id: id});
                 res.status(200).json(deletedChallenge)
@@ -327,20 +327,20 @@ router.delete('/child/:childId', async (req, res) =>  {
             const command = new DeleteObjectCommand(Params);
             await s3.send(command)
 
-            const cfCommand = new CreateInvalidationCommand({
-                DistributionId: cloudfrontDistributionId,
-                InvalidationBatch: {
-                  CallerReference: childFileName,
-                  Paths: {
-                    Quantity: 1,
-                    Items: [
-                      "/" + childFileName
-                    ]
-                  }
-                }
-              })
+            // const cfCommand = new CreateInvalidationCommand({
+            //     DistributionId: cloudfrontDistributionId,
+            //     InvalidationBatch: {
+            //       CallerReference: childFileName,
+            //       Paths: {
+            //         Quantity: 1,
+            //         Items: [
+            //           "/" + childFileName
+            //         ]
+            //       }
+            //     }
+            //   })
               
-              const response = await cloudfront.send(cfCommand)
+            //   const response = await cloudfront.send(cfCommand)
 
                 
             //Deleting from MongoDB
