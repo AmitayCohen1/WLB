@@ -53,11 +53,12 @@ const Parents = ({ challenge }) => {
                 3xl:h-72
                 3xl:w-72
                 rounded-xl'> */}
-                <div className='react-wrapper'>
+                <div 
+                className='react-wrapper'>
                     <ReactPlayer 
                     className="react-player"
-                        width='100%'
-                        height='100%'
+                    width="100%"
+                    height="100%"
                         // style={{
                         //     objectFit: 'cover'
                         // }}
