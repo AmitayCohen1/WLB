@@ -46,7 +46,7 @@ const Parents = ({ challenge }) => {
                     <div className=' aspect-square 
                     w-full h-full pt-2'>
                     <div>                           
-                <div className='h-40 w-40 rounded-xl'>
+                <div className=' bg-white h-40 w-40 rounded-xl'>
                     <ReactPlayer 
                     className="react-player"
                         width='100%'
