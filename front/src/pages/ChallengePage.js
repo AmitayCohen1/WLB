@@ -133,7 +133,24 @@ const ChallengePage = () => {
 
           /> */}
 
-          <video 
+
+          <div
+         className='
+        h-[400px] w-full aspect-square bg-black bg-opacity-0 rounded-xl shadow-indigo-500/40 object-cover 
+        col-span-5
+        md:col-span-3
+        xl:col-span-2
+        xl:h-[500px]
+        '>
+        <ReactPlayer 
+           className='object-cover'
+            width='100%'
+            height='100%' 
+            url={parent.fileURL}
+          />
+          </div>
+
+          {/* <video 
           controls={hover ? true : false}
             type="video/mp4"
             onMouseEnter={(e) => {
@@ -152,7 +169,10 @@ const ChallengePage = () => {
         xl:h-[500px]
         '>
             <source src={parent.fileURL} type='video/mp4' />
-          </video>
+          </video> */}
+
+
+
 
           <div className=' text-white
           md:col-span-2

@@ -4,6 +4,7 @@ import html2canvas from 'html2canvas';
 import Title from '../assets/Title.svg'
 import { IoCopyOutline } from "react-icons/io5";
 import { HiOutlineCheck } from "react-icons/hi";
+import ReactPlayer from 'react-player';
 
 
 
@@ -54,7 +55,7 @@ const Row = ({challenge,index, parent}) => {
         '>
 
         {/* Record */}
-        <video 
+        {/* <video 
         controls={hover ? true : false }
         onMouseEnter={(e) => 
         {setHover(true)
@@ -69,7 +70,18 @@ const Row = ({challenge,index, parent}) => {
           src={challenge.fileURL} 
           type="video/mp4"
           />
-        </video>
+        </video> */}
+        <div
+         className='col-span-3 spect-square w-28 md:w-36 object-cover rounded-l-lg h-36 grayscale'>
+        <ReactPlayer 
+           className='object-cover'
+            width='100%'
+            height='100%' 
+            url={challenge.fileURL}
+          />
+          </div>
+
+      
 
 
         
