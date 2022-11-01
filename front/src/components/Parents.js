@@ -59,6 +59,7 @@ const Parents = ({ challenge }) => {
                 overflow-hidden'>
                     <ReactPlayer 
                      playing
+                     controls
                     className='object-cover'
                         width='100%'
                         height='100%'
