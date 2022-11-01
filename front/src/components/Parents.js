@@ -35,7 +35,7 @@ const Parents = ({ challenge }) => {
                 <div className="flex-col hover:opacity-80">
                     <div className='flex place-content-between place-items-end '>
                         <div className=''>
-                            <h1 className='font-bold text-xl text-red font-JockeyOne'>{challenge.title}</h1>
+                            <h1 className='font-bold text-lg text-red font-JockeyOne'>{challenge.title}</h1>
                             <h1 className='font-Inter text-sm text-createdByColor'>Created by <span className='font-bold'>{challenge.userName}</span></h1>
                         </div>
                         <div className='flex place-items-center'>
@@ -46,12 +46,12 @@ const Parents = ({ challenge }) => {
                     <div className=' aspect-square 
                     w-full h-full pt-2'>
                     <div>                           
-                <div className='bg-white h-fill w-fill rounded-xl'>
+                <div className='bg-white h-fit w-fit rounded-xl'>
                     <ReactPlayer 
                     className="react-player"
                         width='100%'
                         height='100%'
-                        url='https://wlb-production.s3.us-west-1.amazonaws.com/a93f40f008960939cf9cf583029943a0c173a8adde40bbbbbbe9734ab9f3ec34?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAZX7BNS2XERDXY276%2F20221031%2Fus-west-1%2Fs3%2Faws4_request&X-Amz-Date=20221031T233130Z&X-Amz-Expires=18000&X-Amz-Signature=b74852190753c8220835c6692cf8b903e5e03068658b4f5759dfa354e3382936&X-Amz-SignedHeaders=host&x-id=GetObject'
+                        url={challenge.fileURL}
                         // url='https://www.youtube.com/watch?v=kCnNWyl9qSE&t=284s&ab_channel=KlasKarlsson'
                         // url='https://wlb-production.s3.us-west-1.amazonaws.com/92994ccce65c225c6afae4bab5c11f79084251c710158c0d40908b793d4a8ea6?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAZX7BNS2XERDXY276%2F20221031%2Fus-west-1%2Fs3%2Faws4_request&X-Amz-Date=20221031T143202Z&X-Amz-Expires=18000&X-Amz-Signature=2a759e512a64af67455cb3706c320e3b7658b9334b9c0b26eb15acaa47f2a039&X-Amz-SignedHeaders=host&x-id=GetObject'
                     />
