@@ -1,5 +1,5 @@
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { useSignup } from "../hooks/useSignup"
 
@@ -10,16 +10,14 @@ const Signup = () => {
   const [userName, setUserName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [localError, setLocalError] = useState()
   const {signup, error, isLoading} = useSignup()
+
+
   const handleSubmit = async (e) => {
     e.preventDefault()
-    try { 
-      await signup(userName, email, password)
-    }catch(err) { 
-      setLocalError(err)
-    }
+    await signup(userName, email, password)
   }
+  
 
   return (
     <div className=" bg-black h-screen grid place-content-center pb-24">
@@ -57,7 +55,7 @@ const Signup = () => {
 
 
       <button  className="bg-red py-3 rounded px-28 hover:bg-red  text-stone-900 font-semibold  hover:text-stone-200" disabled={isLoading}>Sign up</button>
-      {localError ? <div className="text-stone-300 pt-4">{localError}</div> : <div> </div>}
+      {error && <div className="text-stone-300 pt-4">{error}</div>}
       </div>
     </form>
     </div>
