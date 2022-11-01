@@ -46,17 +46,16 @@ const Parents = ({ challenge }) => {
                     <div className=' aspect-square 
                     w-full h-full pt-2'>
                     <div>                           
-                <div className=' bg-white  bg-opacity-25
-                h-40 
-                w-40 
-                lg:h-56
-                lg:w-56
-                xl:h-60
-                xl:w-60
-                2xl:h-72
-                2xl:w-72
-                rounded-xl 
-                overflow-hidden'>
+                <div className=' bg-white bg-opacity-25 rounded-xl overflow-hidden
+                    h-40 
+                    w-40 
+                    lg:h-56
+                    lg:w-56
+                    xl:h-60
+                    xl:w-60
+                    2xl:h-72
+                    2xl:w-72
+                    '>
                     <ReactPlayer 
                     controls
                     className='react-player'
