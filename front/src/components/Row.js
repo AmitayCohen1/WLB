@@ -45,7 +45,6 @@ const Row = ({challenge,index, parent}) => {
     <div className=' 
         grid grid-cols-12
       text-black sm:text-base outline-stone-800 bg-white
-        rounded-lg
         mx-4
         sm:mx-10
         md:mx-12

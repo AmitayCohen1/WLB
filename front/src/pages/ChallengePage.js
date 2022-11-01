@@ -145,7 +145,7 @@ const ChallengePage = () => {
               e.target.pause()
             }}
             className='
-        h-[400px] w-full aspect-square bg-black bg-opacity-0 rounded-xl shadow-indigo-500/40 object-cover 
+        h-[400px] w-full aspect-square bg-black bg-opacity-0 hadow-indigo-500/40 object-cover
         col-span-5
         md:col-span-3
         xl:col-span-2
