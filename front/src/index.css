@@ -13,18 +13,9 @@
     -webkit-appearance: none;
     margin: 0;
   }
-  .player-wrapper {
-    width: auto;
-    height: auto;
-  }
   .react-player {
-    padding-top: 56.25%; 
-    position: relative; 
+    object-fit: cover;
   }
-  .react-player > div {
-    position: absolute;
-  }
-
 }
 @import url('https://fonts.googleapis.com/css2?family=Jockey+One&display=swap');
 
