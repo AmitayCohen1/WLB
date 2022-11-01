@@ -75,10 +75,10 @@ const Row = ({challenge,index, parent}) => {
          className='col-span-3 spect-square w-28 md:w-36 object-cover rounded-l-lg h-36 grayscale'>
         <ReactPlayer 
           controls
-           className='object-cover'
-            width='100%'
-            height='100%' 
-            url={challenge.fileURL}
+          className='react-player'
+          width='100%'
+          height='100%' 
+          url={challenge.fileURL}
           />
           </div>
         <div className='col-span-2 xl:col-span-2 px-2 self-center

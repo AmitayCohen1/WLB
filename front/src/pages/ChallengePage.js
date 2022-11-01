@@ -144,10 +144,10 @@ const ChallengePage = () => {
         '>
         <ReactPlayer 
           controls
-           className='object-cover'
-            width='100%'
-            height='100%' 
-            url={parent.fileURL}
+          className='react-player'
+          width='100%'
+          height='100%' 
+          url={parent.fileURL}
           />
           </div>
 
