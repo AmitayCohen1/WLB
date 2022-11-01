@@ -13,7 +13,8 @@
     -webkit-appearance: none;
     margin: 0;
   }
-  .react-player {
+
+  .react-player video{
     object-fit: cover;
   }
 }

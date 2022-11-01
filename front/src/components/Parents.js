@@ -82,7 +82,7 @@ const Parents = ({ challenge }) => {
                     <source src={`${challenge.fileURL}`}  type="video/mp4" />
                 </video> */}
             </div>
-            <span onClick={handleDelete} className="material-symbols-outlined">delete</span>
+            {/* <span onClick={handleDelete} className="material-symbols-outlined">delete</span> */}
 
         </div>
     )
