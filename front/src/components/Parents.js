@@ -50,8 +50,8 @@ const Parents = ({ challenge }) => {
                 h-40 w-48 
                 lg:h-48
                 lg:w-60
-                2xl:h-72
-                2xl:w-72
+                3xl:h-72
+                3xl:w-72
                 rounded-xl'>
                     <ReactPlayer 
                     className="react-player"
