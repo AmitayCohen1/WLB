@@ -118,7 +118,7 @@ const Row = ({challenge,index, parent}) => {
               lg:top-4'>nd</span></div>
               <div className='text-white text-[7px]  md:text-[11px] xl:text-[12px] font-Badge text-center absolute leading-tight px-2 '>{challenge.userName}</div>  
 
-              <div className='text-yellow text-[5px] md:text-[8px] text-center px-2 font-Roman capitalize absolute  bottom-2 sm:bottom-1 md:bottom-4 '>{parent.title}</div>
+              <div className='text-yellow text-[5px] md:text-[8px] text-center px-2 font-Roman capitalize absolute  bottom-3 sm:bottom-1 md:bottom-4 '>{parent.title}</div>
 
 
               <div className='absolute -bottom-6 flex md:-right-10 md:top-auto md:flex-col  text-red hover:text-yellow hover:cursor-pointer' onClick={() => captureElement(badgeRef.current)}>
