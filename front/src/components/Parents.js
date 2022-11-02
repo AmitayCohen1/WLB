@@ -16,6 +16,7 @@ const Parents = ({ challenge }) => {
         console.log("deleting");
         e.preventDefault();
 
+
         if (user) {
             try {
                 const response = await axios.delete(`/api/challenges/${challenge._id}`, {
@@ -36,7 +37,7 @@ const Parents = ({ challenge }) => {
                     <div className='flex place-content-between place-items-end '>
                         <div className=''>
                             <h1 className='font-bold text-lg text-red font-JockeyOne'>{challenge.title}</h1>
-                            <h1 className='font-Inter text-sm text-createdByColor'>Created by <span className='font-bold'>{challenge.userName}</span></h1>
+                            <h1 className='font-Inter text-xs text-createdByColor'>Created by <span className='font-bold'>{challenge.userName}</span></h1>
                         </div>
                         <div className='flex grayscale place-items-center'>
                         {/* {<h1 className='text-yellow hover:bg-yellow hover:text-black px-3 rounded-full bg-opacity-20 text-sm'>Leaderboard</h1>}       */}

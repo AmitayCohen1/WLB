@@ -5,6 +5,8 @@ import Title from '../assets/Title.svg'
 import { IoCopyOutline } from "react-icons/io5";
 import { HiOutlineCheck } from "react-icons/hi";
 import ReactPlayer from 'react-player';
+import copy from 'copy-to-clipboard';
+
 
 
 
@@ -15,7 +17,7 @@ const Row = ({challenge,index, parent}) => {
     const [isCopy, setIsCopy] = useState(null)
     const [hover, setHover] = useState()
 
-    const captureElement = async (element) => {   
+    const captureElement = async (element) => { 
       setIsCopy(true)     
         const canvas = await html2canvas(element,  {  
           scale: 15,
@@ -33,6 +35,7 @@ const Row = ({challenge,index, parent}) => {
               
             })
           ]);
+          // copy(blob, { })
           console.log('Fetched image copied.');
 
           } catch (err) {
