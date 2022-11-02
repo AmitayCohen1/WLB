@@ -98,19 +98,32 @@ const Row = ({challenge,index, parent}) => {
            content-center bg-badgeBG  rounded-full  
           aspect-square grid place-items-center 
           relative self-center
-          h-[90px]
+          h-[70px]
           md:h-[100px]
           lg:h-[120px]'>      
 
             <img src={Title} alt='The world Leaderboard' className='absolute top-1'/>
-            <div className='text-yellow text-[5px] text-center float-left font-Roman absolute right-[6px] pb-4'>{parent.createdAt.split('-')[0] + ' '}</div>
-            <div className='text-yellow text-[5px] text-center float-right font-Roman font-thin absolute left-[6px] pb-4 '>
-              {parent.createdAt.split('-')[1] + '.' + parent.createdAt.split('T' && ':')[1]}</div>
-              <div className='text-[40px] text-red font-RedBadge'>{challenge.reps}<span className='text-[4px] font-serif absolute top-8 align-middle right-5 sm:top-5'>nd</span></div>
-              <div className='text-white text-[7px] font-Badge text-center absolute leading-tight px-2 pt-2'>{challenge.userName}</div>  
-              <div className='text-yellow text-[7px] text-center px-2 font-Roman capitalize absolute bottom-4 sm:bottom-3'>{parent.title}</div>
 
-              {/* <div className='absolute  -right-8 text-xs'>copy</div> */}
+            <div className='text-yellow text-[5px] text-center float-left font-Roman absolute right-[6px] pb-4'>{parent.createdAt.split('-')[0] + ' '}</div>
+
+            <div className='text-yellow text-[5px] text-center float-right font-Roman font-thin absolute left-[6px] pb-4 '>
+
+              {parent.createdAt.split('-')[1] + '.' + parent.createdAt.split('T' && ':')[1]}</div>
+
+              <div className='text-4xl text-red font-RedBadge'>{index + 1}<span className='
+              font-serif absolute align-middle 
+              text-[4px] 
+              top-1
+              md:top-4 md:text-[6px]
+              lg:top-6
+
+               '>nd</span></div>
+
+              <div className='text-white text-[7px]  md:text-[11px] xl:text-[12px] font-Badge text-center absolute leading-tight px-2 '>{challenge.userName}</div>  
+
+              <div className='text-yellow text-[5px] md:text-[10px] text-center px-2 font-Roman capitalize absolute  bottom-2 sm:bottom-1 md:bottom-4 '>{parent.title}</div>
+
+
               <div className='absolute -right-10 flex-col  text-red hover:text-yellow hover:cursor-pointer'>
                   <div className={isCopy ? ' grid place-content-center' : 'grid place-content-center'} onClick={() => captureElement(badgeRef.current)}>{isCopy ? <HiOutlineCheck size={12} /> : <IoCopyOutline size={12} />}</div>
          
