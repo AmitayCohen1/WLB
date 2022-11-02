@@ -98,7 +98,7 @@ const Row = ({challenge,index, parent}) => {
            content-center bg-badgeBG  rounded-full  
           aspect-square grid place-items-center 
           relative self-center
-          h-[70px]
+          h-[80px]
           md:h-[100px]
           lg:h-[120px]'>      
 
