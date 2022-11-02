@@ -112,7 +112,7 @@ const Row = ({challenge,index, parent}) => {
 
 
         {/* Badge & Copy*/}
-        <div className='col-span-3 grid place-items-center py-1 relative ml-2 '>
+        <div className='col-span-3 grid place-items-center py-1 relative ml-4'>
           <div ref={badgeRef} className='
            content-center bg-badgeBG  rounded-full  
           aspect-square grid place-items-center 
