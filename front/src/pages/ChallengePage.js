@@ -208,7 +208,7 @@ const ChallengePage = () => {
         lg:mx-28
         xl:mx-64
       '>Leaderboard</h1>
-        <div className='grid gap-1 grid-cols-12 overflow-hidden font-semibold text-sm md:text-lg font-inter mb-3 text-white bg-stone-200 bg-opacity-0 border-b border-stone-500
+        <div className='grid grid-cols-12 overflow-hidden font-semibold text-sm md:text-lg font-inter mb-3 text-white bg-stone-200 bg-opacity-0 border-b border-stone-500
         mx-4
         sm:mx-10
         md:mx-12
@@ -217,11 +217,14 @@ const ChallengePage = () => {
      '> {/* Title */}
           <div className=' col-span-3 my-2'>Record</div>
           <div className=' col-span-2 xl:col-span-2 my-2'>Name</div>
-          <div className=' col-span-1 xl:col-span-1 my-2'>Rank</div>
-          <div className='my-2 col-span-2
-
+          <div className=' col-span-1 xl:col-span-1 my-2 pr-2 '>Rank</div>
+          <div className='my-2 pl-2
+        col-span-2 
+        md:col-span-2
+        xl:col-span-2
+        2xl:col-span-2
         '>Score</div>
-          <div className='col-span-1  my-2 text-center'>Badge</div>
+          <div className='col-span-3 xl:col-span-1 my-2 text-center'>Badge</div>
         </div>
 
         <div className='grid gap-3 mb-4 '>
