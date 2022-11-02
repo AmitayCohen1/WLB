@@ -72,7 +72,7 @@ const Row = ({challenge,index, parent}) => {
           />
         </video> */}
         <div
-         className='col-span-3 spect-square w-28 md:w-36 object-cover rounded-l-lg h-36 grayscale overflow-hidden'>
+         className='col-span-3 md:w-36 object-cover rounded-l-lg w-11/12 grayscale overflow-hidden'>
         <ReactPlayer 
           controls
            className='react-player'
@@ -82,7 +82,7 @@ const Row = ({challenge,index, parent}) => {
           />
           </div>
         <div className='col-span-2 xl:col-span-2 px-2 self-center
-        sm:text-base
+        text-xs
         md:text-base
         lg:text-lg
         break-after-auto
@@ -91,7 +91,7 @@ const Row = ({challenge,index, parent}) => {
 
         {/* Rank */}
         <div className='col-span-1 xl:col-span-1 pr-2 self-center
-        sm:text-base
+         text-xs
         md:text-base
         lg:text-lg
         xl:text-xl
@@ -100,7 +100,7 @@ const Row = ({challenge,index, parent}) => {
         {/* Score */}
         <div className='text-yellow bg-yellow bg-opacity-20 border-yellow border px-2 w-fit rounded-full ml-2 self-center
         col-span-2 
-        md:col-span-2
+        text-xs
         xl:col-span-2
         2xl:col-span-2
         sm:text-base
@@ -112,11 +112,11 @@ const Row = ({challenge,index, parent}) => {
 
 
         {/* Badge & Copy*/}
-        <div className='col-span-3 grid place-items-center'>
+        <div className='col-span-3 grid place-items-center py-1 relative'>
           <div ref={badgeRef} className='
            content-center bg-badgeBG  rounded-full  
           aspect-square grid place-items-center 
-          relative h-[100px] self-center'>      
+          relative h-24 self-center'>      
 
             <img src={Title} alt='The world Leaderboard' className='absolute top-1'/>
             <div className='text-yellow text-[5px] text-center float-left font-Roman absolute right-[6px] pb-4'>{parent.createdAt.split('-')[0] + ' '}</div>
@@ -126,14 +126,15 @@ const Row = ({challenge,index, parent}) => {
               <div className='text-white text-[7px] font-Badge text-center absolute leading-tight px-2 pt-2'>{challenge.userName}</div>  
               <div className='text-yellow text-[7px] text-center px-2 font-Roman capitalize absolute bottom-4 sm:bottom-3'>{parent.title}</div>
             </div>
+
         </div>
 
         {/* Copy Icon */}
-              <div className='col-span-1 grid place-items-center float-left relative'>
-                <div className={isCopy? 'bg-yellow bg-opacity-10 stroke-black p-2 rounded-full text-yellow absolute left-0' : ' bg-red bg-opacity-10 stroke-black p-2 rounded-full text-red cursor-pointer hover:text-yellow hover:bg-yellow hover:bg-opacity-10 absolute left-0'}>
-                <div className={isCopy ? '' : ' '} onClick={() => captureElement(badgeRef.current)}>{isCopy ? <HiOutlineCheck /> : <IoCopyOutline />}</div>
-              </div>
-            </div>
+        <div className='col-span-1 grid place-content-center '>
+          <div className={isCopy? 'bg-yellow bg-opacity-10 stroke-black p-2 rounded-full text-yellow' : ' bg-red bg-opacity-10 stroke-black p-2 rounded-full text-red cursor-pointer hover:text-yellow hover:bg-yellow hover:bg-opacity-10 '}>
+                  <div className={isCopy ? '' : ' '} onClick={() => captureElement(badgeRef.current)}>{isCopy ? <HiOutlineCheck /> : <IoCopyOutline />}</div>
+                </div>
+          </div>
 
         </div>
   )
