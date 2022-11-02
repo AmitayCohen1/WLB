@@ -86,7 +86,7 @@ const Row = ({challenge,index, parent}) => {
         md:text-base
         lg:text-lg
         break-after-auto
-        xl:text-xl'>{challenge.userName} Cohen
+        xl:text-xl'>{challenge.userName}
         </div>
 
         {/* Rank */}
