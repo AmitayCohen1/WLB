@@ -134,26 +134,6 @@ const ChallengePage = () => {
           />
           </div>
 
-          {/* <video 
-          controls={hover ? true : false}
-            type="video/mp4"
-            onMouseEnter={(e) => {
-              setHover(true)
-              e.target.play()
-            }}
-            onMouseLeave={(e) => {
-              setHover(false)
-              e.target.pause()
-            }}
-            className='
-        h-[400px] w-full aspect-square bg-black bg-opacity-0 rounded-xl shadow-indigo-500/40 object-cover 
-        col-span-5
-        md:col-span-3
-        xl:col-span-2
-        xl:h-[500px]
-        '>
-            <source src={parent.fileURL} type='video/mp4' />
-          </video> */}
           <div className=' text-white
             md:col-span-2
             col-span-5
@@ -161,7 +141,7 @@ const ChallengePage = () => {
             pt-4
             md:pl-8
             '>
-            <div className="flex place-content-between md:flex-col ">
+            <div className="flex place-content-between flex-col py-2 ">
               <h1 className=
                 'font-JockeyOne text-3xl font-semibold uppercase sm:block inline md:text-5xl  text-red lg:text-5xl xl:text-6xl sm:mb-1 break-normal'>{parent.title}</h1>
               <h1 className=
