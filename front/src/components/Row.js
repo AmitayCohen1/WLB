@@ -72,10 +72,10 @@ const Row = ({challenge,index, parent}) => {
           />
         </video> */}
         <div
-         className='col-span-3 spect-square w-28 md:w-36 object-cover rounded-l-lg h-36 grayscale'>
+         className='col-span-3 spect-square w-28 md:w-36 object-cover rounded-l-lg h-36 grayscale overflow-hidden'>
         <ReactPlayer 
           controls
-           className='object-cover'
+           className='react-player'
             width='100%'
             height='100%' 
             url={challenge.fileURL}

@@ -115,28 +115,10 @@ const ChallengePage = () => {
         lg:mx-28
         xl:mx-64'>
 
-          {/* <ReactPlayer 
-          className='flex-1 object-cover' 
-
-          // width='100%'
-          // height='100%'
-          url={parent.fileURL} 
-          controls={hover ? true : false}
-          onMouseEnter={(e) => {
-              setHover(true)
-              e.target.play()
-            }}
-            onMouseLeave={(e) => {
-              setHover(false)
-              e.target.pause()
-            }}
-
-          /> */}
-
 
           <div
          className='
-         overflow-hidden
+        overflow-hidden
         h-[400px] w-full aspect-square bg-black bg-opacity-0 rounded-xl shadow-indigo-500/40 object-cover 
         col-span-5
         md:col-span-3
