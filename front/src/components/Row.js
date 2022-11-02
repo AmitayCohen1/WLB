@@ -93,7 +93,7 @@ const Row = ({challenge,index, parent}) => {
 
 
         {/* Badge & Copy*/}
-        <div className='col-span-3 grid place-items-center relative ml-4 py-4'>
+        <div className='col-span-3 grid place-items-center relative ml-4 pb-8 pt-2 md:py-4'>
           <div ref={badgeRef} className='
            content-center bg-badgeBG  rounded-full  
           aspect-square grid place-items-center 
@@ -121,7 +121,7 @@ const Row = ({challenge,index, parent}) => {
               <div className='text-yellow text-[5px] md:text-[8px] text-center px-2 font-Roman capitalize absolute  bottom-2 sm:bottom-1 md:bottom-4 '>{parent.title}</div>
 
 
-              <div className='absolute -right-11 flex-col  text-red hover:text-yellow hover:cursor-pointer' onClick={() => captureElement(badgeRef.current)}>
+              <div className='absolute -bottom-6 flex md:-right-10 md:top-auto md:flex-col  text-red hover:text-yellow hover:cursor-pointer' onClick={() => captureElement(badgeRef.current)}>
                   <div className={isCopy ? ' grid place-content-center text-yellow' : 'grid place-content-center'} >{isCopy ? <HiOutlineCheck size={12} /> : <IoCopyOutline size={12} />}</div>
   
                 <span className={isCopy? 'text-xs text-center self-center text-yellow' : 'text-xs text-center self-center'}>{isCopy ? 'copied' : 'copy'}</span>
