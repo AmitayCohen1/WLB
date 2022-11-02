@@ -201,10 +201,10 @@ const ChallengePage = () => {
           <div className=' col-span-2 xl:col-span-2 my-2'>Name</div>
           <div className=' col-span-1 xl:col-span-1 my-2 pr-2 '>Rank</div>
           <div className='my-2 pl-2
-        col-span-2 
-        md:col-span-2
-        xl:col-span-2
-        2xl:col-span-2
+        col-span-1
+        md:col-span-1
+        xl:col-span-1
+        2xl:col-span-1
         '>Score</div>
           <div className='col-span-3  my-2 text-center'>Badge</div>
         </div>

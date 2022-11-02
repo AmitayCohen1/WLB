@@ -81,7 +81,7 @@ const Row = ({challenge,index, parent}) => {
             url={challenge.fileURL}
           />
           </div>
-        <div className='col-span-2 xl:col-span-2 px-2 self-center
+        <div className='col-span-2 xl:col-span-2  self-center ml-2 
         text-xs
         md:text-base
         lg:text-lg
@@ -90,7 +90,7 @@ const Row = ({challenge,index, parent}) => {
         </div>
 
         {/* Rank */}
-        <div className='col-span-1 xl:col-span-1 pr-2 self-center
+        <div className='col-span-1 xl:col-span-1 pr-2 self-center ml-2 
          text-xs
         md:text-base
         lg:text-lg
@@ -99,7 +99,7 @@ const Row = ({challenge,index, parent}) => {
 
         {/* Score */}
         <div className='text-yellow bg-yellow bg-opacity-20 border-yellow border px-2 w-fit rounded-full ml-2 self-center
-        col-span-2 
+        col-span-1
         text-xs
         xl:col-span-2
         2xl:col-span-2
@@ -112,11 +112,11 @@ const Row = ({challenge,index, parent}) => {
 
 
         {/* Badge & Copy*/}
-        <div className='col-span-3 grid place-items-center py-1 relative'>
+        <div className='col-span-3 grid place-items-center py-1 relative ml-2 '>
           <div ref={badgeRef} className='
            content-center bg-badgeBG  rounded-full  
           aspect-square grid place-items-center 
-          relative h-24 self-center'>      
+          relative h-20 self-center'>      
 
             <img src={Title} alt='The world Leaderboard' className='absolute top-1'/>
             <div className='text-yellow text-[5px] text-center float-left font-Roman absolute right-[6px] pb-4'>{parent.createdAt.split('-')[0] + ' '}</div>
