@@ -43,8 +43,7 @@ const Row = ({challenge,index, parent}) => {
         }
   }
   return (
-    <div className=' 
-    lg:h-36
+    <div className='
         grid grid-cols-12
       text-black sm:text-base outline-stone-800 bg-white
         rounded-lg
@@ -59,8 +58,8 @@ const Row = ({challenge,index, parent}) => {
         <div
          className='col-span-3 md:w-36 object-cover rounded-l-lg w-11/12 grayscale overflow-hidden'>
         <ReactPlayer 
-          controls
-           className='react-player'
+            controls
+            className='react-player'
             width='100%'
             height='100%' 
             url={challenge.fileURL}
