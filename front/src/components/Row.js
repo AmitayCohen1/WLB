@@ -44,7 +44,7 @@ const Row = ({challenge,index, parent}) => {
 
   return (
     <div className=' 
-    h-fit
+       h-min
         gap-1
         grid grid-cols-12
       text-black sm:text-base outline-stone-800 bg-white
