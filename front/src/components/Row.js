@@ -80,7 +80,7 @@ const Row = ({challenge,index, parent}) => {
 
         {/* Score */}
         <div className='text-yellow bg-yellow bg-opacity-20 border-yellow border px-2 w-fit rounded-full ml-2 self-center
-        col-span-1
+        col-span-2
         text-xs
         xl:col-span-2
         2xl:col-span-2
