@@ -206,7 +206,7 @@ const ChallengePage = () => {
         xl:col-span-2
         2xl:col-span-2
         '>Score</div>
-          <div className='col-span-3 xl:col-span-1 my-2 text-center'>Badge</div>
+          <div className='col-span-3  my-2 text-center'>Badge</div>
         </div>
 
         <div className='grid gap-3 mb-4 '>
