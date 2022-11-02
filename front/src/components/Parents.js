@@ -47,7 +47,7 @@ const Parents = ({ challenge }) => {
                     <div className=' aspect-square 
                     w-full h-full pt-2'>
                     <div>                           
-                <div className=' bg-white bg-opacity-25 rounded-xl overflow-hidden
+                <div className=' bg-white bg-opacity-25 rounded-xl overflow-hidden grayscale
                     h-40 
                     w-40 
                     lg:h-56

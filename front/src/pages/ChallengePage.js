@@ -117,7 +117,7 @@ const ChallengePage = () => {
 
 
           <div
-         className='
+         className='grayscale
         overflow-hidden
         h-[400px] w-full aspect-square bg-black bg-opacity-0 rounded-xl shadow-indigo-500/40 object-cover 
         col-span-5
