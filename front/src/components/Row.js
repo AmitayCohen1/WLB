@@ -116,7 +116,10 @@ const Row = ({challenge,index, parent}) => {
           <div ref={badgeRef} className='
            content-center bg-badgeBG  rounded-full  
           aspect-square grid place-items-center 
-          relative h-20 self-center'>      
+          relative self-center
+          h-[90px]
+          md:h-[100px]
+          lg:h-[120px]'>      
 
             <img src={Title} alt='The world Leaderboard' className='absolute top-1'/>
             <div className='text-yellow text-[5px] text-center float-left font-Roman absolute right-[6px] pb-4'>{parent.createdAt.split('-')[0] + ' '}</div>
@@ -126,12 +129,13 @@ const Row = ({challenge,index, parent}) => {
               <div className='text-white text-[7px] font-Badge text-center absolute leading-tight px-2 pt-2'>{challenge.userName}</div>  
               <div className='text-yellow text-[7px] text-center px-2 font-Roman capitalize absolute bottom-4 sm:bottom-3'>{parent.title}</div>
 
-              <div className='absolute  -right-8 text-xs'>copy</div>
-              {/* <div className='absolute -right-10'>
-              <div className={isCopy? 'bg-yellow bg-opacity-10 stroke-black p-2 rounded-full text-yellow' : ' bg-red bg-opacity-10 stroke-black p-2 rounded-full text-red cursor-pointer hover:text-yellow hover:bg-yellow hover:bg-opacity-10 '}>
-                  <div className={isCopy ? '' : ' '} onClick={() => captureElement(badgeRef.current)}>{isCopy ? <HiOutlineCheck /> : <IoCopyOutline />}</div>
+              {/* <div className='absolute  -right-8 text-xs'>copy</div> */}
+              <div className='absolute -right-12 flex'>
+                  <div className={isCopy ? ' text-center self-center pr-1' : '  text-center self-center pr-1'} onClick={() => captureElement(badgeRef.current)}>{isCopy ? <HiOutlineCheck size={12} /> : <IoCopyOutline size={12} />}</div>
+         
+                <span className='text-xs text-center self-center'>copy</span>
                 </div>
-                </div> */}
+
               </div>
 
 
