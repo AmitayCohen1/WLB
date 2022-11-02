@@ -44,7 +44,7 @@ const Row = ({challenge,index, parent}) => {
 
   return (
     <div className=' 
-    gap-2
+    gap-1
         grid grid-cols-12
       text-black sm:text-base outline-stone-800 bg-white
         rounded-lg
@@ -82,9 +82,9 @@ const Row = ({challenge,index, parent}) => {
           url={challenge.fileURL}
           />
           </div>
-          <div className='col-span-1'></div>
+          
         <div className='col-span-2 xl:col-span-2 self-center bg-green-200
-        sm:text-base
+        text-xs
         md:text-base
         lg:text-lg
         break-after-auto
@@ -93,6 +93,7 @@ const Row = ({challenge,index, parent}) => {
 
         {/* Rank */}
         <div className='col-span-1 xl:col-span-1 self-center
+         text-xs
         sm:text-base
         md:text-base
         lg:text-lg
@@ -101,7 +102,8 @@ const Row = ({challenge,index, parent}) => {
 
         {/* Score */}
         <div className='text-yellow bg-yellow bg-opacity-20 border-yellow border px-2 w-fit rounded-full  self-center
-        col-span-1
+         text-xs
+        col-span-2
         md:col-span-1
         xl:col-span-1
         2xl:col-span-1
@@ -115,9 +117,9 @@ const Row = ({challenge,index, parent}) => {
 
         {/* Badge & Copy*/}
        
-        <div className='col-span-3 py-2 grid place-items-center'>
-          <div className='flex'>
-            <div ref={badgeRef} className=' px-2
+        <div className=' col-span-2 py-2 grid place-items-center bg-green-500 grid-cols-2'>
+      
+            <div ref={badgeRef} className='
               content-center bg-badgeBG  rounded-full  
               aspect-square grid place-items-center 
               relative 
@@ -132,16 +134,16 @@ const Row = ({challenge,index, parent}) => {
                 <div className='text-white text-[7px] font-Badge text-center absolute leading-tight px-2 pt-2'>{challenge.userName}</div>  
                 <div className='text-yellow text-[7px] text-center px-2 font-Roman capitalize absolute bottom-4 sm:bottom-3'>{parent.title}</div>
               </div>
-                <div className='relative bg-green-900 '>
-                    <div className={isCopy? 'bg-yellow bg-opacity-10  stroke-black p-2 rounded-full text-yellow absolute' : ' absolute bg-red bg-opacity-10 stroke-black p-2 rounded-full text-red cursor-pointer hover:text-yellow hover:bg-yellow hover:bg-opacity-10 '}>
-                        <div className={isCopy ? '' : ' '} onClick={() => captureElement(badgeRef.current)}>{isCopy ? <HiOutlineCheck /> : <IoCopyOutline />}</div>
-                    </div>
-                  </div>
             </div>
-        </div>
+
 
         {/* Copy Icon */}
 
+        <div className=' self-center col-span-1'>
+                      <div className={isCopy? 'bg-yellow bg-opacity-10  stroke-black p-2 rounded-full text-yellow ' : ' self-center bg-red bg-opacity-10 stroke-black p-2 w-fit rounded-full text-red cursor-pointer hover:text-yellow hover:bg-yellow hover:bg-opacity-10 '}>
+                          <div className={isCopy ? '' : ' '} onClick={() => captureElement(badgeRef.current)}>{isCopy ? <HiOutlineCheck /> : <IoCopyOutline />}</div>
+                      </div>
+                    </div>
 
         </div>
   )
