@@ -38,10 +38,7 @@ const Row = ({challenge,index, parent}) => {
           } catch (err) {
           console.error(err.name, err.message, 'ERROROROROROOR');
         }
-}
-
-
-
+  }
   return (
     <div className=' 
         grid grid-cols-12
@@ -55,22 +52,6 @@ const Row = ({challenge,index, parent}) => {
         '>
 
         {/* Record */}
-        {/* <video 
-        controls={hover ? true : false }
-        onMouseEnter={(e) => 
-        {setHover(true)
-        e.target.play()
-        }}
-        onMouseLeave={(e) => {
-        setHover(false)
-        e.target.pause()
-        }}
-        className='col-span-3 spect-square w-28 md:w-36 object-cover rounded-l-lg h-36 grayscale'>
-          <source 
-          src={challenge.fileURL} 
-          type="video/mp4"
-          />
-        </video> */}
         <div
          className='col-span-3 md:w-36 object-cover rounded-l-lg w-11/12 grayscale overflow-hidden'>
         <ReactPlayer 
@@ -130,8 +111,8 @@ const Row = ({challenge,index, parent}) => {
               <div className='text-yellow text-[7px] text-center px-2 font-Roman capitalize absolute bottom-4 sm:bottom-3'>{parent.title}</div>
 
               {/* <div className='absolute  -right-8 text-xs'>copy</div> */}
-              <div className='absolute -right-12 flex'>
-                  <div className={isCopy ? ' text-center self-center pr-1' : '  text-center self-center pr-1'} onClick={() => captureElement(badgeRef.current)}>{isCopy ? <HiOutlineCheck size={12} /> : <IoCopyOutline size={12} />}</div>
+              <div className='absolute -right-12 flex-colcenter text-red hover:text-yellow hover:cursor-pointer'>
+                  <div className={isCopy ? ' grid place-content-center pr-1' : '   pr-1'} onClick={() => captureElement(badgeRef.current)}>{isCopy ? <HiOutlineCheck size={12} /> : <IoCopyOutline size={12} />}</div>
          
                 <span className='text-xs text-center self-center'>copy</span>
                 </div>
