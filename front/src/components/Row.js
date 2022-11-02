@@ -111,8 +111,8 @@ const Row = ({challenge,index, parent}) => {
               <div className='text-yellow text-[7px] text-center px-2 font-Roman capitalize absolute bottom-4 sm:bottom-3'>{parent.title}</div>
 
               {/* <div className='absolute  -right-8 text-xs'>copy</div> */}
-              <div className='absolute -right-12 flex-col  text-red hover:text-yellow hover:cursor-pointer'>
-                  <div className={isCopy ? ' grid place-content-center pr-1' : 'grid place-content-center pr-1'} onClick={() => captureElement(badgeRef.current)}>{isCopy ? <HiOutlineCheck size={12} /> : <IoCopyOutline size={12} />}</div>
+              <div className='absolute -right-10 flex-col  text-red hover:text-yellow hover:cursor-pointer'>
+                  <div className={isCopy ? ' grid place-content-center' : 'grid place-content-center'} onClick={() => captureElement(badgeRef.current)}>{isCopy ? <HiOutlineCheck size={12} /> : <IoCopyOutline size={12} />}</div>
          
                 <span className='text-xs text-center self-center'>copy</span>
                 </div>
