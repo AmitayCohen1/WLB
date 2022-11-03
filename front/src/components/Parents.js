@@ -67,21 +67,14 @@ const Parents = ({ challenge }) => {
                     <div className=' aspect-square 
                     w-full h-full pt-2'>
                     <div>                           
-                <div className=' bg-white bg-opacity-25 rounded-xl overflow-hidden grayscale
-                    h-40 
-                    w-40 
-                    lg:h-56
-                    lg:w-56
-                    xl:h-60
-                    xl:w-60
-                    2xl:h-72
-                    2xl:w-72
+                <div className=' bg-white bg-opacity-25 rounded-xl overflow-hidden grayscale aspect-square
                     '>
                     <ReactPlayer 
                     controls
                     className='react-player'
                         width='100%'
                         height='100%'
+                        // url='https://ddi556n39z2z8.cloudfront.net/8d6129ef03a944b0c7b9a19facb85d24fe958157cb8614e5833625f11820fa43'
                         url={challenge.fileURL}
                     />
                 </div>
@@ -92,6 +85,15 @@ const Parents = ({ challenge }) => {
     )
 }
 
+
+// h-52
+// w-56 
+// lg:h-56
+// lg:w-56
+// xl:h-60
+// xl:w-60
+// 2xl:h-72
+// 2xl:w-72
 
 export default Parents;
 
