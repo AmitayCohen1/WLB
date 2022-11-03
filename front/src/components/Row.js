@@ -35,6 +35,24 @@ const Row = ({challenge,index, parent}) => {
               
             })
           ]);
+
+        //   const clipboardItem = new ClipboardItem({
+        //     'text/plain': func().then((result) => {
+
+        //     if (!result) {
+        //         return new Promise(async (resolve) => {
+        //             resolve(new Blob[``]())
+        //         })
+        //     }
+        
+        //     const copyText = `some string`
+        //         return new Promise(async (resolve) => {
+        //             resolve(new Blob([copyText]))
+        //         })
+        //     }),
+        // })
+        // // Now, we can write to the clipboard in Safari
+        // navigator.clipboard.write([clipboardItem])
           // copy(blob, { })
           console.log('Fetched image copied.');
 
@@ -113,15 +131,35 @@ const Row = ({challenge,index, parent}) => {
 
               {parent.createdAt.split('-')[1] + '.' + parent.createdAt.split('T' && ':')[1]}</div>
 
-              <div className='text-4xl text-red font-RedBadge'>{index + 1}<span className='
-              font-serif absolute align-middle 
+              <div className='text-red font-RedBadge
+              text-5xl
+              lg:text-6xl'>{index + 1}<span className=' font-serif absolute align-middle 
               text-[4px] 
-              top-1
-              md:top-4 md:text-[6px]
-              lg:top-4'>nd</span></div>
-              <div className='text-white text-[7px]  md:text-[11px] xl:text-[12px] font-Badge text-center absolute leading-tight px-2 '>{challenge.userName}</div>  
+              md:text-[6px]
+              lg:text-[8px]
+              top-5 right-6
+              md:top-6 md:right-7
+              lg:top-7 lg:right-9
+              xl:top-7
+              
+              '>nd</span></div>
+              <div className='text-white font-Badge text-center px-2 absolute pt-3 leading-tight
+              text-[6px]  
+              md:text-[7px]
+              lg:text-[9px] 
+              xl:text-[8px] '>{challenge.userName}</div>  
 
-              <div className='text-yellow text-[5px] md:text-[8px] text-center px-2 font-Roman capitalize absolute  bottom-3 sm:bottom-1 md:bottom-4 '>{parent.title}</div>
+              <div className='text-yellow text-center px-2 font-Roman capitalize absolute
+              bottom-3 
+              sm:bottom-1
+              md:bottom-3
+              lg:bottom-4
+
+              text-[5px] 
+              md:text-[7px]  
+              lg:text-[9px]  
+
+              '>{parent.title}</div>
 
 
               <div className='absolute -bottom-6 md:bottom-auto flex gap-1 md:-right-10 md:top-auto md:flex-col  text-red hover:text-yellow hover:cursor-pointer' onClick={() => captureElement(badgeRef.current)}>

@@ -10,11 +10,12 @@ import ReactPlayer from 'react-player'
 const Parents = ({ challenge }) => {
     const { challengeDispatch } = useChallengesContext();
     const { user } = useAuthContext();
-    console.log(challenge)
+    console.log('userrrrr', user.userName)
     const [hover, setHover] = useState();
     const handleDelete = async (e) => {
         console.log("deleting");
         e.preventDefault();
+       
 
 
         if (user) {
@@ -82,7 +83,8 @@ const Parents = ({ challenge }) => {
                     <source src={`${challenge.fileURL}`}  type="video/mp4" />
                 </video> */}
             </div>
-            {/* <span onClick={handleDelete} className="material-symbols-outlined">delete</span> */}
+            {user.email === 'rcdemb@gmail.com' && <span onClick={handleDelete} className="material-symbols-outlined">delete</span>}
+           
 
         </div>
     )
