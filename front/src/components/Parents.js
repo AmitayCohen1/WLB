@@ -74,7 +74,6 @@ const Parents = ({ challenge }) => {
                     className='react-player'
                         width='100%'
                         height='100%'
-                        // url='https://ddi556n39z2z8.cloudfront.net/8d6129ef03a944b0c7b9a19facb85d24fe958157cb8614e5833625f11820fa43'
                         url={challenge.fileURL}
                     />
                 </div>
