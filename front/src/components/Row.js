@@ -141,7 +141,6 @@ const Row = ({challenge,index, parent}) => {
               md:top-6 md:right-7
               lg:top-7 lg:right-9
               xl:top-7
-              
               '>nd</span></div>
               <div className='text-white font-Badge text-center px-2 absolute pt-3 leading-tight
               text-[6px]  
@@ -154,7 +153,6 @@ const Row = ({challenge,index, parent}) => {
               sm:bottom-1
               md:bottom-3
               lg:bottom-4
-
               text-[5px] 
               md:text-[7px]  
               lg:text-[9px]  

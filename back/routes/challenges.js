@@ -64,16 +64,16 @@ const cloudfront = new CloudFrontClient({
 router.get('/', async (req, res) => { 
     const challenges = await Challenge.find({}).sort({createdAt: -1})
     for (const challenge of challenges) { 
-        const getObjectParams = { 
-            Bucket: bucketName,
-            Key: challenge.fileName
-        }
-        console.log(challenge)
+        // const getObjectParams = { 
+        //     Bucket: bucketName,
+        //     Key: challenge.fileName
+        // }
+        // console.log(challenge)
 
-        const command = new GetObjectCommand(getObjectParams);
-        const url =  await getSignedUrl(s3, command, { expiresIn: 3600 * 5 });
-        // const url = 'https://ddi556n39z2z8.cloudfront.net/' + challenge.fileName
-        // challenge.fileURL = url;  
+        // const command = new GetObjectCommand(getObjectParams);
+        // const url =  await getSignedUrl(s3, command, { expiresIn: 3600 * 5 });
+        const url = 'https://ddi556n39z2z8.cloudfront.net/' + challenge.fileName
+        challenge.fileURL = url;  
     }
    res.status(200).json(challenges);
 });
@@ -93,28 +93,28 @@ router.get('/:challengeParamsId', async (req, res) => {
 
     for (const child of challenge.replies) { 
 
-            const getObjectParams = { 
-                Bucket: bucketName,
-                Key: child.fileName
-            }
+            // const getObjectParams = { 
+            //     Bucket: bucketName,
+            //     Key: child.fileName
+            // }
 
-            const command = new GetObjectCommand(getObjectParams);
-            const url =  await getSignedUrl(s3, command, { expiresIn: 3600 * 5 });
+            // const command = new GetObjectCommand(getObjectParams);
+            // const url =  await getSignedUrl(s3, command, { expiresIn: 3600 * 5 });
 
-            // const url = 'https://ddi556n39z2z8.cloudfront.net/' + challenge.fileName
-            // child.fileURL = url;  
+            const url = 'https://ddi556n39z2z8.cloudfront.net/' + challenge.fileName
+            child.fileURL = url;  
  
 
         }
 
-            const getObjectParams = { 
-                Bucket: bucketName,
-                Key: challenge.fileName
-            }
-            const command = new GetObjectCommand(getObjectParams);
-            const url =  await getSignedUrl(s3, command, { expiresIn: 3600 * 5 });
-            // const url = 'https://ddi556n39z2z8.cloudfront.net/' + challenge.fileName
-            // challenge.fileURL = url;   
+            // const getObjectParams = { 
+            //     Bucket: bucketName,
+            //     Key: challenge.fileName
+            // }
+            // const command = new GetObjectCommand(getObjectParams);
+            // const url =  await getSignedUrl(s3, command, { expiresIn: 3600 * 5 });
+            const url = 'https://ddi556n39z2z8.cloudfront.net/' + challenge.fileName
+            challenge.fileURL = url;   
 
         challenge.save((error, challenge) => {
             if(error) throw error
