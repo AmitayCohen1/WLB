@@ -81,8 +81,8 @@ const Row = ({challenge,index, parent}) => {
             className='react-player'
             width='100%'
             height='100%' 
-            url='https://www.youtube.com/watch?v=kCnNWyl9qSE&t=284s&ab_channel=KlasKarlsson'
-            // url={challenge.fileURL}
+            // url='https://www.youtube.com/watch?v=kCnNWyl9qSE&t=284s&ab_channel=KlasKarlsson'
+            url={challenge.fileURL}
           />
           </div>
         <div className='col-span-2 xl:col-span-2  self-center ml-2 
