@@ -54,7 +54,7 @@ const Parents = ({ challenge }) => {
     console.log('Parent rendered again')
         return ( 
                 <div className="flex-col hover:opacity-80">
-                    <div className='flex place-content-between place-items-end '>
+                    <div className='flex place-content-between place-items-end h-full'>
                         <div className=''>
                             <h1 className='font-bold text-lg text-red font-JockeyOne'>{challenge.title}</h1>
                             <h1 className='font-Inter text-xs text-createdByColor'>Created by <span className='font-bold'>{challenge.userName}</span></h1>
