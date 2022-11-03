@@ -1,6 +1,6 @@
 import { useChallengesContext } from '../hooks/useChallengeContext'
 import { useAuthContext } from '../hooks/useAuthContext';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FaMedal } from 'react-icons/fa';
 import { MdLeaderboard } from 'react-icons/md';
 
@@ -10,13 +10,33 @@ import ReactPlayer from 'react-player'
 const Parents = ({ challenge }) => {
     const { challengeDispatch } = useChallengesContext();
     const { user } = useAuthContext();
+
     const [hover, setHover] = useState();
+    const [isAdmin, setIsAdmin] = useState(false);
+
+    useEffect(() => { 
+        const adminAuth = () => { 
+            if(user) { 
+                if(user.email === 'amitay1599@gmail.com' || user.email === 'rcdemb@gmail.com'){  
+                    setIsAdmin(true)  
+                } else { 
+                    setIsAdmin(false)  
+                } 
+                console.log('isAdmin', isAdmin)
+                console.log('user', user)
+            }
+        }
+        console.log('rendered isAdmin')
+    adminAuth()
+    }, [isAdmin, user])
+   
+
+
+
     const handleDelete = async (e) => {
         console.log("deleting");
         e.preventDefault();
        
-
-
         if (user) {
             try {
                 const response = await axios.delete(`/api/challenges/${challenge._id}`, {
@@ -67,9 +87,7 @@ const Parents = ({ challenge }) => {
                 </div>
           </div>        
             </div>
-            {user.email === 'rcdemb@gmail.com'  || 'Amitay1599@gmail.com'? <span onClick={handleDelete} className="material-symbols-outlined">delete</span> : <></>}
-           
-
+            {isAdmin && <span onClick={handleDelete} className="material-symbols-outlined">delete</span>}
         </div>
     )
 }
