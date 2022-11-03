@@ -71,11 +71,14 @@ const Row = ({challenge,index, parent}) => {
         lg:mx-28
         xl:mx-64
         overflow-hidden
+        max-h-32
+        md:max-h-36
+        lg:max-h-40
         '>
 
         {/* Record */}
         <div
-         className='col-span-3 md:w-36 w-11/12 grayscale overflow-hidden max-h-24'>
+         className='col-span-3 md:w-36 w-11/12 grayscale overflow-hidden'>
         <ReactPlayer 
             controls
             className='react-player'
