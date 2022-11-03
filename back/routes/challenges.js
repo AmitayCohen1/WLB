@@ -101,7 +101,7 @@ router.get('/:challengeParamsId', async (req, res) => {
             // const command = new GetObjectCommand(getObjectParams);
             // const url =  await getSignedUrl(s3, command, { expiresIn: 3600 * 5 });
 
-            const url = 'https://ddi556n39z2z8.cloudfront.net/' + challenge.fileName
+            const url = 'https://ddi556n39z2z8.cloudfront.net/' + child.fileName
             child.fileURL = url;  
  
 

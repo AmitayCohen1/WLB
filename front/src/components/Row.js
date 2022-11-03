@@ -8,10 +8,6 @@ import ReactPlayer from 'react-player';
 import copy from 'copy-to-clipboard';
 
 
-
-
-
-
 const Row = ({challenge,index, parent}) => {
     const badgeRef = useRef()
     const [isCopy, setIsCopy] = useState(null)
@@ -85,8 +81,6 @@ const Row = ({challenge,index, parent}) => {
             width='100%'
             height='100%' 
             url={challenge.fileURL}
-            // url='https://www.youtube.com/watch?v=kCnNWyl9qSE&t=284s&ab_channel=KlasKarlsson'
-
           />
           </div>
         <div className='col-span-2 xl:col-span-2  self-center ml-2 
