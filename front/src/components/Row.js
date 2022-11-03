@@ -74,7 +74,7 @@ const Row = ({challenge,index, parent}) => {
 
         {/* Record */}
         <div
-         className='col-span-3 md:w-36 object-cover rounded-l-lg w-11/12 grayscale overflow-hidden h-24'>
+         className='col-span-3 md:w-36 object-cover rounded-l-lg w-11/12 grayscale overflow-hidden'>
         <ReactPlayer 
             controls
             className='react-player'
