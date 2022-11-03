@@ -60,22 +60,19 @@ const Parents = ({ challenge }) => {
                             <h1 className='font-Inter text-xs text-createdByColor'>Created by <span className='font-bold'>{challenge.userName}</span></h1>
                         </div>
                         <div className='flex grayscale place-items-center'>
-                        {/* {<h1 className='text-yellow hover:bg-yellow hover:text-black px-3 rounded-full bg-opacity-20 text-sm'>Leaderboard</h1>}       */}
-                        {/* <span className='px-2 text-yellow font-semibold text-xs'><MdLeaderboard size={16}/></span> */}
                         </div>
                     </div>
-                    <div className=' aspect-square 
-                    w-full h-full pt-2'>
-                    <div>                           
-                <div className=' bg-white bg-opacity-25 rounded-xl overflow-hidden grayscale aspect-square
-                    '>
-                    <ReactPlayer 
-                    controls
-                    className='react-player'
-                        width='100%'
-                        height='100%'
-                        url={challenge.fileURL}
-                    />
+                    <div className=' aspect-square pt-2'>
+                        <div>                           
+                            <div className=' bg-white bg-opacity-25 rounded-xl overflow-hidden grayscale aspect-square
+                            '>
+                            <ReactPlayer 
+                            controls
+                            className='react-player'
+                                width='100%'
+                                height='100%'
+                                url={challenge.fileURL}
+                            />
                 </div>
           </div>        
             </div>
