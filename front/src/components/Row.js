@@ -70,18 +70,19 @@ const Row = ({challenge,index, parent}) => {
         md:mx-12
         lg:mx-28
         xl:mx-64
+        overflow-hidden
         '>
 
         {/* Record */}
         <div
-         className='col-span-3 md:w-36 object-cover rounded-l-lg w-11/12 grayscale overflow-hidden h-fill'>
+         className='col-span-3 md:w-36 w-11/12 grayscale overflow-hidden'>
         <ReactPlayer 
             controls
             className='react-player'
-            // width='100%'
-            // height='100%' 
-            // url='https://ddi556n39z2z8.cloudfront.net/8d6129ef03a944b0c7b9a19facb85d24fe958157cb8614e5833625f11820fa43'
-            url={challenge.fileURL}
+            width='100%'
+            height='100%' 
+            url='https://www.youtube.com/watch?v=kCnNWyl9qSE&t=284s&ab_channel=KlasKarlsson'
+            // url={challenge.fileURL}
           />
           </div>
         <div className='col-span-2 xl:col-span-2  self-center ml-2 
