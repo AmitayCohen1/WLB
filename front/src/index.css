@@ -16,7 +16,7 @@
 
   .react-player video{
     object-fit: cover;
-    height:fit-content
+    height:auto;
   }
 }
 @import url('https://fonts.googleapis.com/css2?family=Jockey+One&display=swap');
