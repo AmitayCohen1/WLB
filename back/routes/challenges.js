@@ -135,7 +135,6 @@ router.get('/:challengeParamsId', async (req, res) => {
 router.use(requireAuth)
 
 
-
 //POST Parent (Create Parent)
 router.post('/', upload.single('file'), async(req, res) => { 
     console.log('----req.body----', req.body)
@@ -351,9 +350,6 @@ router.delete('/child/:childId', async (req, res) =>  {
     res.status(200).json(childId)
         
 });
-
-
-
 
 
 

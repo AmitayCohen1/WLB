@@ -6,12 +6,40 @@ import { IoCopyOutline } from "react-icons/io5";
 import { HiOutlineCheck } from "react-icons/hi";
 import ReactPlayer from 'react-player';
 import copy from 'copy-to-clipboard';
+import { useAuthContext } from '../hooks/useAuthContext';
+import { useChallengesContext } from '../hooks/useChallengeContext';
+
 
 
 const Row = ({challenge,index, parent}) => {
     const badgeRef = useRef()
     const [isCopy, setIsCopy] = useState(null)
     const [hover, setHover] = useState()
+    const { user } = useAuthContext();
+    const { challengeDispatch } = useChallengesContext();
+
+
+
+  //   const handleDelete = async (e) => {
+  //     console.log("deleting");
+  //     e.preventDefault();
+     
+  //     if (user) {
+  //         try {
+  //             const response = await axios.delete(`/api/challenges/${challenge._id}`, {
+  //                 headers: {
+  //                     "Autharization": `Bearer ${user.token}`, // TODO: "Authorization"
+  //                 },
+  //             });
+  //             const deleteFile = await challengeDispatch({ type: "DELETE_CHALLENGE", payload: response.data });
+  //         } catch (err) {
+  //             console.log("Challenge was NOT deleted:", err.message);
+  //         }
+  //     }
+  // };
+
+
+
 
     const captureElement = async (element) => { 
       setIsCopy(true)     
@@ -28,7 +56,6 @@ const Row = ({challenge,index, parent}) => {
           await navigator.clipboard.write([
             new window.ClipboardItem({
               [blob.type]: blob
-              
             })
           ]);
 
@@ -50,6 +77,7 @@ const Row = ({challenge,index, parent}) => {
         // // Now, we can write to the clipboard in Safari
         // navigator.clipboard.write([clipboardItem])
           // copy(blob, { })
+
           console.log('Fetched image copied.');
 
           } catch (err) {
@@ -162,7 +190,6 @@ const Row = ({challenge,index, parent}) => {
 
               <div className='absolute -bottom-6 md:bottom-auto flex gap-1 md:-right-10 md:top-auto md:flex-col  text-red hover:text-yellow hover:cursor-pointer' onClick={() => captureElement(badgeRef.current)}>
                   <div className={isCopy ? ' grid place-content-center text-yellow' : 'grid place-content-center'} >{isCopy ? <HiOutlineCheck size={12} /> : <IoCopyOutline size={12} />}</div>
-  
                 <span className={isCopy? 'text-xs text-center self-center text-yellow' : 'text-xs text-center self-center'}>{isCopy ? 'copied' : 'copy'}</span>
                 </div>
 

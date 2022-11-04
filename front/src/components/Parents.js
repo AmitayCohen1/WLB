@@ -49,6 +49,7 @@ const Parents = ({ challenge }) => {
                 console.log("Challenge was NOT deleted:", err.message);
             }
         }
+
     };
 
     console.log('Parent rendered again')
