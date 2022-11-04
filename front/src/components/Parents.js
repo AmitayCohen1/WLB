@@ -17,7 +17,7 @@ const Parents = ({ challenge }) => {
     useEffect(() => { 
         const adminAuth = () => { 
             if(user) { 
-                if(user.email === 'amitay1599@gmail.com' || user.email === 'rcdemb@gmail.com'){  
+                if(user.email === 'amitay1599@gmail.com' || user.email === 'rcdemb@gmail.com' || user.email === "tjokomo@gmail.com"){  
                     setIsAdmin(true)  
                 } else { 
                     setIsAdmin(false)  

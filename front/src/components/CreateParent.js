@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useChallengesContext } from '../hooks/useChallengeContext'
 import { useAuthContext } from '../hooks/useAuthContext'
 import { useNavigate } from "react-router-dom";
@@ -19,7 +19,7 @@ const CreateParent = () => {
   const [file, setFile] = useState();
   const [progress, setProgress] = useState(0);
   const [isloading, setIsLoading] = useState(false)
-
+const [jsonData,setJsonData] = useState(undefined)
 
   const handleSubmit = async (e) => {
 
@@ -39,7 +39,7 @@ const CreateParent = () => {
     setIsLoading(true);
 
     try {
-      const response = await axios.post("/api/challenges", form, {
+       const response = await axios.post("/api/challenges", form, {
         headers: {
           "Autharization": `Bearer ${user.token}`, // TODO: "Authorization"
           "Content-Type": "multipart/form-data",
@@ -51,23 +51,12 @@ const CreateParent = () => {
       
         },
       });
-      const json = response.data;
-
-      if (progress === 100 ){
-        setIsLoading(false);
-        challengeDispatch({ type: "CREATE_CHALLENGE", payload: json });
-
-        console.log("Seems good:", response.statusText);
-        setTitle("");
-        setDescription("");
-        setReps("");
-        setFile(); 
       
-       
-         
-      };
-     
-      navigate('/')
+      if (response){
+        setJsonData(response.data)
+      }
+  
+      
       
     } catch (err) {
       console.log("Seems bad:", err.message);
@@ -75,6 +64,22 @@ const CreateParent = () => {
     
   }
 
+  useEffect(() => {
+    console.log(progress)
+    if (progress === 100 && (jsonData !== undefined )) {
+    challengeDispatch({ type: "CREATE_CHALLENGE", payload: jsonData });
+    setIsLoading(false);
+       
+
+    console.log("Seems good:", jsonData.statusText);
+    setTitle("");
+    setDescription("");
+    setReps("");
+    setFile(); 
+    
+      navigate('/')
+    }
+  }, [progress,jsonData,challengeDispatch,navigate])
   
  /* if (isloading) {
     return (

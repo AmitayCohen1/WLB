@@ -6,27 +6,44 @@ import {Box, CircularProgress, Typography} from "@mui/material"
 
     export const CircularProgressWithLabel = (props)=> {
         return (
-          <Box sx={{ position: 'relative', display: 'flex' ,flexDirection:"column",placeContent:"center",placeItems:"center",width:"auto"}}>
-            <CircularProgress variant="determinate" {...props} sx={{color: "rgb(243 93 69)"}} />
+          <Box sx={{ position: 'relative', display: 'flex' ,flexDirection:"column",placeContent:"center",placeItems:"center",marginTop:"1rem",marginBottom:"1rem"}}>
+         
             <Box
               sx={{
-                top: 0,
-                left: 0,
-                bottom: 0,
-                right: 0,
-                position: 'absolute',
+              
+                position: 'relative',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                width:"75%"
+                textAlign:"center",
+               color:"#fff",
+            
               }}
             >
-              <Typography variant="caption" component="div">
-                {`${Math.round(props.value)}%`}
-              </Typography>
+            <CircularProgress variant="determinate" {...props} sx={{color: "rgb(243 93 69)", 
+             width:"150px !important",  
+             height:"150px !important",            
+            fontSize:"50px !important",
+            }} />
+             <Typography sx={{ 
+                position: 'absolute',
+                top: "50%", 
+                right: "50%",
+                transform: "translate(50%,-50%)",
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                textAlign:"center",
+                
+            }}
+               >
+             {`${Math.round(props.value)}%`}
+             </Typography>
+          
+           
             
             </Box>
-            <Typography variant="caption" component="div" style={{color:"#fff",maxWidth:"50%"}}>
+            <Typography variant="caption" component="div" style={{color:"#fff",maxWidth:"50%", textAlign:"center"}}>
               Your record is a big deal. Your video is uploading right now. Please give big files a few minutes. You can keep this tab open and check back soon to see your rank and badge
 
               </Typography>
