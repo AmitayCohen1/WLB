@@ -25,6 +25,7 @@ const CreateChild = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        
         const form = new FormData();
         form.append("userEmail", user.userName);
         form.append("userName", user.userName);
@@ -51,13 +52,15 @@ const CreateChild = () => {
             setReps('');
             setFile();
            
-            navigate('/')
+           
         };
+        navigate('/')
         } catch (err) {
             console.log("[ERROR][handleSubmit]: " + err.message);
         } finally {
             setIsLoading(false);
         }
+        
     };
 /*
     if (isloading) {

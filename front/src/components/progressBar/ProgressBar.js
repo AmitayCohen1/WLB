@@ -6,8 +6,8 @@ import {Box, CircularProgress, Typography} from "@mui/material"
 
     export const CircularProgressWithLabel = (props)=> {
         return (
-          <Box sx={{ position: 'relative', display: 'flex' ,flexDirection:"column",placeContent:"center",placeItems:"center"}}>
-            <CircularProgress variant="determinate" {...props} />
+          <Box sx={{ position: 'relative', display: 'flex' ,flexDirection:"column",placeContent:"center",placeItems:"center",width:"auto"}}>
+            <CircularProgress variant="determinate" {...props} sx={{color: "rgb(243 93 69)"}} />
             <Box
               sx={{
                 top: 0,
@@ -18,14 +18,18 @@ import {Box, CircularProgress, Typography} from "@mui/material"
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
+                width:"75%"
               }}
             >
               <Typography variant="caption" component="div">
                 {`${Math.round(props.value)}%`}
               </Typography>
-              <p>Your record is a big deal. Your video is uploading right now. Please give big files a few minutes. You can keep this tab open and check back soon to see your rank and badge
-</p>
+            
             </Box>
+            <Typography variant="caption" component="div" style={{color:"#fff",maxWidth:"50%"}}>
+              Your record is a big deal. Your video is uploading right now. Please give big files a few minutes. You can keep this tab open and check back soon to see your rank and badge
+
+              </Typography>
           </Box>
         );
       }

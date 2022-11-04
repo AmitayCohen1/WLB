@@ -149,7 +149,7 @@ const ChallengePage = () => {
             </div>
 
             <h1 className=
-              'text-createdByColor text-opacity-80 font-light text-sm  md:pb-2'>
+              'text-createdByColor text-opacity-80 font-light text-sm  md:pb-2' style={{wordBreak:"break-word"}}>
               {parent.description}
             </h1>
             <Link className="

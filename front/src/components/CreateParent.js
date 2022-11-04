@@ -64,12 +64,15 @@ const CreateParent = () => {
         setFile(); 
       
        
-          navigate('/')
+         
       };
+     
+      navigate('/')
       
     } catch (err) {
       console.log("Seems bad:", err.message);
     }
+    
   }
 
   
@@ -94,7 +97,7 @@ const CreateParent = () => {
   return (
     <div className="grid place-items-center bg-black h-screen pb-20">
       <div className="bg-stone-900 p-8 rounded-xl m-2">
-        <form className="grid   bg-stone-900 p-8 rounded-xl" onSubmit={(e)=>handleSubmit(e)}>
+        <form className="grid   bg-stone-900 p-8 rounded-xl" onSubmit={handleSubmit}>
 
           <h1 className="font-bold text-4xl pb-10 text-white ">Set A World Record!</h1>
 
