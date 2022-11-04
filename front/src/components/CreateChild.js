@@ -47,7 +47,7 @@ const CreateChild = () => {
             const json = response.data;
             if (progress === 100 ) {
                 setIsLoading(false);
-            challengeDispatch({ type: "REPLY", payload: json });
+                challengeDispatch({ type: "REPLY", payload: json });
 
             setReps('');
             setFile();
