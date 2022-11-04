@@ -115,9 +115,8 @@ const ChallengePage = () => {
         lg:mx-28
         xl:mx-64'>
 
-          {/* <ReactPlayer 
-          className='flex-1 object-cover' 
 
+<<<<<<< HEAD
           // width='100%'
           // height='100%'
           url={parent.fileURL} 
@@ -146,23 +145,34 @@ const ChallengePage = () => {
             }}
             className='
         h-[400px] w-full aspect-square bg-black bg-opacity-0 hadow-indigo-500/40 object-cover
+=======
+          <div
+         className='grayscale
+        overflow-hidden
+        h-[400px] w-full aspect-square bg-black bg-opacity-0 rounded-xl shadow-indigo-500/40 object-cover 
+>>>>>>> ddf7aa598bd5982fe370aecbbeb2c7a6456873fe
         col-span-5
         md:col-span-3
         xl:col-span-2
         xl:h-[500px]
         '>
-            <source src={parent.fileURL} type='video/mp4' />
-          </video>
+        <ReactPlayer 
+          controls
+          className='react-player'
+          width='100%'
+          height='100%' 
+          url={parent.fileURL}
+          />
+          </div>
 
           <div className=' text-white
-          md:col-span-2
-          col-span-5
-          md:py-0
-          pt-4
-          md:pl-8
-        '>
-
-            <div className="flex place-content-between md:flex-col ">
+            md:col-span-2
+            col-span-5
+            md:py-0
+            pt-4
+            md:pl-8
+            '>
+            <div className="flex place-content-between flex-col py-2 ">
               <h1 className=
                 'font-JockeyOne text-3xl font-semibold uppercase sm:block inline md:text-5xl  text-red lg:text-5xl xl:text-6xl sm:mb-1 break-normal'>{parent.title}</h1>
               <h1 className=
@@ -170,7 +180,7 @@ const ChallengePage = () => {
             </div>
 
             <h1 className=
-              'text-createdByColor text-opacity-80 font-light text-sm  md:pb-2'>
+              'text-createdByColor text-opacity-80 font-light text-sm  md:pb-2' style={{wordBreak:"break-word"}}>
               {parent.description}
             </h1>
             <Link className="
@@ -199,15 +209,12 @@ const ChallengePage = () => {
         xl:mx-64
      '> {/* Title */}
           <div className=' col-span-3 my-2'>Record</div>
-          <div className=' col-span-2 xl:col-span-2 my-2 pl-2 '>Name</div>
+          <div className=' col-span-2 xl:col-span-2 my-2'>Name</div>
           <div className=' col-span-1 xl:col-span-1 my-2 pr-2 '>Rank</div>
           <div className='my-2 pl-2
-        col-span-2 
-        md:col-span-2
-        xl:col-span-2
-        2xl:col-span-2
+        col-span-2
         '>Score</div>
-          <div className='col-span-3 xl:col-span-1 my-2 text-center'>Badge</div>
+          <div className='col-span-3  my-2 text-center pl-4'>Badge</div>
         </div>
 
         <div className='grid gap-3 mb-4 '>

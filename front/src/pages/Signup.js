@@ -1,5 +1,5 @@
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { useSignup } from "../hooks/useSignup"
 
@@ -11,17 +11,19 @@ const Signup = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const {signup, error, isLoading} = useSignup()
+
+
   const handleSubmit = async (e) => {
     e.preventDefault()
-      await signup(userName, email, password)
-
+    await signup(userName, email, password)
   }
 
+
   return (
-    <div className=" bg-black h-screen grid place-content-center pb-24">
-    <form  className="h-fit p-16 rounded-xl bg-stone-900" onSubmit={handleSubmit}>
-      <h3 className="font-bold text-4xl text-center pb-4 text-white">Sign up</h3>
-      <h6 className="font-light text-1xl text-center pb-12 text-white">Sign up and challenge the world or <Link to="/login"><span className="text-red underline">Login</span></Link></h6>
+    <div className=" bg-black h-screen grid place-content-center">
+    <form  className="p-6 rounded-xl bg-stone-900 w-fit" onSubmit={handleSubmit}>
+      <h3 className="font-bold text-2xl text-center pb-4 text-white">Sign up</h3>
+      <h6 className="font-light text-xl text-center pb-12 text-white">Sign up and challenge the world or <Link to="/login"><span className="text-red underline">Login</span></Link></h6>
 
       <div className="grid place-items-center p-4">
 
@@ -53,7 +55,7 @@ const Signup = () => {
 
 
       <button  className="bg-red py-3 rounded px-28 hover:bg-red  text-stone-900 font-semibold  hover:text-stone-200" disabled={isLoading}>Sign up</button>
-      {error ? <div className="text-stone-300 pt-4">{error}</div> : <div> </div>}
+      {error && <div className="text-stone-300 pt-4">{error}</div>}
       </div>
     </form>
     </div>

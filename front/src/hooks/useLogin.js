@@ -24,7 +24,7 @@ export const useLogin = () => {
       // update the auth context
       userDispatch({type: "LOGIN", payload: response.data})
     } catch (err) {
-      setError(err.message);
+      setError(err.response.data.err);
     } finally {
       setIsLoading(false);
     }

@@ -5,7 +5,9 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useChallengesContext } from "../hooks/useChallengeContext"
 
+
 import axios from "../config/axios";
+import { CircularProgressWithLabel } from "./progressBar/ProgressBar";
 
 
 const CreateChild = () => {
@@ -15,12 +17,15 @@ const CreateChild = () => {
     const { challengeDispatch } = useChallengesContext();
     const [reps, setReps] = useState('');
     const [file, setFile] = useState();
+    const [progress, setProgress] = useState(0);
     const [isloading, setIsLoading] = useState(false)
 
+  
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        
         const form = new FormData();
         form.append("userEmail", user.userName);
         form.append("userName", user.userName);
@@ -32,24 +37,35 @@ const CreateChild = () => {
             const response = await axios.post(`/api/challenges/reply/${id}`, form, {
                 headers: {
                     "Autharization": `Bearer ${user.token}` // TODO: "Authorization"
-                },
+                },  
+                onUploadProgress: (progressEvent) => {
+                    let { loaded, total } = progressEvent;
+                    console.log((loaded / total) * 100);
+                    setProgress(Math.round((loaded / total) * 100));
+                  },
             });
             const json = response.data;
-
+            if (progress === 100 ) {
+                setIsLoading(false);
             challengeDispatch({ type: "REPLY", payload: json });
 
             setReps('');
             setFile();
-            navigate('/');
+           
+           
+        };
+        navigate('/')
         } catch (err) {
             console.log("[ERROR][handleSubmit]: " + err.message);
         } finally {
             setIsLoading(false);
         }
+        
     };
-
+/*
     if (isloading) {
-        return (
+        /* return (
+           
             <div className=" grid place-items-center h-screen bg-black " role="status">
                 <svg aria-hidden="true" className="w-24 h-24 text-gray-200 animate-spin dark:text-gray-600 fill-red pt-0" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"></path>
@@ -58,8 +74,8 @@ const CreateChild = () => {
                 <span className="sr-only text-red">Loading...</span>
             </div>
         )
-    } else {
-
+    }
+*/
 
 
         return (
@@ -104,6 +120,7 @@ const CreateChild = () => {
 
 
                             <button className="bg-red py-3 rounded px-28 hover:bg-hoverRed text-stone-900 font-semibold  hover:text-stone-200">Submit</button>
+                        {isloading && <CircularProgressWithLabel value={progress}/> }
                         </form>
                     </div>
                 </div>
@@ -111,7 +128,7 @@ const CreateChild = () => {
 
         )
     }
-}
+
 
 export default CreateChild;
 
