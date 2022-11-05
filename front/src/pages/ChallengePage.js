@@ -116,41 +116,10 @@ const ChallengePage = () => {
         xl:mx-64'>
 
 
-<<<<<<< HEAD
-          // width='100%'
-          // height='100%'
-          url={parent.fileURL} 
-          controls={hover ? true : false}
-          onMouseEnter={(e) => {
-              setHover(true)
-              e.target.play()
-            }}
-            onMouseLeave={(e) => {
-              setHover(false)
-              e.target.pause()
-            }}
-
-          /> */}
-
-          <video 
-          controls={hover ? true : false}
-            type="video/mp4"
-            onMouseEnter={(e) => {
-              setHover(true)
-              e.target.play()
-            }}
-            onMouseLeave={(e) => {
-              setHover(false)
-              e.target.pause()
-            }}
-            className='
-        h-[400px] w-full aspect-square bg-black bg-opacity-0 hadow-indigo-500/40 object-cover
-=======
           <div
          className='grayscale
         overflow-hidden
         h-[400px] w-full aspect-square bg-black bg-opacity-0 rounded-xl shadow-indigo-500/40 object-cover 
->>>>>>> ddf7aa598bd5982fe370aecbbeb2c7a6456873fe
         col-span-5
         md:col-span-3
         xl:col-span-2

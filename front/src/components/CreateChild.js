@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
@@ -19,7 +19,7 @@ const CreateChild = () => {
     const [file, setFile] = useState();
     const [progress, setProgress] = useState(0);
     const [isloading, setIsLoading] = useState(false)
-
+const [jsonData,setJsonData] = useState(undefined);
   
 
 
@@ -34,7 +34,7 @@ const CreateChild = () => {
         setIsLoading(true);
 
         try {
-            const response = await axios.post(`/api/challenges/reply/${id}`, form, {
+             const response = await axios.post(`/api/challenges/reply/${id}`, form, {
                 headers: {
                     "Autharization": `Bearer ${user.token}` // TODO: "Authorization"
                 },  
@@ -44,17 +44,11 @@ const CreateChild = () => {
                     setProgress(Math.round((loaded / total) * 100));
                   },
             });
-            const json = response.data;
-            if (progress === 100 ) {
-                setIsLoading(false);
-            challengeDispatch({ type: "REPLY", payload: json });
-
-            setReps('');
-            setFile();
-           
-           
-        };
-        navigate('/')
+          if (response) { 
+             setJsonData(response.data)
+            }
+          
+     
         } catch (err) {
             console.log("[ERROR][handleSubmit]: " + err.message);
         } finally {
@@ -62,6 +56,21 @@ const CreateChild = () => {
         }
         
     };
+
+    useEffect(() => {
+        console.log(progress,jsonData)
+        if (progress === 100 && (jsonData !== undefined ) ) {
+            challengeDispatch({ type: "REPLY", payload: jsonData });
+            setIsLoading(false);
+              
+
+            setReps('');
+            setFile();
+           
+            navigate('/')
+        }
+      }, [progress,jsonData,challengeDispatch,navigate])
+
 /*
     if (isloading) {
         /* return (

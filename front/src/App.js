@@ -34,9 +34,7 @@ const App = () => {
     <div className='bg-black'>
       <BrowserRouter>
       <div className='bg-black min-h-screen w-screen object-center '>
-
         <Navbar />
-
           <Routes>
             <Route path="/" element={ <Home />} />
             <Route path="/:challengeParamsId" element={ <ChallengePage />} />

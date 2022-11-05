@@ -71,7 +71,6 @@ if(challenges) {
                   lg:grid-cols-3 
                   xl:grid-cols-3 
                   2xl:grid-cols-4 
-             
                   ">
                   {challenges && challenges.map((challenge) => (
                   <Link
@@ -84,7 +83,6 @@ if(challenges) {
               </div>
           </div>
       </div>
-
     )
   } else { 
     return (
