@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "../config/axios";
 import { CircularProgressWithLabel } from "./progressBar/ProgressBar";
 
-
 const CreateParent = () => {
 
   const navigate = useNavigate()
@@ -18,8 +17,9 @@ const CreateParent = () => {
   const [reps, setReps] = useState('');
   const [file, setFile] = useState();
   const [progress, setProgress] = useState(0);
+  
   const [isloading, setIsLoading] = useState(false)
-const [jsonData,setJsonData] = useState(undefined)
+  const [jsonData,setJsonData] = useState(undefined)
 
   const handleSubmit = async (e) => {
 
@@ -54,10 +54,7 @@ const [jsonData,setJsonData] = useState(undefined)
       
       if (response){
         setJsonData(response.data)
-      }
-  
-      
-      
+      }   
     } catch (err) {
       console.log("Seems bad:", err.message);
     }
