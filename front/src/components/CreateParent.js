@@ -66,14 +66,6 @@ let percent =0;
 
     try {
     
-     
-
-
-
-
-     
-      
-
 const params = {  
     Bucket: bucketName, 
     Key: fileName,
