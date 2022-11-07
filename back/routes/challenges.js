@@ -191,7 +191,6 @@ router.post('/', upload.single('file'), async(req, res) => {
         if(error) throw error
         res.status(200).json(SavedChallenge)
     }) 
-
 })
 
 
