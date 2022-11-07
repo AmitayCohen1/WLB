@@ -17,13 +17,14 @@ import {Box, CircularProgress, Typography} from "@mui/material"
                 justifyContent: 'center',
                 textAlign:"center",
                color:"#fff",
+               marginBottom:"1.25rem"
             
               }}
             >
             <CircularProgress variant="determinate" {...props} sx={{color: "rgb(243 93 69)", 
-             width:"150px !important",  
-             height:"150px !important",            
-            fontSize:"50px !important",
+             width:"200px !important",  
+             height:"200px !important",            
+            fontSize:"60px !important",
             }} />
              <Typography sx={{ 
                 position: 'absolute',
@@ -43,10 +44,11 @@ import {Box, CircularProgress, Typography} from "@mui/material"
            
             
             </Box>
+            { props.value <= 100 && 
             <Typography variant="caption" component="div" style={{color:"#fff",maxWidth:"50%", textAlign:"center"}}>
               Your record is a big deal. Your video is uploading right now. Please give big files a few minutes. You can keep this tab open and check back soon to see your rank and badge
 
-              </Typography>
+              </Typography>}  
           </Box>
         );
       }
