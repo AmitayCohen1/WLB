@@ -145,7 +145,8 @@ router.post('/', upload.single('file'), async(req, res) => {
     const reps = req.body.reps
     const time = req.body.time 
     const userName = req.body.userName
-
+    const fileName = req.body.fileName
+/*
     const fileName = randomFileName()
 
     const params = {  
@@ -156,7 +157,7 @@ router.post('/', upload.single('file'), async(req, res) => {
     }
     const Putcommand = new PutObjectCommand(params);
     await s3.send(Putcommand);
-
+*/
     // //Saving to mongoDB
     const SavedChallenge = await new Challenge({
         title: title, 
@@ -203,12 +204,13 @@ router.post('/reply/:id', upload.single('file'), async (req, res) => {
     const reps = req.body.reps
     const userName = req.body.userName
     const userEmail = req.body.userEmail
+    const fileName = req.body.fileName
     const {id} = req.params
     
     const challenge = await Challenge.findById(id) 
-    const fileName = randomFileName()
+    //const fileName = randomFileName()
 
-    const params = {  
+    /* const params = {  
         Bucket: bucketName, 
         Key: fileName,
         Body: req.file.buffer,
@@ -216,7 +218,7 @@ router.post('/reply/:id', upload.single('file'), async (req, res) => {
     }
     const Putcommand = new PutObjectCommand(params);
     await s3.send(Putcommand);
-
+*/
 
     const SavedChallengeee = await new Reply({
         userName: userName,

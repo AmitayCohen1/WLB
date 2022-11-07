@@ -5,7 +5,7 @@ const Challenge = require('../models/ChallengeModel')
 
 // POST a  new challenge
 const postChallenge =  async (req, res) => { 
-    console.log(title, description, reps, time, file)
+    console.log(title, description, reps, time, file,fileName)
     const SaveChallenge = new Challenge(req.body)
     SaveChallenge.save((error, saveChallenge)=>{
         if(error) throw error
