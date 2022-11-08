@@ -50,6 +50,9 @@ const challengeSchema = new Schema({
     fileURL: { 
      type: String
     }, 
+    isLessReps:{
+      type: Boolean
+    },
     replies: [replySchema] 
   }, { timestamps: true });
 

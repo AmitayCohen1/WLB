@@ -48,8 +48,12 @@ const ChallengePage = () => {
     userMissData();
   }, [challengeParamsId, challengeDispatch, challenges, navigate]);
 
-  const comparator = (a, b) => {
+  const maxComparator = (a, b) => {
     return b.reps - a.reps
+  }
+
+  const minComparator = (a, b) => {
+    return a.reps - b.reps
   }
 
   const creatingList = async () => {
@@ -59,10 +63,18 @@ const ChallengePage = () => {
         userEmail: parent.userEmail,
         reps: parent.reps,
         fileURL: parent.fileURL,
-        _id: parent._id
+        _id: parent._id,
+        isLessReps:parent.isLessReps
       }
       const list = [parentObject, ...parent.replies]
-      const final = await list.sort(comparator);
+      let final ;
+      if (parent.isLessReps === true){
+       final= await list.sort(minComparator);
+      }
+      else{
+         final = await list.sort(maxComparator);
+      }
+     
       setSortedList(final)
     }
   }
