@@ -76,8 +76,7 @@ upload.on("httpUploadProgress", (prog)=>{
 
 await upload.done();
 console.log("Upload Successful")
-        
-
+    
         try {
              const response = await axios.post(`/api/challenges/reply/${id}`, form, {
                 headers: {

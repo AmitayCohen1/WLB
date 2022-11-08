@@ -43,7 +43,7 @@ const s3 = new S3Client({
   //Creating random name with crypto
   const randomFileName = (bytes = 32) => crypto.randomBytes(bytes).toString('hex');
 
-let percent =0;
+  let percent = 0;
   const handleSubmit = async (e) => {
 
     e.preventDefault();
@@ -62,7 +62,6 @@ let percent =0;
     form.append("reps", reps);
     form.append("file", file);
     form.append("fileName",fileName);
-   
 
     try {
     
@@ -70,7 +69,7 @@ const params = {
     Bucket: bucketName, 
     Key: fileName,
     Body: file,
-   ContentType: file.type,
+    ContentType: file.type,
 }
 
 //const Putcommand = new PutObjectCommand(params);
@@ -104,7 +103,6 @@ console.log("Upload Successful")
             setProgress(percent);
           }
           
-      
         },*/
       }).then(res => {
        // setProgress(percent)
@@ -120,15 +118,11 @@ console.log("Upload Successful")
        setDescription("");
        setReps("");
        setFile(); 
-       
-         
-       
-        
+   
         })
         .catch((error) => {
         console.error("Upload Error:", error)
         })
-      
       
     } catch (err) {
       console.log("Seems bad:", err);
