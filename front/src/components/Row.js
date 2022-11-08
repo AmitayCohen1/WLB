@@ -160,7 +160,9 @@ const Row = ({challenge,index, parent}) => {
 
               <div className='text-red font-RedBadge
               text-5xl
-              lg:text-6xl'>{index + 1}<span className=' font-serif absolute align-middle 
+              lg:text-6xl'>{index + 1}
+              {index < 1 ?
+               <span className=' font-serif absolute align-middle 
               text-[4px] 
               md:text-[6px]
               lg:text-[8px]
@@ -168,7 +170,37 @@ const Row = ({challenge,index, parent}) => {
               md:top-6 md:right-7
               lg:top-7 lg:right-9
               xl:top-7
-              '>nd</span></div>
+              '>st</span> : index === 1 
+              ? <span className=' font-serif absolute align-middle 
+              text-[4px] 
+              md:text-[6px]
+              lg:text-[8px]
+              top-5 right-6
+              md:top-6 md:right-7
+              lg:top-7 lg:right-9
+              xl:top-7
+              '>nd</span> 
+              : index === 2 ?
+              <span className=' font-serif absolute align-middle 
+              text-[4px] 
+              md:text-[6px]
+              lg:text-[8px]
+              top-5 right-6
+              md:top-6 md:right-7
+              lg:top-7 lg:right-9
+              xl:top-7
+              '>rd</span> 
+              : index >=3 && 
+              <span className=' font-serif absolute align-middle 
+              text-[4px] 
+              md:text-[6px]
+              lg:text-[8px]
+              top-5 right-6
+              md:top-6 md:right-7
+              lg:top-7 lg:right-9
+              xl:top-7
+              '>th</span>
+              }</div>
               <div className='text-white font-Badge text-center px-2 absolute pt-3 leading-tight
               text-[6px]  
               md:text-[7px]
