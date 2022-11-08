@@ -30,9 +30,9 @@ UserSchema.statics.signup = async function (userName, email, password) {
     if(!validator.isEmail(email)){ 
         throw Error('Unrecognized email pattern')
     }
-    if(!validator.isStrongPassword(password)){ 
-        throw Error('Password is weak')
-    }
+    // if(!validator.isStrongPassword(password)){ 
+    //     throw Error('Password is weak')
+    // }
 
     const exist = await this.findOne({ email })
     if(exist) { 

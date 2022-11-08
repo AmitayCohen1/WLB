@@ -15,7 +15,6 @@ import Canvas from './components/Canvas';
 import ChallengePage from './pages/ChallengePage';
 
 
-
 const App = () => {
   const {user, userDispatch} = useAuthContext()
 
@@ -47,7 +46,6 @@ const App = () => {
           </Routes>
         </div>
         <Footer />
-
       </BrowserRouter>
 
     </div>
