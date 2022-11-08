@@ -21,11 +21,9 @@ import {Box, CircularProgress, Typography} from "@mui/material"
             
               }}
             >
-            <CircularProgress variant="determinate" {...props} sx={{color: "rgb(243 93 69)", 
-             width:"200px !important",  
-             height:"200px !important",            
-            fontSize:"60px !important",
-            }} />
+            <CircularProgress variant="determinate" {...props}
+            
+            className="!text-red !w-28 !h-28 !md:w-52 !md:h-52 !text-5xl !md:text-7xl" />
              <Typography sx={{ 
                 position: 'absolute',
                 top: "50%", 
@@ -44,11 +42,16 @@ import {Box, CircularProgress, Typography} from "@mui/material"
            
             
             </Box>
-            { props.value <= 100 && 
+            { props.value ===0 ? 
             <Typography variant="caption" component="div" style={{color:"#fff",maxWidth:"50%", textAlign:"center"}}>
-              Your record is a big deal. Your video is uploading right now. Please give big files a few minutes. You can keep this tab open and check back soon to see your rank and badge
+            Preparing
+              </Typography> : props.value < 100 ?
+               <Typography variant="caption" component="div" style={{color:"#fff",maxWidth:"50%", textAlign:"left"}}>
+               Your record is a big deal. Your video is uploading right now. Please give big files a few minutes. You can keep this tab open and check back soon to see your rank and badge.
 
-              </Typography>}  
+                </Typography> :<Typography variant="caption" component="div" style={{color:"#fff",maxWidth:"50%", textAlign:"center"}}>
+             Processing
+              </Typography> }  
           </Box>
         );
       }
