@@ -128,18 +128,8 @@ console.log("Upload Successful")
         .catch((error) => {
         console.error("Upload Error:", error)
         })
-       
-      
-<<<<<<< HEAD
-      if (response){
-        setJsonData(response.data)
-      }   
-=======
-    
-  
       
       
->>>>>>> 977957e9d474d2f9c170fbeafd56e57fa4d2513b
     } catch (err) {
       console.log("Seems bad:", err);
     }
