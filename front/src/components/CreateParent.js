@@ -8,6 +8,7 @@ import axios from "../config/axios";
 import { CircularProgressWithLabel } from "./progressBar/ProgressBar";
 import  { S3Client, PutObjectCommand, GetObjectCommand, DeleteObjectCommand, S3} from '@aws-sdk/client-s3';
 import {  v4 as uuid  } from 'uuid';
+import { Checkbox, FormControlLabel, FormGroup } from "@mui/material";
 
   //AWS
   const bucketName = process.env.REACT_APP_BUCKET_NAME
@@ -26,9 +27,19 @@ const CreateParent = () => {
   const [reps, setReps] = useState('');
   const [file, setFile] = useState();
   const [progress, setProgress] = useState(0);
-  
+  const [isLessReps, setIsLessReps] = useState(false);
   const [isloading, setIsLoading] = useState(false)
+ 
 
+  const handleChange = (event) => {
+    if (isLessReps !== event.target.checked){
+      setIsLessReps(event.target.checked);
+    }
+    else {
+      setIsLessReps(!event.target.checked);
+    }
+  
+  };
  
 
 //S3
@@ -62,6 +73,7 @@ let percent =0;
     form.append("reps", reps);
     form.append("file", file);
     form.append("fileName",fileName);
+    form.append("isLessReps", isLessReps)
    
 
     try {
@@ -130,16 +142,10 @@ console.log("Upload Successful")
         })
        
       
-<<<<<<< HEAD
-      if (response){
-        setJsonData(response.data)
-      }   
-=======
     
   
       
       
->>>>>>> 977957e9d474d2f9c170fbeafd56e57fa4d2513b
     } catch (err) {
       console.log("Seems bad:", err);
     }
@@ -203,10 +209,45 @@ console.log("Upload Successful")
             type="number"
             onChange={e => setReps(e.target.value)}
             value={reps} />
+<div className="flex-row place-content-center place-items-center text-stone-300 flex mb-4">
+      <p> Best score is</p>
+     <FormControlLabel control={
+    
+    <Checkbox
+   checked={!isLessReps}
+   onChange={handleChange}
+   
+   className= "border-stone-400"
+   inputProps={{ 'aria-label': 'controlled' }}
+   style={{color:"rgb(214 211 209)"}} />
+   
+ 
+  
+ } 
+label="Highest"
+labelPlacement="start"
+className="rounded p-3  text-stone-400  placeholder:text-stone-400 
+ text-center place-items-center place-content-center"/>
+<FormControlLabel control={
 
+<Checkbox
+checked={isLessReps}
+onChange={handleChange}
+className= "border-stone-400"
+inputProps={{ 'aria-label': 'controlled' }}
+style={{color:"rgb(214 211 209)"}} />
+
+
+
+} 
+label="Lowest"
+labelPlacement="start"
+className="rounded p-3  text-stone-400  placeholder:text-stone-400 
+ text-center place-items-center place-content-center"/>
+      </div> 
           <input required
             className="text-sm text-slate-500
-          file:py-3 file:px-11  file:mr-6 mb-8
+          file:py-3 file:px-11  file:mr-6 mb-4
           file:rounded-full file:bg-stone-900 file:cursor-pointer file:text-stone-400 file:border file:border-solid file:border-stone-600 
           hover:file:border-red"
             name="file"
@@ -217,7 +258,9 @@ console.log("Upload Successful")
               setFile(file)
             }}
           />
-
+     
+     
+      
           <button className="bg-red py-3 rounded px-28 hover:bg-hoverRed  text-stone-900 font-semibold mb-5 hover:text-stone-200">Submit</button>
           
           

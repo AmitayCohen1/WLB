@@ -146,6 +146,7 @@ router.post('/', upload.single('file'), async(req, res) => {
     const time = req.body.time 
     const userName = req.body.userName
     const fileName = req.body.fileName
+    const isLessReps = req.body.isLessReps
 /*
     const fileName = randomFileName()
 
@@ -167,7 +168,8 @@ router.post('/', upload.single('file'), async(req, res) => {
         reps: reps, 
         time: time, 
         fileName: fileName,
-        fileURL: ''
+        fileURL: '',
+        isLessReps:isLessReps
     })
 
     // //Setting S3 URL
