@@ -20,7 +20,6 @@ const Home = () => {
       }
     }
     if (!challenges) { 
-      console.log("fetchingData");
       fetchingData();
     }
   }, [challengeDispatch, challenges]);
@@ -29,59 +28,60 @@ const Home = () => {
   Earn a badge. Show up your friends.`
 
   const splitHeadline = copy.split('.')
-  console.log(splitHeadline[1])
   
 if(challenges) { 
     return ( 
         <div className="flex-col">
-          <h1 className="
-          text-6xl px-4 pt-10 font-semibold text-white
-          font-Inter
-          sm:px-6 
-          md:px-8
-          lg:px-28 
-          xl:px-64
-          ">
-          Are you the GOAT? Prove it.</h1>
-          <h1 className='text-white
-          font-Inter
-          pt-6
-          pb-8
+          <div className='2xl:py-12 xl:py-6'> 
+                <h1 className="
+                text-6xl xl:text-7xl
+                px-4 pt-10 font-semibold text-white
+                font-Inter
+                sm:px-6 
+                md:px-8
+                lg:px-28 
+                xl:px-64
+                ">
+                Are you the GOAT? Prove it.</h1>
+                <h1 className='text-white font-Inter
+                text-base xl:text-lg 2xl:text-xl
+                pt-6
+                pb-8
+                px-4
+                sm:px-6 
+                md:px-8
+                lg:px-28 
+                xl:px-64'>
+                <div>{splitHeadline[0] + '.' + splitHeadline[1]}.</div>
+                <div>{splitHeadline[2]}.</div>
+                </h1>
+                </div>
+
+          <div className="
+          grid place-items-center  py-2 rounded-xl text-white
+          grid-cols-2 
+          gap-6
           px-4
           sm:px-6 
           md:px-8
           lg:px-28 
-          xl:px-64'>
-          <div>{splitHeadline[0] + '.' + splitHeadline[1]}.</div>
-            <div>{splitHeadline[2]}.</div>
-              </h1>
-                <div>
-                  <div className="
-                  grid place-items-center  py-2 rounded-xl text-white
-                  grid-cols-2 
-                  gap-6
-                  px-4
-                  sm:px-6 
-                  md:px-8
-                  lg:px-28 
-                  xl:px-64
+          xl:px-64
 
-                  sm:grid-cols-2 
-                  md:grid-cols-3
-                  lg:grid-cols-3 
-                  xl:grid-cols-3 
-                  2xl:grid-cols-4 
-                  ">
-                  {challenges && challenges.map((challenge) => (
-                  <Link
-                  to={`/${challenge._id}`}
-                  key={challenge._id}
-                  >
-                  <Parents key={challenge._id} challenge={challenge}/> 
-                  </Link>
-                  ))}
-              </div>
-          </div>
+          sm:grid-cols-2 
+          md:grid-cols-3
+          lg:grid-cols-3 
+          xl:grid-cols-3 
+          2xl:grid-cols-4 
+          ">
+              {challenges && challenges.map((challenge) => (
+              <Link
+              to={`/${challenge._id}`}
+              key={challenge._id}
+              >
+              <Parents key={challenge._id} challenge={challenge}/> 
+              </Link>
+              ))}
+        </div>
       </div>
     )
   } else { 
