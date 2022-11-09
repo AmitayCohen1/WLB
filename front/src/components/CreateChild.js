@@ -68,11 +68,8 @@ const upload = new Upload({
 })
 
 upload.on("httpUploadProgress", (prog)=>{
- 
- 
   setProgress(Math.floor((prog.loaded / prog.total)* 100))
 })
-
 
 await upload.done();
 console.log("Upload Successful")
@@ -95,8 +92,6 @@ console.log("Upload Successful")
 
             setReps('');
             setFile();
-           
-            
            
             }).catch((error) => {
                 console.error("Upload Error:", error)

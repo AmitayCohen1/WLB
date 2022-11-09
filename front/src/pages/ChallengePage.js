@@ -4,9 +4,7 @@ import { Link, useNavigate, useParams } from "react-router-dom"
 import { useChallengesContext } from '../hooks/useChallengeContext'
 import { AiOutlineArrowLeft } from "react-icons/ai"
 import ReactPlayer from 'react-player'
-
 import axios from "../config/axios";
-
 
 const ChallengePage = () => {
 
@@ -17,6 +15,7 @@ const ChallengePage = () => {
   const navigate = useNavigate()
   const [ending, setEnding] = useState('')
   const [hover, setHover] = useState()
+  const [challegeReps, setChallegeReps] = useState([])
 
 
   if (ending) {
@@ -64,42 +63,40 @@ const ChallengePage = () => {
         reps: parent.reps,
         fileURL: parent.fileURL,
         _id: parent._id,
-        isLessReps:parent.isLessReps
+        isLessReps: parent.isLessReps
       }
-      const list = [parentObject, ...parent.replies]
-      let final ;
-      if (parent.isLessReps === true){
-       final= await list.sort(minComparator);
+      const list = [parentObject, ...parent.replies]    
+      let final;
+      if (parent.isLessReps === true) {
+       final = await list.sort(minComparator);
       }
-      else{
-         final = await list.sort(maxComparator);
+      else {
+        final = await list.sort(maxComparator);
       }
-     
       setSortedList(final)
     }
   }
   creatingList()
 
+//   useEffect(() => {
+//     const newList = []
+//     if(parent) { 
+//       newList.push(parent.replies)
+//     }
+//   if(newList) { 
 
-
-
-  //Seting ending 
-  const repsEnding = async (index) => {
-    const position = await index + 1;
-    if (String(position).slice(-1) === '1') {
-      setEnding('th')
-      return
-    } else if (String(position).slice(-1) === '2') {
-      setEnding('th')
-      return
-    } else if (String(position).slice(-1) === '3') {
-      setEnding('th')
-      return
-    } else {
-      setEnding('what')
-      return
-    }
-  }
+//     for (let i = 0; i < parent.replies; i++) {
+//       if(parent.replies[i + 1]) { 
+//         if(parent.replies[i].reps === parent.replies[i + 1].reps) { 
+//         console.log('whatttt')
+//           } else { 
+//             console.log('NOOOOO')
+//           }
+//         }
+//       }
+//       console.log('newList', parent.replies)
+//   }
+// }, [parent])
 
 
   if (parent) {
@@ -212,8 +209,9 @@ const ChallengePage = () => {
                 index={index}
                 challenge={child}
                 parent={parent}
-              />
+              /> 
             )
+            
             ) : <h1 className="text-white">What's going on?</h1>}
         </div>
 

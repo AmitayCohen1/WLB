@@ -80,10 +80,6 @@ router.get('/', async (req, res) => {
 
 
 
-
-
-
-
 // GET AWS params for a parent (New Challenge Page)
 router.get('/:challengeParamsId', async (req, res) => { 
     const { challengeParamsId } = req.params;

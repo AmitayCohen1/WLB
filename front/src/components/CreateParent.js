@@ -37,11 +37,9 @@ const CreateParent = () => {
     }
     else {
       setIsLessReps(!event.target.checked);
-    }
-  
+    } 
   };
  
-
 //S3
 const s3 = new S3Client({
     credentials:{
@@ -92,11 +90,8 @@ const upload = new Upload({
 })
 
 upload.on("httpUploadProgress", (prog)=>{
- 
- 
   setProgress(Math.floor((prog.loaded / prog.total)* 100))
 })
-
 
 await upload.done();
 console.log("Upload Successful")
@@ -106,6 +101,7 @@ console.log("Upload Successful")
           "Autharization": `Bearer ${user.token}`, // TODO: "Authorization"
           "Content-Type": "multipart/form-data",
         },
+
        /* onUploadProgress: (progressEvent) => {
           let { loaded, total } = progressEvent;
           percent = Math.floor((loaded / total) * 100);

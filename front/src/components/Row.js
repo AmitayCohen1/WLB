@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import html2canvas from 'html2canvas';
 import Title from '../assets/Title.svg'
@@ -11,7 +11,7 @@ import { useChallengesContext } from '../hooks/useChallengeContext';
 
 
 
-const Row = ({challenge,index, parent}) => {
+const Row = ({challenge, index, parent}) => {
     const badgeRef = useRef()
     const [isCopy, setIsCopy] = useState(null)
     const [hover, setHover] = useState()
@@ -37,8 +37,6 @@ const Row = ({challenge,index, parent}) => {
   //         }
   //     }
   // };
-
-
 
 
     const captureElement = async (element) => { 
@@ -84,6 +82,14 @@ const Row = ({challenge,index, parent}) => {
           console.error(err.name, err.message, 'ERROROROROROOR');
         }
   }
+
+// useEffect(() => { 
+//   console.log('Reps::', challenge.reps, '----', 'Index:',index)
+
+//   console.log(reps)
+// },[challenge.reps, index])
+
+
   return (
     <div className='
         grid grid-cols-12
@@ -124,7 +130,7 @@ const Row = ({challenge,index, parent}) => {
         md:text-base
         lg:text-lg
         xl:text-xl
-        '>{index + 1 }</div>
+        '>{index + 1}</div>
 
         {/* Score */}
         <div className='text-yellow bg-yellow bg-opacity-20 border-yellow border px-2 w-fit rounded-full ml-2 self-center
@@ -136,9 +142,7 @@ const Row = ({challenge,index, parent}) => {
         md:text-base
         lg:text-lg
         xl:text-xl
-        '>{challenge.reps}</div>
-
-
+        '>{ challenge.reps}</div>
 
         {/* Badge & Copy*/}
         <div className='col-span-3 grid place-items-center relative ml-4 pb-8 pt-2 md:py-4'>
@@ -151,9 +155,7 @@ const Row = ({challenge,index, parent}) => {
           lg:h-[120px]'>      
 
             <img src={Title} alt='The world Leaderboard' className='absolute top-1'/>
-
             <div className='text-yellow text-[5px] text-center float-left font-Roman absolute right-[6px] pb-4'>{parent.createdAt.split('-')[0] + ' '}</div>
-
             <div className='text-yellow text-[5px] text-center float-right font-Roman font-thin absolute left-[6px] pb-4 '>
 
               {parent.createdAt.split('-')[1] + '.' + parent.createdAt.split('T' && ':')[1]}</div>
