@@ -29,6 +29,9 @@ const CreateParent = () => {
   const [progress, setProgress] = useState(0);
   const [isLessReps, setIsLessReps] = useState(false);
   const [isloading, setIsLoading] = useState(false)
+  const [errorMsg, setErrorMsg] = useState("");
+  
+  const [isFileSize, setIsFileSize] = useState(false);
  
 
   const handleChange = (event) => {
@@ -56,6 +59,8 @@ const s3 = new S3Client({
   const handleSubmit = async (e) => {
 
     e.preventDefault();
+    
+    if(isFileSize){
     setIsLoading(true);
     if (!user) {
       navigate("/");
@@ -111,32 +116,62 @@ console.log("Upload Successful")
           }
           
         },*/
-      }).then(res => {
+      }).then((res) => {
        // setProgress(percent)
        console.log(res);
-
-       challengeDispatch({ type: "CREATE_CHALLENGE", payload: res.data });
+       const payload = res;
+       challengeDispatch({ type: "CREATE_CHALLENGE", payload: payload.data });
        setIsLoading(false);
           
    
-       console.log("Seems good:", res.data.statusText);
+       console.log("Seems good:", payload.statusText);
        navigate('/')
        setTitle("");
        setDescription("");
        setReps("");
        setFile(); 
-   
+       
         })
         .catch((error) => {
         console.error("Upload Error:", error)
         })
-       
+         
+            
+           
+          
+        
+    
     
     } catch (err) {
       console.log("Seems bad:", err);
     }
     
   }
+}
+
+
+  const validateSelectedFile = (selectedFile) => {
+   
+    const MAX_FILE_SIZE = 51200 // 5MB
+
+    if (!selectedFile) {
+      setErrorMsg("Please choose a file");
+      setIsFileSize(false)
+      return
+    }
+
+    const fileSizeKiloBytes = selectedFile.size / 1024
+
+   
+    if(fileSizeKiloBytes > MAX_FILE_SIZE){
+      setErrorMsg("File size is greater than maximum limit");
+      setIsFileSize(false)
+      return
+    }
+
+    setErrorMsg("")
+    setIsFileSize(true)
+  };
 
   
   
@@ -233,7 +268,7 @@ className="rounded p-3  text-stone-400  placeholder:text-stone-400
       </div> 
           <input required
             className="text-sm text-slate-500
-          file:py-3 file:px-11  file:mr-6 mb-4
+          file:py-3 file:px-11  file:mr-6
           file:rounded-full file:bg-stone-900 file:cursor-pointer file:text-stone-400 file:border file:border-solid file:border-stone-600 
           hover:file:border-red"
             name="file"
@@ -241,13 +276,16 @@ className="rounded p-3  text-stone-400  placeholder:text-stone-400
             id='file'
             onChange={e => {
               const file = e.target.files[0]
+              validateSelectedFile(e.target.files[0]);
               setFile(file)
+              
             }}
           />
-     
+     {!isFileSize && <p className="text-amber-700
+ text-center">{errorMsg}</p>}
      
       
-          <button className="bg-red py-3 rounded px-28 hover:bg-hoverRed  text-stone-900 font-semibold mb-5 hover:text-stone-200">Submit</button>
+          <button className="bg-red py-3 rounded px-28 hover:bg-hoverRed  text-stone-900 font-semibold mb-5 hover:text-stone-200 mt-4">Submit</button>
           
           
         </form>

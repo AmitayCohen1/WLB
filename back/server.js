@@ -11,7 +11,7 @@ const app = express()
 
 // middleware
 app.use(express.json())
-app.use(cors({origin: 'http://localhost:3000'}))
+app.use(cors({origin: process.env.NODE_ENV === "production" ? "https://beaworldleader.com" : 'http://localhost:3000'}))
 
 
 app.use((req, res, next) => {
