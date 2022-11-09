@@ -164,7 +164,7 @@ console.log("Upload Successful")
 
    
     if(fileSizeKiloBytes > MAX_FILE_SIZE){
-      setErrorMsg("File size is greater than maximum limit");
+      setErrorMsg("Please upload a video that is less than 500mb");
       setIsFileSize(false)
       return
     }
@@ -281,8 +281,7 @@ className="rounded p-3  text-stone-400  placeholder:text-stone-400
               
             }}
           />
-     {!isFileSize && <p className="text-amber-700
- text-center">{errorMsg}</p>}
+     {!isFileSize && <p className="text-red pt-2 pb-3 text-left">{errorMsg}</p>}
      
       
           <button className="bg-red py-3 rounded px-28 hover:bg-hoverRed  text-stone-900 font-semibold mb-5 hover:text-stone-200 mt-4">Submit</button>
