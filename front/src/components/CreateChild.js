@@ -28,7 +28,9 @@ const CreateChild = () => {
     const [file, setFile] = useState();
     const [progress, setProgress] = useState(0);
     const [isloading, setIsLoading] = useState(false)
-
+    const [errorMsg, setErrorMsg] = useState("");
+  
+    const [isFileSize, setIsFileSize] = useState(false);
 //S3
 const s3 = new S3Client({
     credentials:{
@@ -43,6 +45,7 @@ const s3 = new S3Client({
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if(isFileSize){
         setIsLoading(true);
         const form = new FormData();
         const fileName = uuid();
@@ -87,9 +90,10 @@ console.log("Upload Successful")
                     console.log((loaded / total) * 100);
                     setProgress(Math.round((loaded / total) * 100));
                   },*/
-            }).then(res=>{
-                console.log("Seems good:", res.data.statusText);
-                challengeDispatch({ type: "REPLY", payload: res.data });
+            }).then((res)=>{
+                const payload = res;
+                console.log("Seems good:", payload.statusText);
+                challengeDispatch({ type: "REPLY", payload: payload.data });
                 setIsLoading(false);
                 navigate('/')
 
@@ -108,9 +112,31 @@ console.log("Upload Successful")
         }
         
     };
+}
 
    
-
+    const validateSelectedFile = (selectedFile) => {
+   
+        const MAX_FILE_SIZE = 51200 // 5MB
+    
+        if (!selectedFile) {
+          setErrorMsg("Please choose a file");
+          setIsFileSize(false)
+          return
+        }
+    
+        const fileSizeKiloBytes = selectedFile.size / 1024
+    
+       
+        if(fileSizeKiloBytes > MAX_FILE_SIZE){
+          setErrorMsg("File size is greater than maximum limit");
+          setIsFileSize(false)
+          return
+        }
+    
+        setErrorMsg("")
+        setIsFileSize(true)
+      };
 
     if (isloading) {
          return (
@@ -164,12 +190,15 @@ else{
                                 id='file'
                                 onChange={e => {
                                     const file = e.target.files[0]
+                                    validateSelectedFile(e.target.files[0]);
                                     setFile(file)
                                 }}
                             />
+                             {!isFileSize && <p className="text-amber-700
+ text-center">{errorMsg}</p>}
 
 
-                            <button className="bg-red py-3 rounded px-28 hover:bg-hoverRed text-stone-900 font-semibold  hover:text-stone-200">Submit</button>
+                            <button className="bg-red py-3 rounded px-28 hover:bg-hoverRed text-stone-900 font-semibold  hover:text-stone-200 mt-4">Submit</button>
                       
                         </form>
                     </div>

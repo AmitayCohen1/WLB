@@ -30,7 +30,7 @@ const CreateParent = () => {
   const [isLessReps, setIsLessReps] = useState(false);
   const [isloading, setIsLoading] = useState(false)
   const [errorMsg, setErrorMsg] = useState("");
-  const [challengeData, setChallengeData] = useState();
+  
   const [isFileSize, setIsFileSize] = useState(false);
  
 
@@ -272,7 +272,7 @@ className="rounded p-3  text-stone-400  placeholder:text-stone-400
       </div> 
           <input required
             className="text-sm text-slate-500
-          file:py-3 file:px-11  file:mr-6 mb-4
+          file:py-3 file:px-11  file:mr-6
           file:rounded-full file:bg-stone-900 file:cursor-pointer file:text-stone-400 file:border file:border-solid file:border-stone-600 
           hover:file:border-red"
             name="file"
@@ -286,10 +286,10 @@ className="rounded p-3  text-stone-400  placeholder:text-stone-400
             }}
           />
      {!isFileSize && <p className="text-amber-700
- text-center mb-4 ">{errorMsg}</p>}
+ text-center">{errorMsg}</p>}
      
       
-          <button className="bg-red py-3 rounded px-28 hover:bg-hoverRed  text-stone-900 font-semibold mb-5 hover:text-stone-200">Submit</button>
+          <button className="bg-red py-3 rounded px-28 hover:bg-hoverRed  text-stone-900 font-semibold mb-5 hover:text-stone-200 mt-4">Submit</button>
           
           
         </form>
