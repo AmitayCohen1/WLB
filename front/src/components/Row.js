@@ -8,6 +8,8 @@ import ReactPlayer from 'react-player';
 import copy from 'copy-to-clipboard';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useChallengesContext } from '../hooks/useChallengeContext';
+import axios from "../config/axios";
+
 
 
 
@@ -17,26 +19,42 @@ const Row = ({challenge, index, parent}) => {
     const [hover, setHover] = useState()
     const { user } = useAuthContext();
     const { challengeDispatch } = useChallengesContext();
+    const [isAdmin, setIsAdmin] = useState(false);
 
 
+    useEffect(() => { 
+      const adminAuth = () => { 
+          if(user) { 
+              if(user.email === 'amitay1599@gmail.com' || user.email === 'rcdemb@gmail.com' || user.email === "tjokomo@gmail.com"){  
+                  setIsAdmin(true)  
+              } else { 
+                  setIsAdmin(false)  
+              } 
+              console.log('isAdmin', isAdmin)
+              console.log('user', user)
+          }
+      }
+      console.log('rendered isAdmin')
+  adminAuth()
+  }, [isAdmin, user])
 
-  //   const handleDelete = async (e) => {
-  //     console.log("deleting");
-  //     e.preventDefault();
-     
-  //     if (user) {
-  //         try {
-  //             const response = await axios.delete(`/api/challenges/${challenge._id}`, {
-  //                 headers: {
-  //                     "Autharization": `Bearer ${user.token}`, // TODO: "Authorization"
-  //                 },
-  //             });
-  //             const deleteFile = await challengeDispatch({ type: "DELETE_CHALLENGE", payload: response.data });
-  //         } catch (err) {
-  //             console.log("Challenge was NOT deleted:", err.message);
-  //         }
-  //     }
-  // };
+
+    const handleDelete = async (e) => {
+      console.log('challenge-----', challenge, 'parent', parent)
+      e.preventDefault();
+      if (user) {
+          try {
+              const response = await axios.delete(`/api/challenges/child/${parent._id}/${challenge._id}`, {
+                  headers: {
+                      "Autharization": `Bearer ${user.token}`, // TODO: "Authorization"
+                  },
+              });
+              const deleteFile = await challengeDispatch({ type: "DELETE_CHALLENGE", payload: response.data });
+          } catch (err) {
+              console.log("Challenge was NOT deleted:", err.message);
+          }
+      }
+  };
 
 
     const captureElement = async (element) => { 
@@ -83,13 +101,6 @@ const Row = ({challenge, index, parent}) => {
         }
   }
 
-// useEffect(() => { 
-//   console.log('Reps::', challenge.reps, '----', 'Index:',index)
-
-//   console.log(reps)
-// },[challenge.reps, index])
-
-
   return (
     <div className='
         grid grid-cols-12
@@ -104,6 +115,8 @@ const Row = ({challenge, index, parent}) => {
         md:max-h-36
         lg:max-h-40
         '>
+        {/* {isAdmin && <span onClick={handleDelete} className="material-symbols-outlined">delete</span>} */}
+
 
         {/* Record */}
         <div
@@ -148,11 +161,11 @@ const Row = ({challenge, index, parent}) => {
         <div className='col-span-3 grid place-items-center relative ml-4 pb-8 pt-2 md:py-4'>
           <div ref={badgeRef} className='
            content-center bg-badgeBG  rounded-full  
-          aspect-square grid place-items-center 
-          relative self-center
-          h-[80px]
-          md:h-[100px]
-          lg:h-[120px]'>      
+            aspect-square grid place-items-center 
+            relative self-center
+            h-[80px]
+            md:h-[100px]
+            lg:h-[120px]'>      
 
             <img src={Title} alt='The world Leaderboard' className='absolute top-1'/>
             <div className='text-yellow text-[5px] text-center float-left font-Roman absolute right-[6px] pb-4'>{parent.createdAt.split('-')[0] + ' '}</div>

@@ -135,13 +135,7 @@ console.log("Upload Successful")
         .catch((error) => {
         console.error("Upload Error:", error)
         })
-         
-            
-           
-          
-        
-    
-    
+ 
     } catch (err) {
       console.log("Seems bad:", err);
     }
@@ -162,13 +156,11 @@ console.log("Upload Successful")
 
     const fileSizeKiloBytes = selectedFile.size / 1024
 
-   
     if(fileSizeKiloBytes > MAX_FILE_SIZE){
       setErrorMsg("Please upload a video that is less than 500mb");
       setIsFileSize(false)
       return
     }
-
     setErrorMsg("")
     setIsFileSize(true)
   };

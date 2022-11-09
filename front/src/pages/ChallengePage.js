@@ -18,11 +18,6 @@ const ChallengePage = () => {
   const [challegeReps, setChallegeReps] = useState([])
 
 
-  if (ending) {
-    console.log(ending)
-  }
-
-
   useEffect(() => {
     const userMissData = async () => {
       if (!challenges) {

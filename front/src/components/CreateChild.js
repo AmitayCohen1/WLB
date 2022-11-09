@@ -40,9 +40,6 @@ const s3 = new S3Client({
     region: bucketRegion
 });
 
-  
-
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         if(isFileSize){
@@ -119,15 +116,11 @@ console.log("Upload Successful")
           setIsFileSize(false)
           return
         }
-    
         const fileSizeKiloBytes = selectedFile.size / 1024
-    
-       
         if(fileSizeKiloBytes > MAX_FILE_SIZE){
-        setErrorMsg("Please upload a video that is less than 500mb");
-         
-          setIsFileSize(false)
-          return
+            setErrorMsg("Please upload a video that is less than 500mb");
+            setIsFileSize(false)
+            return
         }
     
         setErrorMsg("")
