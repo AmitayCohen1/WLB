@@ -109,7 +109,7 @@ console.log("Upload Successful")
    
     const validateSelectedFile = (selectedFile) => {
    
-        const MAX_FILE_SIZE = 51200 // 5MB
+        const MAX_FILE_SIZE = 512000 // 5MB
     
         if (!selectedFile) {
           setErrorMsg("Please choose a file");
@@ -156,8 +156,8 @@ else{
                 </div>
                 <div className="grid place-items-center bg-stone-900 h-screen pb-40">
 
-                    <div className="bg-stone-900 p-12 rounded-xl">
-                        <form className="grid  place-items-center bg-stone-900 px-8 py-4 rounded-xl" onSubmit={handleSubmit}>
+                    <div className="bg-stone-900 sm:p-12 p-0 rounded-xl">
+                        <form className="grid  place-items-center bg-stone-900 sm:px-8 px-0 py-4 rounded-xl" onSubmit={handleSubmit}>
                             <h1 className="font-bold text-5xl pb-10 text-white">Beat it!</h1>
 
                             <input

@@ -42,11 +42,11 @@ const ChallengePage = () => {
     userMissData();
   }, [challengeParamsId, challengeDispatch, challenges, navigate]);
 
-  const maxComparator = (a, b) => {
+   const maxComparator = (a, b) => {
     return b.reps - a.reps
   }
 
-  const minComparator = (a, b) => {
+   const minComparator = (a, b) => {
     return a.reps - b.reps
   }
 
