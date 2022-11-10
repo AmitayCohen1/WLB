@@ -225,6 +225,7 @@ outline-none focus:border-red"
   value={reps} />
 <div className=" place-items-center place-content-between text-stone-400 flex mt-2 mb-4">
 <p className="pr-8"> Best score is</p>
+<div>
 <FormControlLabel control={
 
 <Checkbox
@@ -254,6 +255,7 @@ label="Lowest"
 labelPlacement="start"
 className="rounded text-stone-400  placeholder:text-stone-400 
 text-center place-items-center place-content-center"/>
+</div>
 </div> 
 <input required
   className="text-sm text-slate-500 w-full
