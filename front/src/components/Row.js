@@ -232,16 +232,19 @@ const rankPositionStyles='font-serif absolute align-middle text-[4px] md:text-[6
 
               <div className='text-red font-RedBadge
               text-5xl
-              lg:text-6xl'>{rankDuplicate()[index] ? rankDuplicate()[index] : 1}
-            
-             {(rankDuplicate()[index]) === 1 ?
+              lg:text-6xl'>
+              {rankDuplicate()[index] ? rankDuplicate()[index] : 1}
+
+              {(rankDuplicate()[index]) === 1 ?
              <span className={rankPositionStyles} >st</span> : (rankDuplicate()[index]) === 2 
             ? <span className={rankPositionStyles}>nd</span> 
             : (rankDuplicate()[index]) === 3 ?
             <span className={rankPositionStyles}>rd</span> 
             : (rankDuplicate()[index]) >=4 && 
             <span className={rankPositionStyles}>th</span>
-              }</div>
+              }
+
+             </div>
               <div className='text-white font-Badge text-center px-2 absolute pt-3 leading-tight
               text-[6px]  
               md:text-[7px]
