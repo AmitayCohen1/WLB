@@ -234,7 +234,7 @@ const rankPositionStyles='font-serif absolute align-middle text-[4px] md:text-[6
               text-5xl
               lg:text-6xl'>{rankDuplicate()[index] ? rankDuplicate()[index] : 1}
             
-             {(rankDuplicate()[index]) === 1 ?
+             {(rankDuplicate()[index]) === 1 || (rankDuplicate()[index]) === undefined ?
              <span className={rankPositionStyles} >st</span> : (rankDuplicate()[index]) === 2 
             ? <span className={rankPositionStyles}>nd</span> 
             : (rankDuplicate()[index]) === 3 ?
