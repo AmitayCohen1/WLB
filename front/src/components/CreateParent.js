@@ -40,11 +40,9 @@ const CreateParent = () => {
     }
     else {
       setIsLessReps(!event.target.checked);
-    }
-  
+    } 
   };
  
-
 //S3
 const s3 = new S3Client({
     credentials:{
@@ -78,6 +76,7 @@ const s3 = new S3Client({
     form.append("reps", reps);
     form.append("file", file);
     form.append("fileName",fileName);
+    form.append("isLessReps", isLessReps);
 
     try {
     
@@ -97,11 +96,8 @@ const upload = new Upload({
 })
 
 upload.on("httpUploadProgress", (prog)=>{
- 
- 
   setProgress(Math.floor((prog.loaded / prog.total)* 100))
 })
-
 
 await upload.done();
 console.log("Upload Successful")
@@ -111,6 +107,7 @@ console.log("Upload Successful")
           "Autharization": `Bearer ${user.token}`, // TODO: "Authorization"
           "Content-Type": "multipart/form-data",
         },
+
        /* onUploadProgress: (progressEvent) => {
           let { loaded, total } = progressEvent;
           percent = Math.floor((loaded / total) * 100);
@@ -139,13 +136,7 @@ console.log("Upload Successful")
         .catch((error) => {
         console.error("Upload Error:", error)
         })
-         
-            
-           
-          
-        
-    
-    
+ 
     } catch (err) {
       console.log("Seems bad:", err);
     }
@@ -156,7 +147,7 @@ console.log("Upload Successful")
 
   const validateSelectedFile = (selectedFile) => {
    
-    const MAX_FILE_SIZE = 51200 // 5MB
+    const MAX_FILE_SIZE = 512000  // 500MB
 
     if (!selectedFile) {
       setErrorMsg("Please choose a file");
@@ -166,13 +157,11 @@ console.log("Upload Successful")
 
     const fileSizeKiloBytes = selectedFile.size / 1024
 
-   
     if(fileSizeKiloBytes > MAX_FILE_SIZE){
-      setErrorMsg("File size is greater than maximum limit");
+      setErrorMsg("Please upload a video that is less than 500mb");
       setIsFileSize(false)
       return
     }
-
     setErrorMsg("")
     setIsFileSize(true)
   };
@@ -200,59 +189,59 @@ console.log("Upload Successful")
 
   return (
     <div className="grid place-items-center bg-black h-screen pb-20">
-      <div className="bg-stone-900 p-8 rounded-xl m-2">
-        <form className="grid   bg-stone-900 p-8 rounded-xl" onSubmit={handleSubmit}>
+      <div className="bg-stone-900 sm:p-8 rounded-xl sm:m-2 p-0 m-0 ">
+        <form className="grid   bg-stone-900 sm:p-8 p-0  rounded-xl" onSubmit={handleSubmit}>
+<div className="w-full h-full sm:p-0 px-3 max-[480px]:px-5 ">
+<h1 className="font-bold text-4xl pb-10 text-white ">Set A World Record!</h1>
 
-          <h1 className="font-bold text-4xl pb-10 text-white ">Set A World Record!</h1>
+<input required
+  className="rounded p-3 text-stone-300 pr-20 placeholder:text-stone-400 mb-4 block bg-stone-900 border-stone-600 border hover:border-red  outline-none focus:border-red "
+  placeholder="Challenge title"
+  type="text"
+  onChange={e => setTitle(e.target.value)}
+  value={title}
+  maxLength="18"
+/>
 
-          <input required
-            className="rounded p-3 text-stone-300 pr-20 placeholder:text-stone-400 mb-4 block bg-stone-900 border-stone-600 border hover:border-red  outline-none focus:border-red "
-            placeholder="Challenge title"
-            type="text"
-            onChange={e => setTitle(e.target.value)}
-            value={title}
-            maxLength="18"
-          />
+<input required
+  className="rounded py-6 px-3 text-stone-300 pr-20 placeholder:text-stone-400 mb-4 
+block bg-stone-900 border-stone-600 border hover:border-red outline-none 
+focus:border-red "
+  placeholder="Description"
+  type="text"
+  onChange={e => setDescription(e.target.value)}
+  value={description}
+  maxLength="200"
+/>
 
-          <input required
-            className="rounded py-6 px-3 text-stone-300 pr-20 placeholder:text-stone-400 mb-4 
-          block bg-stone-900 border-stone-600 border hover:border-red outline-none 
-          focus:border-red "
-            placeholder="Description"
-            type="text"
-            onChange={e => setDescription(e.target.value)}
-            value={description}
-            maxLength="200"
-          />
-
-          <input
-            className="rounded p-3  text-stone-300 pr-20 placeholder:text-stone-400 
-          mb-4 bg-stone-900 border-stone-600 border hover:border-red 
-          outline-none focus:border-red"
-            placeholder="Reps"
-            required
-            type="number"
-            onChange={e => setReps(e.target.value)}
-            value={reps} />
+<input
+  className="rounded p-3  text-stone-300 pr-20 placeholder:text-stone-400 
+mb-4 bg-stone-900 border-stone-600 border hover:border-red 
+outline-none focus:border-red"
+  placeholder="Reps"
+  required
+  type="number"
+  onChange={e => setReps(e.target.value)}
+  value={reps} />
 <div className="flex-row place-content-center place-items-center text-stone-300 flex mb-4">
-      <p> Best score is</p>
-     <FormControlLabel control={
-    
-    <Checkbox
-   checked={!isLessReps}
-   onChange={handleChange}
-   
-   className= "border-stone-400"
-   inputProps={{ 'aria-label': 'controlled' }}
-   style={{color:"rgb(214 211 209)"}} />
-   
- 
-  
- } 
+<p> Best score is</p>
+<FormControlLabel control={
+
+<Checkbox
+checked={!isLessReps}
+onChange={handleChange}
+
+className= "border-stone-400"
+inputProps={{ 'aria-label': 'controlled' }}
+style={{color:"rgb(214 211 209)"}} />
+
+
+
+} 
 label="Highest"
 labelPlacement="start"
 className="rounded p-3  text-stone-400  placeholder:text-stone-400 
- text-center place-items-center place-content-center"/>
+text-center place-items-center place-content-center"/>
 <FormControlLabel control={
 
 <Checkbox
@@ -268,29 +257,30 @@ style={{color:"rgb(214 211 209)"}} />
 label="Lowest"
 labelPlacement="start"
 className="rounded p-3  text-stone-400  placeholder:text-stone-400 
- text-center place-items-center place-content-center"/>
-      </div> 
-          <input required
-            className="text-sm text-slate-500
-          file:py-3 file:px-11  file:mr-6
-          file:rounded-full file:bg-stone-900 file:cursor-pointer file:text-stone-400 file:border file:border-solid file:border-stone-600 
-          hover:file:border-red"
-            name="file"
-            type="file"
-            id='file'
-            onChange={e => {
-              const file = e.target.files[0]
-              validateSelectedFile(e.target.files[0]);
-              setFile(file)
-              
-            }}
-          />
-     {!isFileSize && <p className="text-amber-700
- text-center">{errorMsg}</p>}
-     
-      
-          <button className="bg-red py-3 rounded px-28 hover:bg-hoverRed  text-stone-900 font-semibold mb-5 hover:text-stone-200 mt-4">Submit</button>
-          
+text-center place-items-center place-content-center"/>
+</div> 
+<input required
+  className="text-sm text-slate-500
+file:py-3 file:px-11  file:mr-6
+file:rounded-full file:bg-stone-900 file:cursor-pointer file:text-stone-400 file:border file:border-solid file:border-stone-600 
+hover:file:border-red"
+  name="file"
+  type="file"
+  id='file'
+  onChange={e => {
+    const file = e.target.files[0]
+    validateSelectedFile(e.target.files[0]);
+    setFile(file)
+    
+  }}
+/>
+{!isFileSize && <p className="text-red pt-2 pb-3 text-left">{errorMsg}</p>}
+
+
+<button className="bg-red py-3 rounded px-28 hover:bg-hoverRed  text-stone-900 font-semibold mb-5 hover:text-stone-200 mt-4">Submit</button>
+
+</div>
+       
           
         </form>
       </div>

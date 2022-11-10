@@ -80,10 +80,6 @@ router.get('/', async (req, res) => {
 
 
 
-
-
-
-
 // GET AWS params for a parent (New Challenge Page)
 router.get('/:challengeParamsId', async (req, res) => { 
     const { challengeParamsId } = req.params;
@@ -119,7 +115,6 @@ router.get('/:challengeParamsId', async (req, res) => {
         challenge.save((error, challenge) => {
             if(error) throw error
             res.status(200).json(challenge)
-            console.log(challenge)
         })
     } catch(err) { 
         res.status(400).send(err)
@@ -137,7 +132,6 @@ router.use(requireAuth)
 
 //POST Parent (Create Parent)
 router.post('/', upload.single('file'), async(req, res) => { 
-    console.log('----req.body----', req.body)
     
     const title = req.body.title
     const userEmail  = req.body.userEmail
@@ -200,7 +194,6 @@ router.post('/', upload.single('file'), async(req, res) => {
 
 //POST Child (Create Child)
 router.post('/reply/:id', upload.single('file'), async (req, res) => { 
-    console.log('---req.body---', req.body)
 
     const reps = req.body.reps
     const userName = req.body.userName
@@ -312,46 +305,34 @@ router.delete('/:id', async (req, res) =>  {
 
 
 // DELETE a Child
-router.delete('/child/:childId', async (req, res) =>  {
+router.delete('/child/:parentId/:childId', async (req, res) =>  {
     const { childId } = req.params;
+    const { parentId } = req.params;
+    console.log('parentId', parentId, 'childId', childId)
+    
 
         // Deleteing from S3 
         const Params = { 
                 Bucket: bucketName,
-                Key: childFileName
+                Key: childId
              }
             const command = new DeleteObjectCommand(Params);
             await s3.send(command)
 
-            // const cfCommand = new CreateInvalidationCommand({
-            //     DistributionId: cloudfrontDistributionId,
-            //     InvalidationBatch: {
-            //       CallerReference: childFileName,
-            //       Paths: {
-            //         Quantity: 1,
-            //         Items: [
-            //           "/" + childFileName
-            //         ]
-            //       }
-            //     }
-            //   })
-              
-            //   const response = await cloudfront.send(cfCommand)
-
-                
             //Deleting from MongoDB
-            const parent = await Challenge.findById(parentID)
+            const parent = await Challenge.findById(parentId)
+            console.log('parent', parent.replies)
             const result = await parent.replies.id(childID).remove();
+            console.log('result', result)
         
             //Saving new in MongoDB
-            parent.save( (err) => {
+            parent.save((err) => {
                 if (err) return handleError(err);
                 console.log('the subdocs were removed from mongo');
                 });
 
 
     res.status(200).json(childId)
-        
 });
 
 

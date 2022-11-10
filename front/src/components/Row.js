@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import html2canvas from 'html2canvas';
 import Title from '../assets/Title.svg'
@@ -8,38 +8,107 @@ import ReactPlayer from 'react-player';
 import copy from 'copy-to-clipboard';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useChallengesContext } from '../hooks/useChallengeContext';
+import axios from "../config/axios";
+import { resolveBreakpointValues } from '@mui/system/breakpoints';
 
 
 
-const Row = ({challenge,index, parent}) => {
+
+const Row = ({challenge, index, parent}) => {
     const badgeRef = useRef()
     const [isCopy, setIsCopy] = useState(null)
     const [hover, setHover] = useState()
     const { user } = useAuthContext();
     const { challengeDispatch } = useChallengesContext();
+    const [isAdmin, setIsAdmin] = useState(false);
+    const {title, ...parentReply} = parent;
+    const totalReplies = [parentReply,...parent.replies]
 
 
+const maxComparator = (a, b) => {
+  return b.reps - a.reps
+}
 
-  //   const handleDelete = async (e) => {
-  //     console.log("deleting");
-  //     e.preventDefault();
-     
-  //     if (user) {
-  //         try {
-  //             const response = await axios.delete(`/api/challenges/${challenge._id}`, {
-  //                 headers: {
-  //                     "Autharization": `Bearer ${user.token}`, // TODO: "Authorization"
-  //                 },
-  //             });
-  //             const deleteFile = await challengeDispatch({ type: "DELETE_CHALLENGE", payload: response.data });
-  //         } catch (err) {
-  //             console.log("Challenge was NOT deleted:", err.message);
-  //         }
-  //     }
-  // };
+ const minComparator = (a, b) => {
+  return a.reps - b.reps
+}
 
 
+const rankDuplicate = () =>{
+  let sorted;
+  let rank;
+  let arr=totalReplies;
+  let rankedArray =[];
+  if(parent.isLessReps){
+    arr=arr.sort(minComparator)
+    //Sort ranking function for min Reps
+    rank = 1;
+for (var i = 0; i < arr.length; i++) {
+  // increase rank only if current score less than previous
+  if (i > 0 && arr[i].reps < arr[i - 1].reps) {
+    rank++;
+  }
+    rankedArray[i] = rank;
+}
+return rankedArray;
+  }
+   
+   //Sort ranking function for max Reps
+  else{
+   arr=arr.sort(maxComparator)
+     rank = 1;
+for (var i = 0; i < arr.length; i++) {
+  // increase rank only if current score less than previous
+  if (i > 0 && arr[i].reps < arr[i - 1].reps) {
+    rank++;
+  }
+    rankedArray[i] = rank;
+}
+return rankedArray;
+  }
+ 
 
+
+ 
+ 
+}
+const rankPositionStyles='font-serif absolute align-middle text-[4px] md:text-[6px]lg:text-[8px]top-5 right-6md:top-6 md:right-7lg:top-7 lg:right-9xl:top-7';
+
+    useEffect(() => { 
+      const adminAuth = () => { 
+          if(user) { 
+              if(user.email === 'amitay1599@gmail.com' || user.email === 'rcdemb@gmail.com' || user.email === "tjokomo@gmail.com"){  
+                  setIsAdmin(true)  
+              } else { 
+                  setIsAdmin(false)  
+              } 
+              console.log('isAdmin', isAdmin)
+              console.log('user', user)
+          }
+      }
+      console.log('rendered isAdmin')
+  adminAuth()
+  }, [isAdmin, user])
+
+
+    const handleDelete = async (e) => {
+      console.log('challenge-----', challenge, 'parent', parent)
+      e.preventDefault();
+      if (user) {
+          try {
+              const response = await axios.delete(`/api/challenges/child/${parent._id}/${challenge._id}`, {
+                  headers: {
+                      "Autharization": `Bearer ${user.token}`, // TODO: "Authorization"
+                  },
+              });
+              const deleteFile = await challengeDispatch({ type: "DELETE_CHALLENGE", payload: response.data });
+          } catch (err) {
+              console.log("Challenge was NOT deleted:", err.message);
+          }
+      }
+  };
+
+ 
 
     const captureElement = async (element) => { 
       setIsCopy(true)     
@@ -84,6 +153,7 @@ const Row = ({challenge,index, parent}) => {
           console.error(err.name, err.message, 'ERROROROROROOR');
         }
   }
+
   return (
     <div className='
         grid grid-cols-12
@@ -98,6 +168,8 @@ const Row = ({challenge,index, parent}) => {
         md:max-h-36
         lg:max-h-40
         '>
+        {/* {isAdmin && <span onClick={handleDelete} className="material-symbols-outlined">delete</span>} */}
+
 
         {/* Record */}
         <div
@@ -124,8 +196,8 @@ const Row = ({challenge,index, parent}) => {
         md:text-base
         lg:text-lg
         xl:text-xl
-        '>{index + 1 }</div>
-
+        '>{rankDuplicate()[index]} </div>
+    
         {/* Score */}
         <div className='text-yellow bg-yellow bg-opacity-20 border-yellow border px-2 w-fit rounded-full ml-2 self-center
         col-span-2
@@ -136,70 +208,38 @@ const Row = ({challenge,index, parent}) => {
         md:text-base
         lg:text-lg
         xl:text-xl
-        '>{challenge.reps}</div>
-
-
+        '>{ challenge.reps}</div>
 
         {/* Badge & Copy*/}
         <div className='col-span-3 grid place-items-center relative ml-4 pb-8 pt-2 md:py-4'>
           <div ref={badgeRef} className='
            content-center bg-badgeBG  rounded-full  
-          aspect-square grid place-items-center 
-          relative self-center
-          h-[80px]
-          md:h-[100px]
-          lg:h-[120px]'>      
+            aspect-square grid place-items-center 
+            relative self-center
+            h-[80px]
+            md:h-[100px]
+            lg:h-[120px]'>      
 
             <img src={Title} alt='The world Leaderboard' className='absolute top-1'/>
-
             <div className='text-yellow text-[5px] text-center float-left font-Roman absolute right-[6px] pb-4'>{parent.createdAt.split('-')[0] + ' '}</div>
-
             <div className='text-yellow text-[5px] text-center float-right font-Roman font-thin absolute left-[6px] pb-4 '>
 
               {parent.createdAt.split('-')[1] + '.' + parent.createdAt.split('T' && ':')[1]}</div>
 
               <div className='text-red font-RedBadge
               text-5xl
-              lg:text-6xl'>{index + 1}
-              {index < 1 ?
-               <span className=' font-serif absolute align-middle 
-              text-[4px] 
-              md:text-[6px]
-              lg:text-[8px]
-              top-5 right-6
-              md:top-6 md:right-7
-              lg:top-7 lg:right-9
-              xl:top-7
-              '>st</span> : index === 1 
-              ? <span className=' font-serif absolute align-middle 
-              text-[4px] 
-              md:text-[6px]
-              lg:text-[8px]
-              top-5 right-6
-              md:top-6 md:right-7
-              lg:top-7 lg:right-9
-              xl:top-7
-              '>nd</span> 
-              : index === 2 ?
-              <span className=' font-serif absolute align-middle 
-              text-[4px] 
-              md:text-[6px]
-              lg:text-[8px]
-              top-5 right-6
-              md:top-6 md:right-7
-              lg:top-7 lg:right-9
-              xl:top-7
-              '>rd</span> 
-              : index >=3 && 
-              <span className=' font-serif absolute align-middle 
-              text-[4px] 
-              md:text-[6px]
-              lg:text-[8px]
-              top-5 right-6
-              md:top-6 md:right-7
-              lg:top-7 lg:right-9
-              xl:top-7
-              '>th</span>
+              lg:text-6xl'>{rankDuplicate()[index]}
+            
+
+             {(rankDuplicate()[index]) === 1 ?
+             <span className={rankPositionStyles} >st</span> : (rankDuplicate()[index]) === 2 
+            ? <span className={rankPositionStyles}>nd</span> 
+            : (rankDuplicate()[index]) === 3 ?
+            <span className={rankPositionStyles}>rd</span> 
+            : (rankDuplicate()[index]) >=4 && 
+            <span className={rankPositionStyles}>th</span>
+            
+
               }</div>
               <div className='text-white font-Badge text-center px-2 absolute pt-3 leading-tight
               text-[6px]  

@@ -40,9 +40,6 @@ const s3 = new S3Client({
     region: bucketRegion
 });
 
-  
-
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         if(isFileSize){
@@ -71,11 +68,8 @@ const upload = new Upload({
 })
 
 upload.on("httpUploadProgress", (prog)=>{
- 
- 
   setProgress(Math.floor((prog.loaded / prog.total)* 100))
 })
-
 
 await upload.done();
 console.log("Upload Successful")
@@ -100,8 +94,6 @@ console.log("Upload Successful")
             setReps('');
             setFile();
            
-            
-           
             }).catch((error) => {
                 console.error("Upload Error:", error)
                 })
@@ -117,21 +109,18 @@ console.log("Upload Successful")
    
     const validateSelectedFile = (selectedFile) => {
    
-        const MAX_FILE_SIZE = 51200 // 5MB
+        const MAX_FILE_SIZE = 512000 // 5MB
     
         if (!selectedFile) {
           setErrorMsg("Please choose a file");
           setIsFileSize(false)
           return
         }
-    
         const fileSizeKiloBytes = selectedFile.size / 1024
-    
-       
         if(fileSizeKiloBytes > MAX_FILE_SIZE){
-          setErrorMsg("File size is greater than maximum limit");
-          setIsFileSize(false)
-          return
+            setErrorMsg("Please upload a video that is less than 500mb");
+            setIsFileSize(false)
+            return
         }
     
         setErrorMsg("")
@@ -167,8 +156,8 @@ else{
                 </div>
                 <div className="grid place-items-center bg-stone-900 h-screen pb-40">
 
-                    <div className="bg-stone-900 p-12 rounded-xl">
-                        <form className="grid  place-items-center bg-stone-900 px-8 py-4 rounded-xl" onSubmit={handleSubmit}>
+                    <div className="bg-stone-900 sm:p-12 p-0 rounded-xl">
+                        <form className="grid  place-items-center bg-stone-900 sm:px-8 px-0 py-4 rounded-xl" onSubmit={handleSubmit}>
                             <h1 className="font-bold text-5xl pb-10 text-white">Beat it!</h1>
 
                             <input
@@ -182,9 +171,9 @@ else{
 
                             <input required
                                 className="text-sm text-slate-500
-                file:py-3 file:px-11  file:mx-2 pb-6
-                file:rounded-full file:bg-stone-900 file:cursor-pointer file:text-stone-400 file:border file:border-solid file:border-stone-600 
-              hover:file:border-red"
+                                file:py-3 file:px-11  file:mx-2 pb-6
+                                file:rounded-full file:bg-stone-900 file:cursor-pointer file:text-stone-400 file:border file:border-solid file:border-stone-600 
+                            hover:file:border-red"
                                 name="file"
                                 type="file"
                                 id='file'
@@ -194,8 +183,7 @@ else{
                                     setFile(file)
                                 }}
                             />
-                             {!isFileSize && <p className="text-amber-700
- text-center">{errorMsg}</p>}
+                             {!isFileSize && <p className="text-amber-700 text-center pt-2">{errorMsg}</p>}
 
 
                             <button className="bg-red py-3 rounded px-28 hover:bg-hoverRed text-stone-900 font-semibold  hover:text-stone-200 mt-4">Submit</button>
