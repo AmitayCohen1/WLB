@@ -67,11 +67,7 @@ for (var i = 0; i < arr.length; i++) {
 }
 return rankedArray;
   }
- 
 
-
- 
- 
 }
 const rankPositionStyles='font-serif absolute align-middle text-[4px] md:text-[6px]lg:text-[8px]top-5 right-6md:top-6 md:right-7lg:top-7 lg:right-9xl:top-7';
 
