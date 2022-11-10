@@ -69,7 +69,7 @@ return rankedArray;
   }
 
 }
-const rankPositionStyles='font-serif absolute align-middle text-[7px] top-4 right-6 md:text-[10px] lg:text-[11px]  md:top-6 md:right-7 lg:top-7 lg:right-9 xl:top-7 xl:text-[11px]';
+const rankPositionStyles='font-serif absolute align-middle text-[7px] top-4 sm:top-2 right-6 md:text-[8px] md:top-6 md:right-7 lg:text-[9px] lg:top-7 lg:right-9 xl:top-7 xl:text-[11px]';
 
     useEffect(() => { 
       const adminAuth = () => { 
@@ -226,8 +226,9 @@ const rankPositionStyles='font-serif absolute align-middle text-[7px] top-4 righ
 
               {parent.createdAt.split('-')[1] + '.' + parent.createdAt.split('T' && ':')[1]}</div>
 
-              <div className='text-red font-RedBadge
-              text-5xl
+              <div className='text-red font-RedBadge 
+              text-[45px]
+              md:text-5xl
               lg:text-6xl'>{rankDuplicate()[index] ? rankDuplicate()[index] : 1}
             
              {(rankDuplicate()[index]) === 1 || (rankDuplicate()[index]) === undefined ?
