@@ -189,8 +189,8 @@ console.log("Upload Successful")
 
   return (
     <div className="grid place-items-center bg-black h-screen pb-20">
-      <div className="bg-stone-900 rounded-xl sm:m-2 p-0 m-0 ">
-        <form className="grid bg-stone-900  p-8 rounded-xl" onSubmit={handleSubmit}>
+      <div className="bg-stone-900 rounded-xl sm:m-2 ">
+        <form className="grid bg-stone-900  p-8 lg:p-14 rounded-xl" onSubmit={handleSubmit}>
 <div className="w-full h-full  max-[480px]:px-5 ">
 <h1 className="font-bold text-4xl  text-center pb-10 text-white ">Set A World Record!</h1>
 
@@ -218,7 +218,7 @@ focus:border-red "
   className="rounded p-3 w-full text-stone-300 pr-20 placeholder:text-stone-400 
 mb-4 bg-stone-900 border-stone-600 border hover:border-red 
 outline-none focus:border-red"
-  placeholder="Reps"
+  placeholder="Score"
   required
   type="number"
   onChange={e => setReps(e.target.value)}
