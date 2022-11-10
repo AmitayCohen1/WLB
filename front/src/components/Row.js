@@ -220,7 +220,7 @@ const rankPositionStyles='font-serif absolute align-middle text-[4px] md:text-[6
             md:h-[100px]
             lg:h-[120px]'>      
 
-            
+
             <img src={Title} alt='The world Leaderboard' className='absolute top-1'/>
             <div className='text-yellow text-[5px] text-center float-left font-Roman absolute right-[6px] pb-4'>{parent.createdAt.split('-')[0] + ' '}</div>
             <div className='text-yellow text-[5px] text-center float-right font-Roman font-thin absolute left-[6px] pb-4 '>
@@ -239,8 +239,6 @@ const rankPositionStyles='font-serif absolute align-middle text-[4px] md:text-[6
             <span className={rankPositionStyles}>rd</span> 
             : (rankDuplicate()[index]) >=4 && 
             <span className={rankPositionStyles}>th</span>
-           
-
               }</div>
               <div className='text-white font-Badge text-center px-2 absolute pt-3 leading-tight
               text-[6px]  
@@ -258,7 +256,6 @@ const rankPositionStyles='font-serif absolute align-middle text-[4px] md:text-[6
               lg:text-[9px]  
 
               '>{parent.title}</div>
-
 
               <div className='absolute -bottom-6 md:bottom-auto flex gap-1 md:-right-10 md:top-auto md:flex-col  text-red hover:text-yellow hover:cursor-pointer' onClick={() => captureElement(badgeRef.current)}>
                   <div className={isCopy ? ' grid place-content-center text-yellow' : 'grid place-content-center'} >{isCopy ? <HiOutlineCheck size={12} /> : <IoCopyOutline size={12} />}</div>

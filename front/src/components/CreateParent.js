@@ -189,13 +189,13 @@ console.log("Upload Successful")
 
   return (
     <div className="grid place-items-center bg-black h-screen pb-20">
-      <div className="bg-stone-900 sm:p-8 rounded-xl sm:m-2 p-0 m-0 ">
-        <form className="grid   bg-stone-900 sm:p-8 p-0  rounded-xl" onSubmit={handleSubmit}>
-<div className="w-full h-full sm:p-0 px-3 max-[480px]:px-5 ">
-<h1 className="font-bold text-4xl pb-10 text-white ">Set A World Record!</h1>
+      <div className="bg-stone-900 rounded-xl sm:m-2 p-0 m-0 ">
+        <form className="grid bg-stone-900  p-8 rounded-xl" onSubmit={handleSubmit}>
+<div className="w-full h-full  max-[480px]:px-5 ">
+<h1 className="font-bold text-4xl  text-center pb-10 text-white ">Set A World Record!</h1>
 
 <input required
-  className="rounded p-3 text-stone-300 pr-20 placeholder:text-stone-400 mb-4 block bg-stone-900 border-stone-600 border hover:border-red  outline-none focus:border-red "
+  className="rounded p-3 w-full  text-stone-300 pr-20 placeholder:text-stone-400 mb-4 bg-stone-900 border-stone-600 border hover:border-red outline-none focus:border-red "
   placeholder="Challenge title"
   type="text"
   onChange={e => setTitle(e.target.value)}
@@ -204,7 +204,7 @@ console.log("Upload Successful")
 />
 
 <input required
-  className="rounded py-6 px-3 text-stone-300 pr-20 placeholder:text-stone-400 mb-4 
+  className="rounded w-full py-6 px-3 text-stone-300 pr-20 placeholder:text-stone-400 mb-4 
 block bg-stone-900 border-stone-600 border hover:border-red outline-none 
 focus:border-red "
   placeholder="Description"
@@ -215,7 +215,7 @@ focus:border-red "
 />
 
 <input
-  className="rounded p-3  text-stone-300 pr-20 placeholder:text-stone-400 
+  className="rounded p-3 w-full text-stone-300 pr-20 placeholder:text-stone-400 
 mb-4 bg-stone-900 border-stone-600 border hover:border-red 
 outline-none focus:border-red"
   placeholder="Reps"
@@ -223,8 +223,8 @@ outline-none focus:border-red"
   type="number"
   onChange={e => setReps(e.target.value)}
   value={reps} />
-<div className="flex-row place-content-center place-items-center text-stone-300 flex mb-4">
-<p> Best score is</p>
+<div className=" place-items-center place-content-between text-stone-400 flex mt-2 mb-4">
+<p className="pr-8"> Best score is</p>
 <FormControlLabel control={
 
 <Checkbox
@@ -235,12 +235,10 @@ className= "border-stone-400"
 inputProps={{ 'aria-label': 'controlled' }}
 style={{color:"rgb(214 211 209)"}} />
 
-
-
 } 
 label="Highest"
 labelPlacement="start"
-className="rounded p-3  text-stone-400  placeholder:text-stone-400 
+className="rounded  text-stone-400  placeholder:text-stone-400 
 text-center place-items-center place-content-center"/>
 <FormControlLabel control={
 
@@ -250,17 +248,15 @@ onChange={handleChange}
 className= "border-stone-400"
 inputProps={{ 'aria-label': 'controlled' }}
 style={{color:"rgb(214 211 209)"}} />
-
-
-
 } 
+
 label="Lowest"
 labelPlacement="start"
-className="rounded p-3  text-stone-400  placeholder:text-stone-400 
+className="rounded text-stone-400  placeholder:text-stone-400 
 text-center place-items-center place-content-center"/>
 </div> 
 <input required
-  className="text-sm text-slate-500
+  className="text-sm text-slate-500 w-full
 file:py-3 file:px-11  file:mr-6
 file:rounded-full file:bg-stone-900 file:cursor-pointer file:text-stone-400 file:border file:border-solid file:border-stone-600 
 hover:file:border-red"
@@ -277,7 +273,7 @@ hover:file:border-red"
 {!isFileSize && <p className="text-red pt-2 pb-3 text-left">{errorMsg}</p>}
 
 
-<button className="bg-red py-3 rounded px-28 hover:bg-hoverRed  text-stone-900 font-semibold mb-5 hover:text-stone-200 mt-4">Submit</button>
+<button className="bg-red py-3 w-full rounded px-28 hover:bg-hoverRed  text-stone-900 font-semibold mb-5 hover:text-stone-200 mt-4">Submit</button>
 
 </div>
        
