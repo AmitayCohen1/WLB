@@ -17,7 +17,6 @@ import { resolveBreakpointValues } from '@mui/system/breakpoints';
 const Row = ({challenge, index, parent}) => {
     const badgeRef = useRef()
     const [isCopy, setIsCopy] = useState(null)
-    const [hover, setHover] = useState()
     const { user } = useAuthContext();
     const { challengeDispatch } = useChallengesContext();
     const [isAdmin, setIsAdmin] = useState(false);
@@ -37,10 +36,10 @@ const maxComparator = (a, b) => {
 const rankDuplicate = () =>{
   let sorted;
   let rank;
-  let arr=totalReplies;
-  let rankedArray =[];
+  let arr = totalReplies;
+  let rankedArray = [];
   if(parent.isLessReps){
-    arr=arr.sort(minComparator)
+    arr = arr.sort(minComparator)
     //Sort ranking function for min Reps
     rank = 1;
 for (var i = 0; i < arr.length; i++) {
@@ -50,6 +49,7 @@ for (var i = 0; i < arr.length; i++) {
   }
     rankedArray[i] = rank;
 }
+console.log('rankedArray',rankedArray)
 return rankedArray;
   }
    
@@ -231,7 +231,6 @@ const rankPositionStyles='font-serif absolute align-middle text-[4px] md:text-[6
               text-5xl
               lg:text-6xl'>{rankDuplicate()[index]}
             
-
              {(rankDuplicate()[index]) === 1 ?
              <span className={rankPositionStyles} >st</span> : (rankDuplicate()[index]) === 2 
             ? <span className={rankPositionStyles}>nd</span> 
