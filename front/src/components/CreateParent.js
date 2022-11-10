@@ -191,7 +191,7 @@ console.log("Upload Successful")
     <div className="grid place-items-center bg-black h-screen pb-20">
       <div className="bg-stone-900 sm:p-8 rounded-xl sm:m-2 p-0 m-0 ">
         <form className="grid   bg-stone-900 sm:p-8 p-0  rounded-xl" onSubmit={handleSubmit}>
-<div className="w-full h-full sm:p-0 px-3 max-[480px]:px-5 ">
+<div className="flex flex-col w-full h-full sm:p-0 px-3 max-[480px]:px-5 ">
 <h1 className="font-bold text-4xl pb-10 text-white ">Set A World Record!</h1>
 
 <input required
