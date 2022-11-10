@@ -43,13 +43,17 @@ import {Box, CircularProgress, Typography} from "@mui/material"
             
             </Box>
             { props.value ===0 ? 
-            <Typography variant="caption" component="div" style={{color:"#fff",maxWidth:"50%", textAlign:"center"}}>
+            <Typography variant="caption" component="div"  className="!text-2xl text-white !text-align-left !max-w-[80%]">
             Preparing
               </Typography> : props.value < 100 ?
-               <Typography variant="caption" component="div" style={{color:"#fff",maxWidth:"50%", textAlign:"left"}}>
-               Your record is a big deal. Your video is uploading right now. Please give big files a few minutes. You can keep this tab open and check back soon to see your rank and badge.
+               <Typography variant="caption" component="div"  className="!text-2xl text-white !text-align-left !max-w-[80%]">
+               Your record is a big deal. Your video is uploading right now. 
+               <br/>
+               Please give big files a few minutes. 
+               <br/>
+               You can keep this tab open and check back soon to see your rank and badge.
 
-                </Typography> :<Typography variant="caption" component="div" style={{color:"#fff",maxWidth:"50%", textAlign:"center"}}>
+                </Typography> :<Typography variant="caption" component="div"  className="!text-2xl text-white !text-align-center !max-w-[80%]">
              Processing
               </Typography> }  
           </Box>

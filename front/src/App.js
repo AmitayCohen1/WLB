@@ -32,7 +32,7 @@ const App = () => {
   return (
     <div className='bg-black'>
       <BrowserRouter>
-      <div className='bg-black min-h-screen w-screen object-center '>
+      <div className='bg-black min-h-screen sm:w-screen w-full object-center '>
         <Navbar />
           <Routes>
             <Route path="/" element={ <Home />} />

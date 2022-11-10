@@ -9,6 +9,7 @@ import copy from 'copy-to-clipboard';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useChallengesContext } from '../hooks/useChallengeContext';
 import axios from "../config/axios";
+import { resolveBreakpointValues } from '@mui/system/breakpoints';
 
 
 
@@ -20,7 +21,58 @@ const Row = ({challenge, index, parent}) => {
     const { user } = useAuthContext();
     const { challengeDispatch } = useChallengesContext();
     const [isAdmin, setIsAdmin] = useState(false);
+    const {title, ...parentReply} = parent;
+    const totalReplies = [parentReply,...parent.replies]
 
+
+const maxComparator = (a, b) => {
+  return b.reps - a.reps
+}
+
+ const minComparator = (a, b) => {
+  return a.reps - b.reps
+}
+
+
+const rankDuplicate = () =>{
+  let sorted;
+  let rank;
+  let arr=totalReplies;
+  let rankedArray =[];
+  if(parent.isLessReps){
+    arr=arr.sort(minComparator)
+    //Sort ranking function for min Reps
+    rank = 1;
+for (var i = 0; i < arr.length; i++) {
+  // increase rank only if current score less than previous
+  if (i > 0 && arr[i].reps < arr[i - 1].reps) {
+    rank++;
+  }
+    rankedArray[i] = rank;
+}
+return rankedArray;
+  }
+   
+   //Sort ranking function for max Reps
+  else{
+   arr=arr.sort(maxComparator)
+     rank = 1;
+for (var i = 0; i < arr.length; i++) {
+  // increase rank only if current score less than previous
+  if (i > 0 && arr[i].reps < arr[i - 1].reps) {
+    rank++;
+  }
+    rankedArray[i] = rank;
+}
+return rankedArray;
+  }
+ 
+
+
+ 
+ 
+}
+const rankPositionStyles='font-serif absolute align-middle text-[4px] md:text-[6px]lg:text-[8px]top-5 right-6md:top-6 md:right-7lg:top-7 lg:right-9xl:top-7';
 
     useEffect(() => { 
       const adminAuth = () => { 
@@ -56,6 +108,7 @@ const Row = ({challenge, index, parent}) => {
       }
   };
 
+ 
 
     const captureElement = async (element) => { 
       setIsCopy(true)     
@@ -143,8 +196,8 @@ const Row = ({challenge, index, parent}) => {
         md:text-base
         lg:text-lg
         xl:text-xl
-        '>{index + 1}</div>
-
+        '>{rankDuplicate()[index]} </div>
+    
         {/* Score */}
         <div className='text-yellow bg-yellow bg-opacity-20 border-yellow border px-2 w-fit rounded-full ml-2 self-center
         col-span-2
@@ -175,46 +228,18 @@ const Row = ({challenge, index, parent}) => {
 
               <div className='text-red font-RedBadge
               text-5xl
-              lg:text-6xl'>{index + 1}
-              {index < 1 ?
-               <span className=' font-serif absolute align-middle 
-              text-[4px] 
-              md:text-[6px]
-              lg:text-[8px]
-              top-5 right-6
-              md:top-6 md:right-7
-              lg:top-7 lg:right-9
-              xl:top-7
-              '>st</span> : index === 1 
-              ? <span className=' font-serif absolute align-middle 
-              text-[4px] 
-              md:text-[6px]
-              lg:text-[8px]
-              top-5 right-6
-              md:top-6 md:right-7
-              lg:top-7 lg:right-9
-              xl:top-7
-              '>nd</span> 
-              : index === 2 ?
-              <span className=' font-serif absolute align-middle 
-              text-[4px] 
-              md:text-[6px]
-              lg:text-[8px]
-              top-5 right-6
-              md:top-6 md:right-7
-              lg:top-7 lg:right-9
-              xl:top-7
-              '>rd</span> 
-              : index >=3 && 
-              <span className=' font-serif absolute align-middle 
-              text-[4px] 
-              md:text-[6px]
-              lg:text-[8px]
-              top-5 right-6
-              md:top-6 md:right-7
-              lg:top-7 lg:right-9
-              xl:top-7
-              '>th</span>
+              lg:text-6xl'>{rankDuplicate()[index]}
+            
+
+             {(rankDuplicate()[index]) === 1 ?
+             <span className={rankPositionStyles} >st</span> : (rankDuplicate()[index]) === 2 
+            ? <span className={rankPositionStyles}>nd</span> 
+            : (rankDuplicate()[index]) === 3 ?
+            <span className={rankPositionStyles}>rd</span> 
+            : (rankDuplicate()[index]) >=4 && 
+            <span className={rankPositionStyles}>th</span>
+            
+
               }</div>
               <div className='text-white font-Badge text-center px-2 absolute pt-3 leading-tight
               text-[6px]  
