@@ -52,7 +52,6 @@ const Parents = ({ challenge }) => {
 
     };
 
-    console.log('Parent rendered again')
         return ( 
                 <div className="flex-col hover:opacity-80">
                     <div className='flex place-content-between place-items-end h-full'>

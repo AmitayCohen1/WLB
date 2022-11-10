@@ -175,6 +175,7 @@ const Row = ({challenge, index, parent}) => {
 
               <div className='text-red font-RedBadge
               text-5xl
+              xll:text-6xl
               lg:text-6xl'>{index + 1}
               {index < 1 ?
                <span className=' font-serif absolute align-middle 
