@@ -1,24 +1,24 @@
-name: GitHub -> AWS CD
+# name: GitHub -> AWS CD
 
-on:
-    push:
-        branches: [main]
+# on:
+#     push:
+#         branches: [main]
 
-jobs:
-    start:
-        runs-on: ubuntu-latest
+# jobs:
+#     start:
+#         runs-on: ubuntu-latest
 
-        steps:
-            - uses: actions/checkout@v2
-            - name: AWS SSM Send Command
-              uses: peterkimzz/aws-ssm-send-command@master
-              id: ssm
-              with:
-                aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-                aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-                aws-region: ${{ secrets.AWS_REGION }}
-                instance-ids: ${{ secrets.AWS_INSTANCE_ID }}
+#         steps:
+#             - uses: actions/checkout@v2
+#             - name: AWS SSM Send Command
+#               uses: peterkimzz/aws-ssm-send-command@master
+#               id: ssm
+#               with:
+#                 aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#                 aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#                 aws-region: ${{ secrets.AWS_REGION }}
+#                 instance-ids: ${{ secrets.AWS_INSTANCE_ID }}
 
-                working-directory: ${{ secrets.AWS_WORK_DIR }}
-                command: sudo -u ubuntu /bin/sh ./deploy.sh
-                comment: Deploying!
+#                 working-directory: ${{ secrets.AWS_WORK_DIR }}
+#                 command: sudo -u ubuntu /bin/sh ./deploy.sh
+#                 comment: Deploying!
