@@ -10,6 +10,7 @@ import { useAuthContext } from '../hooks/useAuthContext';
 import { useChallengesContext } from '../hooks/useChallengeContext';
 import axios from "../config/axios";
 import { resolveBreakpointValues } from '@mui/system/breakpoints';
+import { Button } from '@mui/material';
 
 
 
@@ -35,7 +36,7 @@ const maxComparator = (a, b) => {
 
 
 const rankDuplicate = () =>{
-  let sorted;
+ 
   let rank;
   let arr=totalReplies;
   let rankedArray =[];
@@ -44,8 +45,8 @@ const rankDuplicate = () =>{
     //Sort ranking function for min Reps
     rank = 1;
 for (var i = 0; i < arr.length; i++) {
-  // increase rank only if current score less than previous
-  if (i > 0 && arr[i].reps < arr[i - 1].reps) {
+  // increase rank only if current score more than previous
+  if (i > 0 && arr[i].reps > arr[i - 1].reps) {
     rank++;
   }
     rankedArray[i] = rank;
@@ -96,12 +97,14 @@ const rankPositionStyles='font-serif absolute align-middle text-[4px] md:text-[6
       e.preventDefault();
       if (user) {
           try {
-              const response = await axios.delete(`/api/challenges/child/${parent._id}/${challenge._id}`, {
+            if(parent._id !== challenge._id)
+            {  const response = await axios.delete(`/api/challenges/child/${parent._id}/${challenge._id}`, {
                   headers: {
                       "Autharization": `Bearer ${user.token}`, // TODO: "Authorization"
                   },
               });
               const deleteFile = await challengeDispatch({ type: "DELETE_CHALLENGE", payload: response.data });
+            }
           } catch (err) {
               console.log("Challenge was NOT deleted:", err.message);
           }
@@ -196,7 +199,7 @@ const rankPositionStyles='font-serif absolute align-middle text-[4px] md:text-[6
         md:text-base
         lg:text-lg
         xl:text-xl
-        '>{rankDuplicate()[index]} </div>
+        '>{rankDuplicate()[index] ? rankDuplicate()[index] : 1} </div>
     
         {/* Score */}
         <div className='text-yellow bg-yellow bg-opacity-20 border-yellow border px-2 w-fit rounded-full ml-2 self-center
@@ -220,6 +223,7 @@ const rankPositionStyles='font-serif absolute align-middle text-[4px] md:text-[6
             md:h-[100px]
             lg:h-[120px]'>      
 
+            
             <img src={Title} alt='The world Leaderboard' className='absolute top-1'/>
             <div className='text-yellow text-[5px] text-center float-left font-Roman absolute right-[6px] pb-4'>{parent.createdAt.split('-')[0] + ' '}</div>
             <div className='text-yellow text-[5px] text-center float-right font-Roman font-thin absolute left-[6px] pb-4 '>
@@ -238,7 +242,7 @@ const rankPositionStyles='font-serif absolute align-middle text-[4px] md:text-[6
             <span className={rankPositionStyles}>rd</span> 
             : (rankDuplicate()[index]) >=4 && 
             <span className={rankPositionStyles}>th</span>
-            
+           
 
               }</div>
               <div className='text-white font-Badge text-center px-2 absolute pt-3 leading-tight
@@ -270,8 +274,10 @@ const rankPositionStyles='font-serif absolute align-middle text-[4px] md:text-[6
         </div>
 
         {/* Copy Icon */}
+       { isAdmin && (parent._id !== challenge._id) &&
+                <Button onClick={(e)=>handleDelete(e)} className="!text-red "> Delete </Button>}
 
-
+                   {/* Delete */}
         </div>
   )
 }
