@@ -44,7 +44,7 @@ import {Box, CircularProgress, Typography} from "@mui/material"
             </Box>
             { props.value ===0 ? 
             <Typography variant="caption" component="div"  className="!text-2xl text-white !text-align-left !max-w-[80%]">
-            Preparing
+            Preparing for upload...
               </Typography> : props.value < 100 ?
                <Typography variant="caption" component="div"  className="!text-2xl text-white !text-align-left !max-w-[80%]">
                Your record is a big deal. Your video is uploading right now. 

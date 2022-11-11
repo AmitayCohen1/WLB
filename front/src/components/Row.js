@@ -50,7 +50,6 @@ for (var i = 0; i < arr.length; i++) {
   }
     rankedArray[i] = rank;
 }
-console.log('rankedArray',rankedArray)
 return rankedArray;
   }
    
@@ -79,17 +78,13 @@ const rankPositionStyles='font-serif absolute align-middle text-[7px] top-4 sm:t
               } else { 
                   setIsAdmin(false)  
               } 
-              console.log('isAdmin', isAdmin)
-              console.log('user', user)
           }
       }
-      console.log('rendered isAdmin')
   adminAuth()
   }, [isAdmin, user])
 
 
     const handleDelete = async (e) => {
-      console.log('challenge-----', challenge, 'parent', parent)
       e.preventDefault();
       if (user) {
           try {
@@ -115,9 +110,7 @@ const rankPositionStyles='font-serif absolute align-middle text-[7px] top-4 sm:t
           scale: 15,
             allowTaint: true
         });
-        console.log(canvas)
         const url = await canvas.toDataURL()
-        console.log(url)
             try {
           const data = await fetch(url);
           const blob = await data.blob();
@@ -146,7 +139,6 @@ const rankPositionStyles='font-serif absolute align-middle text-[7px] top-4 sm:t
         // navigator.clipboard.write([clipboardItem])
           // copy(blob, { })
 
-          console.log('Fetched image copied.');
 
           } catch (err) {
           console.error(err.name, err.message, 'ERROROROROROOR');

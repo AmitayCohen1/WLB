@@ -258,6 +258,7 @@ text-center place-items-center place-content-center"/>
 </div>
 </div> 
 <input required
+  accept="video/*"
   className="text-sm text-slate-500 w-full
 file:py-3 file:px-11  file:mr-6
 file:rounded-full file:bg-stone-900 file:cursor-pointer file:text-stone-400 file:border file:border-solid file:border-stone-600 
