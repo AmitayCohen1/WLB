@@ -43,7 +43,7 @@ const Navbar = () => {
               isActive ? "px-4 text-red" : 'hover:text-red px-4 text-white ease-in duration-100 '} 
               to='login' >Login
               </NavLink>}
-              {user && <button className='hover:text-red text-white px-4 ease-in duration-100 bg-blue-500' onClick={handleLogout}>Logout</button>}
+              {user && <button className='hover:text-red text-white px-4 ease-in duration-100' onClick={handleLogout}>Logout</button>}
               </div>
             </div>
           </div>
