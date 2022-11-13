@@ -163,7 +163,7 @@ else{
                     md:px-10
                     lg:px-28 
                     xl:px-64 ">
-                        <div className="lg:grid  lg:place-content-center">
+                        <div className="lg:grid  lg:place-content-center lg:pt-12">
                             <form className="grid rounded-xl lg:w-96" onSubmit={handleSubmit}>
                                 <h1 className="font-bold text-5xl pb-10 text-white">Beat it!</h1>
 

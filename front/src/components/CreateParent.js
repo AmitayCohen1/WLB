@@ -196,7 +196,7 @@ console.log("Upload Successful")
     xl:px-64
     
     ">
-      <div className=" rounded-xl  lg:grid  lg:place-content-center ">
+      <div className=" rounded-xl  lg:grid  lg:place-content-center lg:pt-24  ">
         <form className="grid  rounded-xl" onSubmit={handleSubmit}>
 <div className="flex flex-col w-full h-full px-3 ">
 <h1 className="font-bold text-5xl pb-10 text-white ">Set A World Record!</h1>
