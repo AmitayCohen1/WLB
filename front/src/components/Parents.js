@@ -65,12 +65,15 @@ const Parents = ({ challenge }) => {
                     <div className=' aspect-square pt-2'>
                         <div>                           
                             <div className=' bg-white bg-opacity-25 rounded-xl overflow-hidden grayscale aspect-square'>
-                            <ReactPlayer 
+                            {challenge.url ? <ReactPlayer 
                             className='react-player'
                                 width='100%'
                                 height='100%'
                                 url={challenge.fileURL}
-                            />
+                            />  : <div className='animate-pulse bg-black w-48 lg:w-64  aspect-square '> </div>
+                           
+                            }
+                            
                 </div>
           </div>        
             </div>
