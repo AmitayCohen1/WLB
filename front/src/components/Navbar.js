@@ -28,8 +28,8 @@ const Navbar = () => {
       xl:px-64' 
       role="navigation"> 
         <Link to='/' className='flex items-center text-lg text-red font-JockeyOne'><img className='h-14 pr-2' src={wlbLogo} alt="wlb"/></Link>
-        <div className='flex content-center '>
-        <NavLink className={({isActive}) => isActive ? " px-4 bg-red text-black py-3 rounded-full font-Inter" : 'hover:bg-red px-4 ease-in duration-100 bg-yellow text-black font-medium text-xs md:text-base lg:text-lg py-3 rounded-full font-Inter'} to='create'>Set A World Record</NavLink>      
+        <div className='flex content-center'>
+        <NavLink className={({isActive}) => isActive ? 'hover:bg-red px-4 ease-in duration-100 bg-red text-black font-medium text-xs md:text-base lg:text-lg py-3 rounded-full font-Inter' : 'hover:bg-red px-4 ease-in duration-100 bg-yellow text-black font-medium text-xs md:text-base lg:text-lg py-3 rounded-full font-Inter'} to='create'>Set A World Record</NavLink>      
 
         <div onClick={handleNav} className='cursor-pointer md:hidden text-white hover:text-red place-content-center grid pl-2'>
           { nav ? <AiOutlineClose size={20} 
@@ -51,7 +51,7 @@ const Navbar = () => {
 
         <div className={nav? 'pb-4' :'md:hidden' }>
         <ul className={nav? 'bg-stone-900  rounded-lg mx-3 align-middle text-white text-left px-4 md:hidden' : 'bg-yellow-200 hidden'}>
-        <NavLink onClick={handleNav} className={({isActive}) => isActive ? "text-red" : 'text-white '} to='create'><li className='py-4 hover:text-red '>Set A World Record</li></NavLink>
+        {/* <NavLink onClick={handleNav} className={({isActive}) => isActive ? "text-red" : 'text-white '} to='create'><li className='py-4 hover:text-red '>Set A World Record</li></NavLink> */}
         {!user && <NavLink onClick={handleNav} className={({isActive}) => isActive ? "text-red " : 'text-white hover:text-red'} to='login'><li className='py-4 hover:text-red'>Login</li></NavLink>}
         {/* {!user && <NavLink onClick={handleNav} className={({isActive}) => isActive ? "text-red" : 'text-white '} to='signup'><li className='py-4 hover:text-red'>Signup</li></NavLink>} */}
         {user && <button className='py-4 hover:text-red text-white' onClick={handleLogout}>Logout</button>}
