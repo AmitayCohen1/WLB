@@ -188,7 +188,7 @@ console.log("Upload Successful")
   else{
 
   return (
-    <div className="grid place-items-center bg-black h-screen pb-20">
+    <div className="bg-black h-screen py-12">
       <div className=" rounded-xl sm:m-2 p-0 m-0 ">
         <form className="grid  rounded-xl" onSubmit={handleSubmit}>
 <div className="flex flex-col w-full h-full px-3 max-[480px]:px-5 ">
