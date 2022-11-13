@@ -47,11 +47,11 @@ import {Box, CircularProgress, Typography} from "@mui/material"
               Preparing...
               </h1> : props.value < 100 ?
                <h1 variant="caption" component="div"  className="text-2xl text-white text-align-left text-center">
-               Your record is a big deal. Your video is uploading right now. 
+                Your record is a big deal. Your video is uploading right now. 
                <br/>
-               Please give big files a few minutes. 
+                Please give big files a few minutes. 
                <br/>
-               You can keep this tab open and check back soon to see your rank and badge.
+                You can keep this tab open and check back soon to see your rank and badge.
                 </h1> :<h1 variant="caption" component="div"  className="text-2xl text-white text-align-center text-center">
              Processing...
               </h1> }  
