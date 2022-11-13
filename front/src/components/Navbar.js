@@ -29,7 +29,7 @@ const Navbar = () => {
       role="navigation"> 
         <Link to='/' className='flex items-center text-lg text-red font-JockeyOne'><img className='h-[75px] pr-2' src={wlbLogo} alt="wlb"/></Link>
         <div className='flex content-center'>
-        <NavLink className={({isActive}) => isActive ? 'hover:bg-red px-4 ease-in duration-100 bg-red text-black font-medium text-sm md:text-base lg:text-lg py-3 rounded-full font-Inter' : 'hover:bg-red px-4 ease-in duration-100 bg-yellow text-black font-medium text-xs md:text-base lg:text-lg py-3 rounded-full font-Inter'} to='create'>Set A World Record</NavLink>      
+        <NavLink className={({isActive}) => isActive ? 'hover:bg-red px-4 ease-in duration-100 bg-red text-black font-medium text-sm  md:text-base lg:text-lg py-3 rounded-full font-Inter' : 'hover:bg-red px-4 ease-in duration-100 bg-yellow text-black font-medium text-xs md:text-base lg:text-lg py-3 rounded-full font-Inter'} to='create'>Set A World Record</NavLink>      
 
         <div onClick={handleNav} className='cursor-pointer md:hidden text-white hover:text-red place-content-center grid pl-4'>
           { nav ? <AiOutlineClose size={20} 

@@ -189,10 +189,10 @@ console.log("Upload Successful")
 
   return (
     <div className="grid place-items-center bg-black h-screen pb-20">
-      <div className="bg-stone-900 sm:p-8 rounded-xl sm:m-2 p-0 m-0 ">
-        <form className="grid   bg-stone-900 p-8 rounded-xl" onSubmit={handleSubmit}>
-<div className="flex flex-col w-full h-full sm:p-0 px-3 max-[480px]:px-5 ">
-<h1 className="font-bold text-4xl pb-10 text-white ">Set A World Record!</h1>
+      <div className=" rounded-xl sm:m-2 p-0 m-0 ">
+        <form className="grid  rounded-xl" onSubmit={handleSubmit}>
+<div className="flex flex-col w-full h-full px-3 max-[480px]:px-5 ">
+<h1 className="font-bold text-5xl pb-10 text-white ">Set A World Record!</h1>
 
 <input required
   className="rounded p-3 w-full  text-stone-300 pr-20 placeholder:text-stone-400 mb-4 bg-stone-900 border-stone-600 border hover:border-red outline-none focus:border-red "
