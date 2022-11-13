@@ -148,7 +148,7 @@ const rankPositionStyles='font-serif absolute align-middle text-[7px] top-4 sm:t
   return (
     <div className='
         grid grid-cols-12
-      text-black sm:text-base outline-stone-800 bg-white
+      text-black sm:text-base outline-stone-800 bg-white rounded-xl
         mx-4
         sm:mx-10
         md:mx-12
