@@ -188,10 +188,17 @@ console.log("Upload Successful")
   else{
 
   return (
-    <div className="bg-black h-screen py-12">
-      <div className=" rounded-xl sm:m-2 p-0 m-0 ">
+    <div className="bg-black h-screen py-8        
+    px-4
+    sm:px-8
+    md:px-10
+    lg:px-28 
+    xl:px-64
+    
+    ">
+      <div className=" rounded-xl  lg:grid  lg:place-content-center ">
         <form className="grid  rounded-xl" onSubmit={handleSubmit}>
-<div className="flex flex-col w-full h-full px-3 max-[480px]:px-5 ">
+<div className="flex flex-col w-full h-full px-3 ">
 <h1 className="font-bold text-5xl pb-10 text-white ">Set A World Record!</h1>
 
 <input required

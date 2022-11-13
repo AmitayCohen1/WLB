@@ -145,51 +145,58 @@ console.log("Upload Successful")
 else{
         return (
             <div>
-                <div className=" px-6 py-4  text-white items-center flex place-content-between
-        sm:px-6
-        md:px-12 
-        lg:px-28 
-        xl:px-40 
-        2xl:px-48
-        ">
+                <div className=" py-4 text-white flex 
+                    px-4
+                    sm:px-8
+                    md:px-10
+                    lg:px-28 
+                    xl:px-64
+                    
+                    ">
                     <Link className="rounded-full bg-stone-500 py-2 px-2 cursor-pointer bg-opacity-40 hover:bg-stone-700" to={`/${id}`}><AiOutlineArrowLeft /></Link>
                 </div>
-                <div className="grid place-items-center bg-stone-900 h-screen pb-40">
-
-                    <div className="bg-stone-900 sm:p-12 p-0 rounded-xl">
-                        <form className="grid  place-items-center bg-stone-900 sm:px-8 px-0 py-4 rounded-xl" onSubmit={handleSubmit}>
-                            <h1 className="font-bold text-5xl pb-10 text-white">Beat it!</h1>
-
-                            <input
-                                className="rounded p-3  text-stone-300 pr-20 placeholder:text-stone-400 
-                mb-4 bg-stone-900 border-stone-600 border hover:border-red 
-                outline-none focus:border-red input:invalid input:text-white "
-                                placeholder="Reps"
-                                required type="number"
-                                onChange={e => setReps(e.target.value)}
-                                value={reps} />
-
-                            <input required
-                                className="text-sm text-slate-500
-                                file:py-3 file:px-11  file:mx-2 pb-6
-                                file:rounded-full file:bg-stone-900 file:cursor-pointer file:text-stone-400 file:border file:border-solid file:border-stone-600 
-                            hover:file:border-red"
-                                name="file"
-                                type="file"
-                                id='file'
-                                onChange={e => {
-                                    const file = e.target.files[0]
-                                    validateSelectedFile(e.target.files[0]);
-                                    setFile(file)
-                                }}
-                            />
-                             {!isFileSize && <p className="text-amber-700 text-center pt-2">{errorMsg}</p>}
 
 
-                            <button className="bg-red py-3 rounded px-28 hover:bg-hoverRed text-stone-900 font-semibold  hover:text-stone-200 mt-4">Submit</button>
-                      
-                        </form>
-                    </div>
+                    <div className=" rounded-xl py-8
+                    px-4
+                    sm:px-8
+                    md:px-10
+                    lg:px-28 
+                    xl:px-64 ">
+                        <div className="lg:grid  lg:place-content-center">
+                            <form className="grid rounded-xl lg:w-96" onSubmit={handleSubmit}>
+                                <h1 className="font-bold text-5xl pb-10 text-white">Beat it!</h1>
+
+                                <input
+                                    className="rounded p-3  text-stone-300 pr-20 placeholder:text-stone-400 
+                                    mb-4 bg-stone-900 border-stone-600 border hover:border-red 
+                                    outline-none focus:border-red input:invalid input:text-white "
+                                    placeholder="Reps"
+                                    required type="number"
+                                    onChange={e => setReps(e.target.value)}
+                                    value={reps} />
+
+                                <input required
+                                    className="text-sm text-slate-500
+                                    file:py-3 file:px-11  file:mx-2 pb-6
+                                    file:rounded-full file:bg-stone-900 file:cursor-pointer file:text-stone-400 file:border file:border-solid file:border-stone-600 
+                                hover:file:border-red"
+                                    name="file"
+                                    type="file"
+                                    id='file'
+                                    onChange={e => {
+                                        const file = e.target.files[0]
+                                        validateSelectedFile(e.target.files[0]);
+                                        setFile(file)
+                                    }}
+                                />
+                                {!isFileSize && <p className="text-amber-700 text-center pt-2">{errorMsg}</p>}
+
+
+                                <button className="bg-red py-3 rounded px-28 hover:bg-hoverRed text-stone-900 font-semibold  hover:text-stone-200 mt-4">Submit</button>
+                        
+                            </form>
+                        </div>
                 </div>
             </div>
 
