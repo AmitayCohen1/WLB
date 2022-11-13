@@ -177,7 +177,6 @@ router.post('/', upload.single('file'), async(req, res) => {
             const url =  await getSignedUrl(s3, command, { expiresIn: 3600 })
             SavedChallenge.fileURL = url
         }       
-
         await createURL()
 
     } else { 
