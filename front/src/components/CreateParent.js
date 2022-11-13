@@ -223,9 +223,10 @@ outline-none focus:border-red"
   type="number"
   onChange={e => setReps(e.target.value)}
   value={reps} />
-<div className=" place-items-center place-content-between text-stone-400 flex mt-2 mb-4">
-<p className="pr-8"> Best score is</p>
-<div>
+<div className=" place-items-center place-content-between  text-stone-400 flex mb-4">
+<p className=" w-max"> Best score is</p>
+
+<div className="flex">
 <FormControlLabel control={
 
 <Checkbox
@@ -254,12 +255,12 @@ style={{color:"rgb(214 211 209)"}} />
 label="Lowest"
 labelPlacement="start"
 className="rounded text-stone-400  placeholder:text-stone-400 
-text-center place-items-center place-content-center"/>
+text-cente place-items-center place-content-center"/>
 </div>
 </div> 
 <input required
   accept="video/*"
-  className="text-sm text-slate-500 w-full
+  className="text-sm text-stone-400 w-full
 file:py-3 file:px-11  file:mr-6
 file:rounded-full file:bg-stone-900 file:cursor-pointer file:text-stone-400 file:border file:border-solid file:border-stone-600 
 hover:file:border-red"
@@ -276,7 +277,7 @@ hover:file:border-red"
 {!isFileSize && <p className="text-red pt-2 pb-3 text-left">{errorMsg}</p>}
 
 
-<button className="bg-red py-3 w-full rounded px-28 hover:bg-hoverRed  text-stone-900 font-semibold mb-5 hover:text-stone-200 mt-4">Submit</button>
+<button className="bg-red py-3 w-full rounded px-28 hover:bg-hoverRed  text-stone-900 font-semibold mb-4 hover:text-stone-200 mt-8">Submit</button>
 
 </div>
        
