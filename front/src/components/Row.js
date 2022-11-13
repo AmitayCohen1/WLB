@@ -250,9 +250,9 @@ const rankPositionStyles='font-serif absolute align-middle text-[7px] top-4 sm:t
 
               '>{parent.title}</div>
 
-              <div className='absolute -bottom-6 md:bottom-auto flex gap-1 md:-right-10 md:top-auto md:flex-col  text-red hover:text-yellow hover:cursor-pointer' onClick={() => captureElement(badgeRef.current)}>
-                  <div className={isCopy ? ' grid place-content-center text-yellow' : 'grid place-content-center'} >{isCopy ? <HiOutlineCheck size={12} /> : <IoCopyOutline size={12} />}</div>
-                <span className={isCopy? 'text-xs text-center self-center text-yellow' : 'text-xs text-center self-center'}>{isCopy ? 'copied' : 'copy'}</span>
+              <div className={isCopy ? 'absolute -bottom-6 md:bottom-auto flex gap-1 md:-right-[80px] md:bg-yellow px-2 py-1 rounded-full md:bg-opacity-20 md:hover:bg-yellow md:hover:bg-opacity-20 md:top-auto text-red hover:text-yellow hover:cursor-pointer' : 'absolute -bottom-6 md:bottom-auto flex gap-1 md:-right-[75px] md:bg-red px-2 py-1 rounded-full md:bg-opacity-20 md:hover:bg-yellow md:hover:bg-opacity-20 md:top-auto text-red hover:text-yellow hover:cursor-pointer'} onClick={() => captureElement(badgeRef.current)}>
+                  <div className={isCopy ? ' grid place-content-center text-yellow ' : 'grid place-content-center'} >{isCopy ? <HiOutlineCheck size={12} /> : <IoCopyOutline size={12} />}</div>
+                <span className={isCopy? 'text-xs text-center self-center text-yellow ' : 'text-xs text-center self-center'}>{isCopy ? 'Copied!' : 'Copy'}</span>
                 </div>
 
               </div>
