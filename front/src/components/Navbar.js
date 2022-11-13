@@ -27,7 +27,7 @@ const Navbar = () => {
       lg:px-28 
       xl:px-64' 
       role="navigation"> 
-        <Link to='/' className='flex items-center text-lg text-red font-JockeyOne'><img className='h-14 pr-2' src={wlbLogo} alt="wlb"/></Link>
+        <Link to='/' className='flex items-center text-lg text-red font-JockeyOne'><img className='h-[75px] pr-2' src={wlbLogo} alt="wlb"/></Link>
         <div className='flex content-center'>
         <NavLink className={({isActive}) => isActive ? 'hover:bg-red px-4 ease-in duration-100 bg-red text-black font-medium text-xs md:text-base lg:text-lg py-3 rounded-full font-Inter' : 'hover:bg-red px-4 ease-in duration-100 bg-yellow text-black font-medium text-xs md:text-base lg:text-lg py-3 rounded-full font-Inter'} to='create'>Set A World Record</NavLink>      
 
