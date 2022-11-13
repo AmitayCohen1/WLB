@@ -3,7 +3,8 @@
 The WLB is a place where people compete to achieve the highest ranking on the leaderboard in a variety of challenges.
 You can challenge the world with your own records, or respond to others' records to climb the leaderboard! 
 
-***Coming soon!***
+https://beaworldleader.com/
+
 ## Main features
 
 - User Registration & Login

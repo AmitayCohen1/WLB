@@ -10,6 +10,7 @@ import { useAuthContext } from '../hooks/useAuthContext';
 import { useChallengesContext } from '../hooks/useChallengeContext';
 import axios from "../config/axios";
 import { resolveBreakpointValues } from '@mui/system/breakpoints';
+import { Button } from '@mui/material';
 
 
 
@@ -17,7 +18,6 @@ import { resolveBreakpointValues } from '@mui/system/breakpoints';
 const Row = ({challenge, index, parent}) => {
     const badgeRef = useRef()
     const [isCopy, setIsCopy] = useState(null)
-    const [hover, setHover] = useState()
     const { user } = useAuthContext();
     const { challengeDispatch } = useChallengesContext();
     const [isAdmin, setIsAdmin] = useState(false);
@@ -35,17 +35,17 @@ const maxComparator = (a, b) => {
 
 
 const rankDuplicate = () =>{
-  let sorted;
+ 
   let rank;
-  let arr=totalReplies;
-  let rankedArray =[];
+  let arr = totalReplies;
+  let rankedArray = [];
   if(parent.isLessReps){
-    arr=arr.sort(minComparator)
+    arr = arr.sort(minComparator)
     //Sort ranking function for min Reps
     rank = 1;
 for (var i = 0; i < arr.length; i++) {
-  // increase rank only if current score less than previous
-  if (i > 0 && arr[i].reps < arr[i - 1].reps) {
+  // increase rank only if current score more than previous
+  if (i > 0 && arr[i].reps > arr[i - 1].reps) {
     rank++;
   }
     rankedArray[i] = rank;
@@ -66,13 +66,9 @@ for (var i = 0; i < arr.length; i++) {
 }
 return rankedArray;
   }
- 
 
-
- 
- 
 }
-const rankPositionStyles='font-serif absolute align-middle text-[4px] md:text-[6px]lg:text-[8px]top-5 right-6md:top-6 md:right-7lg:top-7 lg:right-9xl:top-7';
+const rankPositionStyles='font-serif absolute align-middle text-[7px] top-4 sm:top-2 right-6 md:text-[8px] md:top-6 md:right-7 lg:text-[9px] lg:top-7 lg:right-9 xl:top-7 xl:text-[11px]';
 
     useEffect(() => { 
       const adminAuth = () => { 
@@ -82,26 +78,24 @@ const rankPositionStyles='font-serif absolute align-middle text-[4px] md:text-[6
               } else { 
                   setIsAdmin(false)  
               } 
-              console.log('isAdmin', isAdmin)
-              console.log('user', user)
           }
       }
-      console.log('rendered isAdmin')
   adminAuth()
   }, [isAdmin, user])
 
 
     const handleDelete = async (e) => {
-      console.log('challenge-----', challenge, 'parent', parent)
       e.preventDefault();
       if (user) {
           try {
-              const response = await axios.delete(`/api/challenges/child/${parent._id}/${challenge._id}`, {
+            if(parent._id !== challenge._id)
+            {  const response = await axios.delete(`/api/challenges/child/${parent._id}/${challenge._id}`, {
                   headers: {
                       "Autharization": `Bearer ${user.token}`, // TODO: "Authorization"
                   },
               });
               const deleteFile = await challengeDispatch({ type: "DELETE_CHALLENGE", payload: response.data });
+            }
           } catch (err) {
               console.log("Challenge was NOT deleted:", err.message);
           }
@@ -116,9 +110,7 @@ const rankPositionStyles='font-serif absolute align-middle text-[4px] md:text-[6
           scale: 15,
             allowTaint: true
         });
-        console.log(canvas)
         const url = await canvas.toDataURL()
-        console.log(url)
             try {
           const data = await fetch(url);
           const blob = await data.blob();
@@ -147,7 +139,6 @@ const rankPositionStyles='font-serif absolute align-middle text-[4px] md:text-[6
         // navigator.clipboard.write([clipboardItem])
           // copy(blob, { })
 
-          console.log('Fetched image copied.');
 
           } catch (err) {
           console.error(err.name, err.message, 'ERROROROROROOR');
@@ -157,7 +148,7 @@ const rankPositionStyles='font-serif absolute align-middle text-[4px] md:text-[6
   return (
     <div className='
         grid grid-cols-12
-      text-black sm:text-base outline-stone-800 bg-white
+      text-black sm:text-base outline-stone-800 bg-white rounded-xl
         mx-4
         sm:mx-10
         md:mx-12
@@ -196,7 +187,7 @@ const rankPositionStyles='font-serif absolute align-middle text-[4px] md:text-[6
         md:text-base
         lg:text-lg
         xl:text-xl
-        '>{rankDuplicate()[index]} </div>
+        '>{rankDuplicate()[index] ? rankDuplicate()[index] : 1} </div>
     
         {/* Score */}
         <div className='text-yellow bg-yellow bg-opacity-20 border-yellow border px-2 w-fit rounded-full ml-2 self-center
@@ -227,19 +218,21 @@ const rankPositionStyles='font-serif absolute align-middle text-[4px] md:text-[6
 
               {parent.createdAt.split('-')[1] + '.' + parent.createdAt.split('T' && ':')[1]}</div>
 
-              <div className='text-red font-RedBadge
-              text-5xl
-              lg:text-6xl'>{rankDuplicate()[index]}
+              <div className='text-red font-RedBadge 
+              text-[45px]
+              md:text-5xl
+              lg:text-6xl'>{rankDuplicate()[index] ? rankDuplicate()[index] : 1}
             
-
-             {(rankDuplicate()[index]) === 1 ?
+             {(rankDuplicate()[index]) === 1 || (rankDuplicate()[index]) === undefined ?
              <span className={rankPositionStyles} >st</span> : (rankDuplicate()[index]) === 2 
             ? <span className={rankPositionStyles}>nd</span> 
             : (rankDuplicate()[index]) === 3 ?
             <span className={rankPositionStyles}>rd</span> 
             : (rankDuplicate()[index]) >=4 && 
             <span className={rankPositionStyles}>th</span>
-              }</div>
+              }
+
+             </div>
               <div className='text-white font-Badge text-center px-2 absolute pt-3 leading-tight
               text-[6px]  
               md:text-[7px]
@@ -257,9 +250,9 @@ const rankPositionStyles='font-serif absolute align-middle text-[4px] md:text-[6
 
               '>{parent.title}</div>
 
-              <div className='absolute -bottom-6 md:bottom-auto flex gap-1 md:-right-10 md:top-auto md:flex-col  text-red hover:text-yellow hover:cursor-pointer' onClick={() => captureElement(badgeRef.current)}>
-                  <div className={isCopy ? ' grid place-content-center text-yellow' : 'grid place-content-center'} >{isCopy ? <HiOutlineCheck size={12} /> : <IoCopyOutline size={12} />}</div>
-                <span className={isCopy? 'text-xs text-center self-center text-yellow' : 'text-xs text-center self-center'}>{isCopy ? 'copied' : 'copy'}</span>
+              <div className={isCopy ? 'absolute -bottom-6 md:bottom-auto flex gap-1 md:-right-[80px] lg:-right-[90px] md:bg-yellow px-2 py-1 rounded-full md:bg-opacity-20 md:hover:bg-yellow md:hover:bg-opacity-20 md:top-auto text-red hover:text-yellow hover:cursor-pointer' : 'absolute -bottom-6 md:bottom-auto flex gap-1 md:-right-[75px] lg:-right-[85px] md:bg-red px-2 py-1 rounded-full md:bg-opacity-20 md:hover:bg-yellow md:hover:bg-opacity-20 md:top-auto text-red hover:text-yellow hover:cursor-pointer'} onClick={() => captureElement(badgeRef.current)}>
+                  <div className={isCopy ? ' grid place-content-center text-yellow ' : 'grid place-content-center'} >{isCopy ? <HiOutlineCheck size={12} /> : <IoCopyOutline size={12} />}</div>
+                <span className={isCopy? 'text-xs text-center self-center text-yellow ' : 'text-xs text-center self-center'}>{isCopy ? 'Copied!' : 'Copy'}</span>
                 </div>
 
               </div>
@@ -268,8 +261,10 @@ const rankPositionStyles='font-serif absolute align-middle text-[4px] md:text-[6
         </div>
 
         {/* Copy Icon */}
+       { isAdmin && (parent._id !== challenge._id) &&
+                <Button onClick={(e)=>handleDelete(e)} className="!text-red "> Delete </Button>}
 
-
+                   {/* Delete */}
         </div>
   )
 }

@@ -177,7 +177,6 @@ router.post('/', upload.single('file'), async(req, res) => {
             const url =  await getSignedUrl(s3, command, { expiresIn: 3600 })
             SavedChallenge.fileURL = url
         }       
-
         await createURL()
 
     } else { 
@@ -308,7 +307,7 @@ router.delete('/:id', async (req, res) =>  {
 router.delete('/child/:parentId/:childId', async (req, res) =>  {
     const { childId } = req.params;
     const { parentId } = req.params;
-    console.log('parentId', parentId, 'childId', childId)
+    console.log('parentId', parentId, 'childId', childId, "Params",req.params)
     
 
         // Deleteing from S3 
@@ -322,7 +321,7 @@ router.delete('/child/:parentId/:childId', async (req, res) =>  {
             //Deleting from MongoDB
             const parent = await Challenge.findById(parentId)
             console.log('parent', parent.replies)
-            const result = await parent.replies.id(childID).remove();
+            const result = await parent.replies.id(childId).remove();
             console.log('result', result)
         
             //Saving new in MongoDB
