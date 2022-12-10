@@ -9,6 +9,12 @@ const UserSchema = new Schema({
         type: String, 
         required: true, 
     },
+    age: { 
+        type: Number,
+    },
+    organization: {
+        type: String,
+    },
     email: { 
         type: String, 
         required: true, 
@@ -22,9 +28,9 @@ const UserSchema = new Schema({
 })
 
 
-UserSchema.statics.signup = async function (userName, email, password) { 
-    console.log(userName, email, password)
-    if(!email || !password || !userName) { 
+UserSchema.statics.signup = async function (userName, age, organization, email, password) { 
+    console.log('userName---', userName, 'age----', age, 'organization---' ,organization,  'email---',email,  'password---', password)
+    if(!userName || !email || !password ) { 
         throw Error('all fiedls must be applied!')
     }
     if(!validator.isEmail(email)){ 
@@ -40,7 +46,7 @@ UserSchema.statics.signup = async function (userName, email, password) {
     }
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(password, salt);
-    const user = await this.create({userName, email, password: hash});
+    const user = await this.create({userName, age, organization, email, password: hash});
     return user
 }
 

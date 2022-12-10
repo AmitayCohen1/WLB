@@ -1,19 +1,16 @@
 import { useState} from "react"
-import { AiOutlineArrowLeft } from "react-icons/ai"
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { useLogin } from "../hooks/useLogin"
 
 
 const Login = () => {
-  const navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const {login, error, isLoading} = useLogin()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-   const res = await login(email, password)
-   console.log('login response:', res)
+   await login(email, password)
    setPassword('')
    setEmail('')
   }
@@ -21,11 +18,10 @@ const Login = () => {
   return (
 
     
-    <div className=" bg-black h-screen grid place-content-center pb-">
-    
-    <form className="p-16 rounded-xl bg-stone-900" onSubmit={handleSubmit}>
-      <h3 className="font-bold text-4xl text-center pb-4 text-white">Log In</h3>
-      <h6 className="font-light text-1xl text-center pb-12 text-white">Log in to your account or <Link to="/signup"><span className="text-red underline">Signup</span></Link></h6>
+    <div className=" bg-black h-screen grid place-content-center">
+    <form className="p-6 sm:p-10 rounded-xl bg-stone-900" onSubmit={handleSubmit}>
+      <h3 className="font-bold text-3xl text-center pb-4 text-white">Log In</h3>
+      <h6 className="font-light text-lg text-center pb-12 text-white">Log in to your account or <Link to="/signup"><span className="text-red underline">Signup</span></Link></h6>
 
       <div className="grid place-items-center p-4">
 

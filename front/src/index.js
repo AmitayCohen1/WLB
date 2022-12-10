@@ -5,15 +5,14 @@ import App from './App';
 import {ChallengeContextProvider} from './context/ChallengeContext';
 import { AuthContextProvider } from './context/AuthContext'
 
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-   <AuthContextProvider>
-    <ChallengeContextProvider> 
-      <App />
-    </ChallengeContextProvider>
-    </AuthContextProvider>
+    <AuthContextProvider>
+      <ChallengeContextProvider> 
+        <App />
+      </ChallengeContextProvider>
+      </AuthContextProvider>
   </React.StrictMode>
 );
 

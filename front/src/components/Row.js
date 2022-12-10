@@ -5,11 +5,9 @@ import Title from '../assets/Title.svg'
 import { IoCopyOutline } from "react-icons/io5";
 import { HiOutlineCheck } from "react-icons/hi";
 import ReactPlayer from 'react-player';
-import copy from 'copy-to-clipboard';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useChallengesContext } from '../hooks/useChallengeContext';
 import axios from "../config/axios";
-import { resolveBreakpointValues } from '@mui/system/breakpoints';
 import { Button } from '@mui/material';
 
 
@@ -28,14 +26,11 @@ const Row = ({challenge, index, parent}) => {
 const maxComparator = (a, b) => {
   return b.reps - a.reps
 }
-
  const minComparator = (a, b) => {
   return a.reps - b.reps
 }
-
-
 const rankDuplicate = () =>{
- 
+
   let rank;
   let arr = totalReplies;
   let rankedArray = [];
@@ -43,30 +38,29 @@ const rankDuplicate = () =>{
     arr = arr.sort(minComparator)
     //Sort ranking function for min Reps
     rank = 1;
-for (var i = 0; i < arr.length; i++) {
-  // increase rank only if current score more than previous
-  if (i > 0 && arr[i].reps > arr[i - 1].reps) {
+    for (var i = 0; i < arr.length; i++) {
+    // increase rank only if current score more than previous
+    if (i > 0 && arr[i].reps > arr[i - 1].reps) {
     rank++;
-  }
+    }
     rankedArray[i] = rank;
-}
-return rankedArray;
-  }
+    }
+    return rankedArray;
+    }
    
    //Sort ranking function for max Reps
   else{
-   arr=arr.sort(maxComparator)
-     rank = 1;
-for (var i = 0; i < arr.length; i++) {
-  // increase rank only if current score less than previous
-  if (i > 0 && arr[i].reps < arr[i - 1].reps) {
-    rank++;
+    arr=arr.sort(maxComparator)
+    rank = 1;
+    for (var i = 0; i < arr.length; i++) {
+      // increase rank only if current score less than previous
+      if (i > 0 && arr[i].reps < arr[i - 1].reps) {
+       rank++;
+      }
+      rankedArray[i] = rank;
+    }
+    return rankedArray;
   }
-    rankedArray[i] = rank;
-}
-return rankedArray;
-  }
-
 }
 const rankPositionStyles='font-serif absolute align-middle text-[7px] top-4 sm:top-2 right-6 md:text-[8px] md:top-6 md:right-7 lg:text-[9px] lg:top-7 lg:right-9 xl:top-7 xl:text-[11px]';
 
@@ -91,10 +85,11 @@ const rankPositionStyles='font-serif absolute align-middle text-[7px] top-4 sm:t
             if(parent._id !== challenge._id)
             {  const response = await axios.delete(`/api/challenges/child/${parent._id}/${challenge._id}`, {
                   headers: {
-                      "Autharization": `Bearer ${user.token}`, // TODO: "Authorization"
+                      "Authorization": `Bearer ${user.token}`, // TODO: "Authorization"
                   },
               });
-              const deleteFile = await challengeDispatch({ type: "DELETE_CHALLENGE", payload: response.data });
+              console.log(response)
+              await challengeDispatch({ type: "DELETE_CHALLENGE", payload: response.data });
             }
           } catch (err) {
               console.log("Challenge was NOT deleted:", err.message);
@@ -120,26 +115,6 @@ const rankPositionStyles='font-serif absolute align-middle text-[7px] top-4 sm:t
             })
           ]);
 
-        //   const clipboardItem = new ClipboardItem({
-        //     'text/plain': func().then((result) => {
-
-        //     if (!result) {
-        //         return new Promise(async (resolve) => {
-        //             resolve(new Blob[``]())
-        //         })
-        //     }
-        
-        //     const copyText = `some string`
-        //         return new Promise(async (resolve) => {
-        //             resolve(new Blob([copyText]))
-        //         })
-        //     }),
-        // })
-        // // Now, we can write to the clipboard in Safari
-        // navigator.clipboard.write([clipboardItem])
-          // copy(blob, { })
-
-
           } catch (err) {
           console.error(err.name, err.message, 'ERROROROROROOR');
         }
@@ -159,8 +134,6 @@ const rankPositionStyles='font-serif absolute align-middle text-[7px] top-4 sm:t
         md:max-h-36
         lg:max-h-40
         '>
-        {/* {isAdmin && <span onClick={handleDelete} className="material-symbols-outlined">delete</span>} */}
-
 
         {/* Record */}
         <div
@@ -173,12 +146,14 @@ const rankPositionStyles='font-serif absolute align-middle text-[7px] top-4 sm:t
             url={challenge.fileURL}
           />
           </div>
-        <div className='col-span-2 xl:col-span-2  self-center ml-2 
-        text-xs
-        md:text-base
-        lg:text-lg
-        break-after-auto
-        xl:text-xl'>{challenge.userName}
+
+          <div className='col-span-2 xl:col-span-2  self-center ml-2 relative
+          text-xs
+          md:text-base
+          lg:text-lg
+          break-after-auto
+          xl:text-xl'>{challenge.userName}
+          {challenge.organization && challenge.organization !== 'null' && challenge.organization !== 'undefined' && <p className=' text-black  top-8 sm:top-8 font-medium xl:text-base absolute w-40 md:w-max md:pt-2'>Team: {challenge.organization}</p>}       
         </div>
 
         {/* Rank */}
@@ -190,7 +165,7 @@ const rankPositionStyles='font-serif absolute align-middle text-[7px] top-4 sm:t
         '>{rankDuplicate()[index] ? rankDuplicate()[index] : 1} </div>
     
         {/* Score */}
-        <div className='text-yellow bg-yellow bg-opacity-20 border-yellow border px-2 w-fit rounded-full ml-2 self-center
+        <div className='text-black bg-black bg-opacity-20 border-black border px-2 w-fit rounded-full ml-2 self-center
         col-span-2
         text-xs
         xl:col-span-2
@@ -213,11 +188,10 @@ const rankPositionStyles='font-serif absolute align-middle text-[7px] top-4 sm:t
 
 
             <img src={Title} alt='The world Leaderboard' className='absolute top-1'/>
-            <div className='text-yellow text-[5px] text-center float-left font-Roman absolute right-[6px] pb-4'>{parent.createdAt.split('-')[0] + ' '}</div>
+            <div className='text-yellow text-[5px] text-center float-left font-Roman absolute right-[6px] pb-4'>{challenge.createdAt ? challenge.createdAt.split('-')[0] : parent.createdAt.split('-')[0]}</div>
             <div className='text-yellow text-[5px] text-center float-right font-Roman font-thin absolute left-[6px] pb-4 '>
-
-              {parent.createdAt.split('-')[1] + '.' + parent.createdAt.split('T' && ':')[1]}</div>
-
+              {challenge.createdAt ? challenge.createdAt.split('-')[1] + '.'  + challenge.createdAt.split('T')[0].split('-')[2] : parent.createdAt.split('-')[1] + '.' + parent.createdAt.split('T')[0].split('-')[2]}
+            </div>
               <div className='text-red font-RedBadge 
               text-[45px]
               md:text-5xl
@@ -256,7 +230,6 @@ const rankPositionStyles='font-serif absolute align-middle text-[7px] top-4 sm:t
                 </div>
 
               </div>
-
 
         </div>
 

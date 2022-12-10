@@ -1,64 +1,92 @@
 import {useChallengesContext} from '../hooks/useChallengeContext'
 import { Link} from "react-router-dom"
-import { useEffect } from 'react';
+import { useRef, useState } from 'react';
 import Parents from '../components/Parents';
+
 
 import axios from "../config/axios";
 
 const Home = () => {
   const {challenges, challengeDispatch} = useChallengesContext();
+  const [content, setContent] = useState('')
+  const [message, setMessage] = useState(false)
+  const [confirmMessage, setConfirmMessage] = useState(false)
+  const [placeHold, setPlaceHold] = useState('(Email me hot records)')
+  const inputRef = useRef(null);
+
+  // const placeHold = 'Email me new records'
 
 
-  //Check Challenges
-  useEffect(() => { 
-    const fetchingData = async () => {
-      try {
-        const response = await axios.get("/api/challenges");
-        challengeDispatch({type: "SET_CHALLENGES", payload: response.data});
-      } catch (err) {
-        console.log("response is NOT OK :( This is what we got bac:", err.message);
-      }
-    }
-    if (!challenges) { 
-      fetchingData();
-    }
-  }, [challengeDispatch, challenges]);
 
-  const copy = `Post a personal record or break someone else's.
-  Earn a badge. Show up your friends.`
-
-  const splitHeadline = copy.split('.')
+  //Send Amitay1599@gmail.com the content 
+const handleSubmit = async (e) => {
+    e.preventDefault()
+    setMessage(true)
+      await axios.post('/api/email', {
+      data: content
+    }).then((res) => { 
+      setContent(`You're In!`)
+    })
+  }
   
 if(challenges) { 
     return ( 
         <div className="flex-col">
-          <div className='2xl:py-12 xl:py-6'> 
-                <h1 className="
-                text-6xl xl:text-7xl
-                px-4 pt-10 font-semibold text-white
-                font-Inter
-                sm:px-6 
-                md:px-8
-                lg:px-28 
-                xl:px-64
-                ">
-                Are you the GOAT? Prove it.</h1>
-                <h1 className='text-white font-Inter
-                text-base xl:text-lg 2xl:text-xl
-                pt-6
-                pb-8
-                px-4
-                sm:px-6 
-                md:px-8
-                lg:px-28 
-                xl:px-64'>
-                <div>{splitHeadline[0] + '.' + splitHeadline[1]}.</div>
-                <div>{splitHeadline[2]}.</div>
-                </h1>
-                </div>
+          <h1 className="
+          text-5xl xl:text-7xl 
+          pt-10 font-semibold text-white
+          font-Inter
+          px-4
+          sm:px-6 
+          md:px-8
+          lg:px-28 
+          xl:px-64">
+          Are you the GOAT? <br/> Prove it.</h1>
+
+          <div className=' pb-10 pt-6 md:flex md:place-content-between
+          lace-content-between            
+          px-4
+          sm:px-6 
+          md:px-8
+          lg:px-28 
+          xl:px-64'> 
+
+          <div className='sm:flex place-content-between w-full'>
+          <h1 className='text-white text-opacity-85 font-Inter text-base xl:text-lg 2xl:text-xl text-opacity-85 font-light'>
+          Post a personal record or break someone else's. <br/> Earn a badge. Show up your friends.</h1>
+              <div className='text-white pt-8 sm:pt-0'>
+                <form  
+                  className='flex'
+                  onSubmit={handleSubmit}>
+                  <input  
+                    onChange={(e) => { 
+                      setContent(e.target.value)} 
+                    }
+                  value={content}
+                  placeholder={placeHold}
+                  ref={inputRef}
+                  id='inputRe'
+                  className='
+                  placeholder:text-black
+                  placeholder:font-light 
+                  placeholder:italic
+                  focus:outline-none
+                  italic
+                  text-black
+                  font-light
+                  sm:-ml-2
+                  pl-4 py-2 bg-white rounded-l-lg pr-2 text-md  border-yellow '          
+                  />
+                  <button className='pl-2 hover:bg-red font-light text-black rounded-r-lg px-2 -ml-1 bg-yellow '>Send'em</button>
+                  </form>
+                  </div>
+              </div> 
+            </div>
+                
 
           <div className="
-          grid place-items-center  py-2 rounded-xl text-white
+          grid 
+          rounded-xl text-white
           grid-cols-2 
           gap-6
           px-4
@@ -66,19 +94,12 @@ if(challenges) {
           md:px-8
           lg:px-28 
           xl:px-64
-
-          sm:grid-cols-2 
           md:grid-cols-3
-          lg:grid-cols-3 
-          xl:grid-cols-3 
-          2xl:grid-cols-4 
+          xl:grid-cols-4 
           ">
               {challenges && challenges.map((challenge) => (
-              <Link
-              to={`/${challenge._id}`}
-              key={challenge._id}
-              >
-              <Parents key={challenge._id} challenge={challenge}/> 
+              <Link to={`/${challenge._id}`} key={challenge._id} className='none'>
+                <Parents key={challenge._id} challenge={challenge}/> 
               </Link>
               ))}
         </div>

@@ -10,6 +10,9 @@ const replySchema = new Schema({
   userEmail: {
     type: String,
   },
+  organization: {
+    type: String,
+},
   reps: {
     type: Number,
   },
@@ -32,6 +35,9 @@ const challengeSchema = new Schema({
       type: String,
 
     },
+    organization: {
+      type: String,
+  },
     userEmail: {
       type: String,
 

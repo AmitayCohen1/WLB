@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import Row from '../components/Row'
-import { Link, useNavigate, useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { useChallengesContext } from '../hooks/useChallengeContext'
 import { AiOutlineArrowLeft } from "react-icons/ai"
 import ReactPlayer from 'react-player'
@@ -8,39 +8,26 @@ import axios from "../config/axios";
 
 const ChallengePage = () => {
 
+
   const { challengeParamsId } = useParams()
   const { challenges, challengeDispatch } = useChallengesContext();
   const [sortedList, setSortedList] = useState([])
   const [parent, setParent] = useState()
-  const navigate = useNavigate()
-  const [ending, setEnding] = useState('')
-  const [hover, setHover] = useState()
-  const [challegeReps, setChallegeReps] = useState([])
 
 
   useEffect(() => {
     const userMissData = async () => {
-      if (!challenges) {
-        try {
-          const response = await axios.get("/api/challenges");
-
-          challengeDispatch({ type: "SET_CHALLENGES", payload: response.data });
-        } catch (err) {
-          console.log("[ERROR][userMissData]: " + err.message);
-        }
-      } else {
         try {
           const responseS3 = await axios.get(`/api/challenges/${challengeParamsId}`);
-
-          challengeDispatch({ type: "REPLY", payload: responseS3.data });
+          // challengeDispatch({ type: "REPLY", payload: responseS3.data });
           setParent(responseS3.data);
-        } catch (err) {
-          navigate("/");
-        }
+          console.log('responseS3', responseS3)
+          } catch (err) {
       }
     };
-    userMissData();
-  }, [challengeParamsId, challengeDispatch, challenges, navigate]);
+    userMissData()
+  }, [challengeParamsId, challengeDispatch, challenges]);
+
 
    const maxComparator = (a, b) => {
     return b.reps - a.reps
@@ -55,6 +42,7 @@ const ChallengePage = () => {
       const parentObject = {
         userName: parent.userName,
         userEmail: parent.userEmail,
+        organization: parent.organization || null,
         reps: parent.reps,
         fileURL: parent.fileURL,
         _id: parent._id,
@@ -72,26 +60,6 @@ const ChallengePage = () => {
     }
   }
   creatingList()
-
-//   useEffect(() => {
-//     const newList = []
-//     if(parent) { 
-//       newList.push(parent.replies)
-//     }
-//   if(newList) { 
-
-//     for (let i = 0; i < parent.replies; i++) {
-//       if(parent.replies[i + 1]) { 
-//         if(parent.replies[i].reps === parent.replies[i + 1].reps) { 
-//         console.log('whatttt')
-//           } else { 
-//             console.log('NOOOOO')
-//           }
-//         }
-//       }
-//       console.log('newList', parent.replies)
-//   }
-// }, [parent])
 
 
   if (parent) {

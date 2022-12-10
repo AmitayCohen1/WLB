@@ -9,6 +9,8 @@ export const useLogin = () => {
   const { userDispatch } = useAuthContext();
 
   const login = async (email, password) => {
+
+    console.log('s')
     setIsLoading(true);
     setError(null);
 
@@ -17,10 +19,8 @@ export const useLogin = () => {
         headers: {"Content-Type": "application/json"},
       });
 
-      console.log("so this is it?", response.data);
-
       localStorage.setItem("user", JSON.stringify(response.data))
-
+      console.log(response.data)
       // update the auth context
       userDispatch({type: "LOGIN", payload: response.data})
     } catch (err) {

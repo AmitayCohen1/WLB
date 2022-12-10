@@ -33,7 +33,6 @@ export const ChallengeContextProvider = ({children}) => {
         challenges: null
     })
     
-      console.log('ChallengeContext state:', state)
     return ( 
         <ChallengeContext.Provider value={{...state, challengeDispatch}}> 
         {children}

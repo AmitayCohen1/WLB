@@ -13,7 +13,6 @@ const Navbar = () => {
     const handleNav = () => {
       setNav(!nav);
     };
-    
     const handleLogout = () => { 
       logout()
     }
@@ -27,11 +26,11 @@ const Navbar = () => {
       lg:px-28 
       xl:px-64' 
       role="navigation"> 
-        <Link to='/' className='flex items-center text-lg text-red font-JockeyOne'><img className='h-[75px] pr-2' src={wlbLogo} alt="wlb"/></Link>
+        <Link to='/' className='flex items-center text-sm sm:text-lg text-red font-JockeyOne'><img className='h-[40px] sm:h-[55px] md:h-[75px] pr-1' src={wlbLogo} alt="wlb"/>The World Leaderboard</Link>
         <div className='flex content-center'>
-        <NavLink className={({isActive}) => isActive ? 'hover:bg-red px-4 ease-in duration-100 bg-red text-black font-medium text-sm  py-3 rounded-full font-Inter' : 'hover:bg-red px-4 ease-in duration-100 bg-yellow text-black font-medium  text-sm py-3 rounded-full font-Inter'} to='create'>Set A World Record</NavLink>      
+        <NavLink className={({isActive}) => isActive ? 'hover:bg-red px-2 sm:px-4  ease-in duration-100 bg-red text-black font-medium text-xs sm:text-sm  py-3 rounded-full font-Inter' : 'hover:bg-red px-2 sm:px-4 ease-in duration-100 bg-yellow text-black font-medium text-xs sm:text-sm py-3 rounded-full font-Inter'} to='create'>Set A World Record</NavLink>      
 
-        <div onClick={handleNav} className='cursor-pointer md:hidden text-white hover:text-red place-content-center grid pl-4'>
+        <div onClick={handleNav} className='cursor-pointer md:hidden text-white hover:text-red place-content-center grid pl-2'>
           { nav ? <AiOutlineClose size={20} 
           onMouseOver={({target})=>target.style.color="#F35D45"}
           /> : <AiOutlineMenu size={20}/>}

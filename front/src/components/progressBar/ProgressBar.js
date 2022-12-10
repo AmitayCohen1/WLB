@@ -7,7 +7,6 @@ import {Box, CircularProgress, Typography} from "@mui/material"
     export const CircularProgressWithLabel = (props)=> {
         return (
           <Box sx={{ position: 'relative', display: 'flex' ,flexDirection:"column",placeContent:"center",placeItems:"center",marginTop:"1rem",marginBottom:"1rem"}}>
-         
             <Box
               sx={{
               
@@ -42,7 +41,8 @@ import {Box, CircularProgress, Typography} from "@mui/material"
            
             
             </Box>
-            { props.value ===0 ? 
+            { props.value === 0 ? 
+        
             <h1 variant="caption" component="div"  className="text-2xl text-white text-align-left text-center">
               Preparing...
               </h1> : props.value < 100 ?

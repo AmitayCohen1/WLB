@@ -16,6 +16,11 @@
 
   .react-player video{
     object-fit: cover;
+    height: 20px;
+    width: max-content;
+  }
+  .text-shad  { 
+    text-shadow: 2px 2px 5px rgb(76, 76, 76);
   }
 }
 @import url('https://fonts.googleapis.com/css2?family=Jockey+One&display=swap');

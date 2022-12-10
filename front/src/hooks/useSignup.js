@@ -8,12 +8,12 @@ export const useSignup = () => {
   const [isLoading, setIsLoading] = useState(null)
   const { userDispatch } = useAuthContext()
 
-  const signup = async (userName, email, password) => {
+  const signup = async (userName, age, organization, email, password) => {
     setIsLoading(true);
     setError(null);
 
     try {
-      const response = await axios.post("/api/user/signup", JSON.stringify({ userName, email, password }), {
+      const response = await axios.post("/api/user/signup", JSON.stringify({ userName, age, organization, email, password }), {
         headers: {"Content-Type": "application/json"},
       });
 
